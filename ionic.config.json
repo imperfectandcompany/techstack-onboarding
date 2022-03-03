@@ -1,0 +1,7 @@
+{
+  "name": "techstack-onboarding",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
