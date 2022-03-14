@@ -16,15 +16,24 @@ const Timeline: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonBackButton defaultHref="/" />
-          </IonButtons>
-          <IonTitle>Timeline</IonTitle>
+      <IonHeader >
+        <IonToolbar   >        
+                  <IonTitle>
+                  <img
+                  className="w-6 h-6 mx-auto"
+                  src={process.env.PUBLIC_URL + '/assets/icon/icon.svg'}
+                  alt="postogon logo" />
+                  </IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <IonContent fullscreen={true} >
+      <IonHeader collapse="condense">
+      <IonToolbar>
+              <IonTitle  size="large" className="space-x-4">
+              <IonNote color='white'>Public</IonNote><IonNote>Private</IonNote>
+              </IonTitle>
+            </IonToolbar>
+          </IonHeader>
       <ExploreContainer></ExploreContainer>
       </IonContent>
     </IonPage>

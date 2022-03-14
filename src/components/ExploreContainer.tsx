@@ -1,4 +1,4 @@
-import { IonButton, IonIcon } from '@ionic/react';
+import { IonButton, IonIcon, IonLabel, IonNote } from '@ionic/react';
 import './ExploreContainer.css';
 import { ellipsisHorizontal, ellipsisVertical, mail } from 'ionicons/icons';
 import { useState } from 'react';
@@ -21,10 +21,11 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
     const originalContent = text.trim();
     const content = originalContent.slice(0, maxLength);
     return (
-      <div>
-        <span className="whitespace-pre-line">{isCollapsed ? originalContent : content}</span>
-        {originalContent.length > maxLength ? <button className="pl-1 text-blue-600 transition active:opacity-50 hover:text-blue-400 focus:text-blue-500 focus:outline-none" onClick={(e) => readMorePostHandler(e)}>{isCollapsed ? 'Show less' : 'Show more'}</button> : null}</div>
-    )
+<>
+<span className="mr-1 whitespace-pre-line">{isCollapsed ? originalContent : content+"..."}</span>
+        {originalContent.length > maxLength ? <button className="text-base text-blue-600 capitalize transition active:opacity-50 hover:text-blue-400 focus:text-blue-500 focus:outline-none" onClick={(e) => readMorePostHandler(e)}>{isCollapsed ? 'show less' : 'show more'}</button> : null}
+   </>
+ )
   }
 
   const printPost = () => {
@@ -32,17 +33,17 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
 
     return (
       <div className="h-auto overflow-hidden ">
-        <div className="mb-2 transition bg-white rounded shadow-sm md:px-6 md:py-2 lg:ml-44 lg:mr-44 xl:ml-96 xl:mr-96 border-6">
+        <div className="transition bg-white border-b rounded shadow-sm md:px-6 md:py-2 lg:ml-44 lg:mr-44 xl:ml-96 xl:mr-96 border-6">
           <div className="px-6 py-3 md:px-0">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <img src="https://codingforum.site/img/default/avatar9.jpg" className="bg-gray-300 rounded-full h-11 w-11" alt="hyperandey" />
                 <div>
-                  <h2 className="font-semibold text-black">Username</h2>
+                  <h2 className="font-semibold text-gray-700">Username</h2>
                   <p className="text-xs text-gray-400">11 hours ago</p>
                 </div>
               </div>
-              <div className='flex text-black'>
+              <div className='flex text-gray-600 transition hover:text-gray-900 hover:rounded-full hover:bg-gray-100'>
                 <IonIcon slot="start" icon={ellipsisVertical} />
               </div>
             </div>
@@ -51,6 +52,8 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
             <p className="antialiased text-gray-700 break-words sm:subpixel-antialiased md:antialiased ">
               {trimText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud")}
             </p>
+            <div></div>
+            <IonNote className="flex justify-end mt-3 text-xs text-gray-400 transition hover:text-gray-500">School '22, Studying Engineering 💻</IonNote>
           </div>
           <div className="px-6 py-3 text-gray-600 md:px-0 ">
             <div className="flex space-x-3">
@@ -73,13 +76,13 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
     )
   }
 
-
   return (<div className="bg-white">
     {printPost()}
     {printPost()}
     {printPost()}
     {printPost()}
     {printPost()}
+    
   </div>
 
   );
