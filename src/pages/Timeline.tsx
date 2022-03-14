@@ -1,9 +1,9 @@
 import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonNote, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import { useState } from 'react';
+import ExploreContainer from '../components/ExploreContainer';
 import './Signup.css';
 
-
-const Signin: React.FC = () => {
+const Timeline: React.FC = () => {
 
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
@@ -12,7 +12,6 @@ const Signin: React.FC = () => {
     if (email) {
       console.log("flop");
     }
-
   }
 
   return (
@@ -22,25 +21,14 @@ const Signin: React.FC = () => {
           <IonButtons slot="start">
             <IonBackButton defaultHref="/" />
           </IonButtons>
-          <IonTitle>Sign in</IonTitle>
+          <IonTitle>Timeline</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonItem>
-          <IonLabel position="floating">Email</IonLabel>
-          <IonInput value={email} onIonChange={e => setEmail(e.detail.value!)}></IonInput>
-        </IonItem>
-        <IonItem>
-          <IonLabel position="floating">Password</IonLabel>
-          <IonInput value={password} onIonChange={e => setPassword(e.detail.value!)}></IonInput>
-          <IonNote slot='error'>fwfew</IonNote>
-        </IonItem>
-        <IonButton className="flex font-bold" routerLink="/timeline" routerDirection="forward" >
-                New account
-            </IonButton>    
+      <ExploreContainer></ExploreContainer>
       </IonContent>
     </IonPage>
   );
 };
 
-export default Signin;
+export default Timeline;

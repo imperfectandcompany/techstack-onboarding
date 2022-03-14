@@ -33,9 +33,9 @@ const Signup: React.FC = () => {
           <IonInput value={password} onIonChange={e => setPassword(e.detail.value!)}></IonInput>
           <IonNote slot='error'>fwfew</IonNote>
         </IonItem>
-        <IonButton onClick={() => handleLogin()}>
-          Continue
-        </IonButton>
+        <IonButton className="flex font-bold" routerLink="/signup" routerDirection="forward" >
+                New account
+            </IonButton>    
       </IonContent>
     </IonPage>
   );
