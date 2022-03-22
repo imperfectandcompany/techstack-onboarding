@@ -51,6 +51,16 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
     ]
   },
   "browserslist": {
@@ -66,7 +76,8 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "3.4.1"
+    "@capacitor/cli": "3.4.1",
+    "webpack": "^5.70.0"
   },
   "description": "An Ionic project"
 }
