@@ -37,7 +37,7 @@ handle={false}
           <div
             className="flex items-center justify-center w-8 h-8 font-sans text-gray-500 "
           >
-              <IonIcon size="small" icon={close}></IonIcon>
+              <IonIcon size="small" onClick={()=>setIsOpen(false)} icon={close}></IonIcon>
           </div>
         </div>
 

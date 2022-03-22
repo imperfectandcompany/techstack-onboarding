@@ -51,15 +51,15 @@ const Timeline: React.FC = () => {
                   </IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen={true} scrollEvents={true} onIonScroll={(e) => onScroll(e)} 
+      <IonContent fullscreen={true} color="dark" scrollEvents={true} onIonScroll={(e) => onScroll(e)} 
 >
       <IonHeader collapse="condense" class="ion-no-border ">
-      <IonToolbar>
+      <IonToolbar  color='dark'>
       <IonTitle  size="large" className="flex items-center ">
 <div className="flex items-center justify-between ">
 <div className='flex space-x-4'>
-<IonNote color='white'>Public</IonNote>
-              <IonNote>Private</IonNote>
+<IonNote color=''>Public</IonNote>
+              <IonNote color='medium'>Private</IonNote>
 </div>
 <IonIcon size='large' class="" icon={addOutline}></IonIcon>
 </div>

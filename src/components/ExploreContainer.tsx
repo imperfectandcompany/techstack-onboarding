@@ -27,11 +27,12 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
     const maxLength = 140;
     const originalContent = text.trim();
     const content = originalContent.slice(0, maxLength);
+    const trimmedContent = originalContent.slice(maxLength, originalContent.length);
     return (
       <>
-        <span className="mr-1 whitespace-pre-line">{isCollapsed ? originalContent : content + "..."}</span>
+<span className="block mr-1"><span className="whitespace-pre-line">{content}{isCollapsed ? "" : "..."}</span><span className="whitespace-pre-line collapse collapse-horizontal" id="collapseWidthExample">{trimmedContent}</span></span>
         {originalContent.length > maxLength ?
-          <button className="text-base text-blue-600 capitalize transition active:opacity-50 hover:text-blue-400 focus:text-blue-500 focus:outline-none" onClick={(e) => readMorePostHandler(e)}>
+          <button className="text-base font-bold transition text-stone-600 active:opacity-50 hover:text-stone-400 focus:text-stone-500 focus:outline-none" onClick={(e) => readMorePostHandler(e)} type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
             {isCollapsed ? 'show less' : 'show more'}
           </button> : null}
       </>
@@ -73,9 +74,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
                   <p className="text-slate-500 ">Software Developer</p>
                 </div>
               </div>
-              <div className='flex text-gray-600 transition hover:text-gray-900 hover:rounded-full hover:bg-gray-100'>
-                <IonIcon slot="start" icon={ellipsisHorizontal} />
-              </div>
+{MoreOptions()}
             </div>
           </div>
           <div className="px-6 md:px-0">
@@ -98,6 +97,21 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
                 <p className="text-lg font-bold ">1</p>
               </div>
             </div>
+            <button className="text-xs text-stone-400"  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"> View all 32 comments</button>
+            <div className="fixed top-0 bottom-0 right-0 flex flex-col invisible max-w-full text-gray-700 transition duration-300 ease-in-out bg-white border-none shadow-sm outline-none offcanvas offcanvas-end bg-clip-padding w-96" tabIndex={-1} id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div className="flex items-center justify-between p-4 offcanvas-header">
+    <h5 className="mb-0 font-semibold leading-normal offcanvas-title" id="offcanvasRightLabel">Comments</h5>
+    <button type="button" className="box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 btn-close focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div className="flex-grow p-4 overflow-y-auto offcanvas-body">
+  {printOtherPost()}
+
+  </div>
+</div>
+                        {/* More comments */}
+                        <div className="w-full">
+            </div>
+            {/* End More comments */}
           </div>
         </div>
       </div>
@@ -114,40 +128,54 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <img src="https://codingforum.site/img/default/avatar9.jpg" id="trigger-button" className="bg-gray-300 rounded-full h-14 w-14" alt="hyperandey" />
-           
-                <IonPopover trigger="trigger-button" >
-        <IonContent>
 
-        <div className="bg-white rounded shadow">           
-		   <div className="ml-2 mr-2">
-                <p className="text-blue-600 ">@alizzz</p>
-                <p className="mb-3 text-xs text-gray-400">Live life now, we can only learn from mistakes</p>                
+                <IonPopover trigger="trigger-button" arrow={false} alignment="center" side="right">
+                  <IonContent class="max-w-2xl mx-auto">
+<div className="max-w-2xl mx-auto">
 
 
-					
-	  <div className="flex items-center mt-4">
 
-            <div className="mx-2">
-                <p className="font-bold text-purple-900">289</p>
-                <p className="text-purple-300">Posts</p>                
-            </div>
-            <div className="mx-2">
-                <p className="font-bold text-purple-900">43.3k</p>
-                <p className="text-purple-300">Followers</p>                
-            </div>
-            <div className="mx-2">
-                <p className="font-bold text-purple-900">47%</p>
-                <p className="text-purple-300">Activity</p>                
-            </div>
-            <div className="mx-4">
-                <a href="./profile/0/" className="px-4 py-1 text-green-100 bg-green-400 rounded focus:outline-none">Profile
-				</a>              
-            </div>
-        </div>
-		            </div>
+                  <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+		<div className="flex justify-end px-4 pt-4">
+			<button id="dropdownButton" data-dropdown-toggle="dropdown" className="hidden sm:inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
+<svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path></svg>
+</button>
+
+			<div id="dropdown"
+				className="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700">
+				<ul className="py-1" aria-labelledby="dropdownButton">
+					<li>
+						<a href="#"
+							className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Edit</a>
+					</li>
+					<li>
+						<a href="#"
+							className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Export
+							Data</a>
+					</li>
+					<li>
+						<a href="#"
+							className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
+					</li>
+				</ul>
+			</div>
 		</div>
-        </IonContent>
-      </IonPopover>
+		<div className="flex flex-col items-center pb-10">
+			<img className="w-24 h-24 mb-3 rounded-full shadow-lg" src="https://flowbite.com/docs/images/people/profile-picture-3.jpg" alt="Bonnie image"/>
+			<h3 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie Green</h3>
+			<span className="text-sm text-gray-500 dark:text-gray-400">Visual Designer</span>
+			<div className="flex mt-4 space-x-3 lg:mt-6">
+				<a href="#"
+					className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
+					friend</a>
+				<a href="#"
+					className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-blue-300 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-800">Message</a>
+			</div>
+		</div>
+	</div></div>
+                  </IonContent>
+                  
+                </IonPopover>
 
 
                 <div className="flex flex-col">
@@ -162,7 +190,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
                   <p className="text-sm text-stone-400 ">Software Developer</p>
                 </div>
               </div>
-      {MoreOptions()}
+              {MoreOptions()}
             </div>
           </div>
           <div className="px-6 md:px-0">
@@ -184,7 +212,8 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
                 <p className="text-lg font-bold ">1</p>
               </div>
             </div>
-            <span className="text-xs text-stone-400">View all 32 comments</span>            
+            <span className="text-xs text-stone-400">View all 32 comments</span>
+            
           </div>
         </div>
       </div>
@@ -194,81 +223,8 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
   const printOtherPost = () => {
     return (
       <>
-        <article className="flex flex-col max-w-md mb-4 text-black bg-white break-inside break-inside-avoid rounded-xl bg-clip-border">
-          <div className="flex items-center justify-between p-6">
-            <div className="flex">
-              <a className="inline-block mr-4" href="#">
-                <img
-                  className="rounded-full max-w-none w-14 h-14"
-                  src="https://randomuser.me/api/portraits/women/33.jpg"
-                />
-              </a>
-              <div className="flex flex-col">
-                <div className="flex items-center">
-                  <a className="inline-block mr-2 text-lg font-bold" href="#">
-                    Cameron Williamson
-                  </a>
-                  <span>
-                    <svg className="w-5 h-5 fill-blue-500" viewBox="0 0 24 24">
-                      <path d="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
-                    </svg>
-                  </span>
-                </div>
-                <div className="text-slate-500">Software Development Manager</div>
-              </div>
-            </div>
-          </div>
-          <p className="pb-6 pl-6 pr-6">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-          <div className="p-6 bg-gradient-to-r from-cyan-500 to-blue-500">
-            <h2 className="text-3xl font-extrabold text-white">
-              Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod.
-            </h2>
-          </div>
-          <div className="p-6">
-            <a className="inline-flex items-center" href="#">
-              <span className="mr-2">
-                <svg
-                  className="fill-rose-600"
-                  style={{ width: 24, height: 24 }}
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
-                </svg>
-              </span>
-              <span className="text-lg font-bold">68</span>
-            </a>
-          </div>
-          <div className="px-6">
-            <div className="relative">
-              <input
-                className="w-full pt-2 pb-2 pl-3 pr-20 font-medium rounded-lg h-11 bg-slate-100 placeholder:text-slate-600"
-                type="text"
-                placeholder="Write a comment"
-              />
-              <span className="absolute flex items-center -mt-3 right-3 top-2/4">
-                <svg
-                  className="mr-2"
-                  style={{ width: 26, height: 26 }}
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8C16.3,8 17,8.7 17,9.5M12,17.23C10.25,17.23 8.71,16.5 7.81,15.42L9.23,14C9.68,14.72 10.75,15.23 12,15.23C13.25,15.23 14.32,14.72 14.77,14L16.19,15.42C15.29,16.5 13.75,17.23 12,17.23Z"
-                  />
-                </svg>
-                <svg
-                  className="fill-blue-500"
-                  style={{ width: 24, height: 24 }}
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M2,21L23,12L2,3V10L17,12L2,14V21Z" />
-                </svg>
-              </span>
-            </div>
-          </div>
+        <article className="flex flex-col max-w-md mb-4 text-black bg-white break-inside break-inside-avoid bg-clip-border">
+
           {/* Comments content */}
           <div className="p-6">
             {/* Comment row */}
@@ -282,7 +238,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
               <div className="media-body">
                 <div>
                   <a className="inline-block mr-2 text-base font-bold" href="#">
-                    Kristin Watson
+                    Barack Obama
                   </a>
                   <span className="text-slate-500">25 minutes ago</span>
                 </div>
@@ -301,7 +257,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
                     <span className="text-base font-bold">0</span>
                   </a>
                   <button className="px-4 py-2 font-medium transition rounded-lg hover:bg-slate-50">
-                    Repply
+                    Reply
                   </button>
                 </div>
               </div>
@@ -318,7 +274,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
               <div className="media-body">
                 <div>
                   <a className="inline-block mr-2 text-base font-bold" href="#">
-                    Melvin D. Goodman
+                    John Cena
                   </a>
                   <span className="text-slate-500">3 minutes ago</span>
                 </div>
@@ -337,7 +293,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
                     <span className="text-base font-bold">23</span>
                   </a>
                   <button className="px-4 py-2 font-medium transition rounded-lg hover:bg-slate-50">
-                    Repply
+                    Reply
                   </button>
                 </div>
               </div>
@@ -354,7 +310,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
               <div className="media-body">
                 <div>
                   <a className="inline-block mr-2 text-base font-bold" href="#">
-                    Erik Moore
+                    Joe Mama
                   </a>
                   <span className="text-slate-500">3 minutes ago</span>
                 </div>
@@ -381,7 +337,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
                     <span className="text-base font-bold">23</span>
                   </a>
                   <button className="px-4 py-2 font-medium transition rounded-lg hover:bg-slate-50">
-                    Repply
+                    Reply
                   </button>
                 </div>
               </div>
@@ -410,8 +366,10 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
 
 
 
+
     <div className="">
-      {printDarkPost()}
+      
+      {printPost()}
       {printPost()}
       {printPost()}
       {printPost()}
