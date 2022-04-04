@@ -15,34 +15,26 @@ const Timeline: React.FC = () => {
     }
   }
 
-  var mobile = window.matchMedia( "(max-width: 640px)" );
+  
   var prevScrollpos = window.pageYOffset;
   function onScroll(e: CustomEvent<ScrollDetail>) {
-    const html = document.documentElement;
-    const scrollPx = html.scrollTop;
-    const winHeightPx = html.scrollHeight - html.clientHeight;
-    const scrolled = (scrollPx / winHeightPx) * 100;
-
     var currentScrollPos = e.detail.scrollTop;
-    console.log(e.detail.scrollTop);
     const toolbar = document.getElementById("toolbar");
-    if(toolbar){
-      if (prevScrollpos > currentScrollPos) {
-        toolbar.style.top = "0px";	
-      } else {
+    const header = document.getElementById("header");
+    if(toolbar && currentScrollPos > 80){
+      if (prevScrollpos > currentScrollPos ) {
+        toolbar.style.top = "0px";
+      } else if(header?.classList.contains("header-collapse-condense-inactive")) {
         toolbar.style.top = "-44px";
       }
       prevScrollpos = currentScrollPos;      
     }
   }
 
-
-  
-
   return (
     <IonPage>
-      <IonHeader id="toolbar" class='transition-all	'>
-        <IonToolbar>        
+      <IonHeader >
+        <IonToolbar id="toolbar" class='transition-all top-0 duration-1000'>        
                   <IonTitle>
                   <img
                   className="w-6 h-6 mx-auto"
@@ -53,8 +45,8 @@ const Timeline: React.FC = () => {
       </IonHeader>
       <IonContent fullscreen={true} color="dark" scrollEvents={true} onIonScroll={(e) => onScroll(e)} 
 >
-      <IonHeader collapse="condense" class="ion-no-border ">
-      <IonToolbar  color='dark'>
+      <IonHeader collapse="condense" id="header" class="ion-no-border ">
+      <IonToolbar color='dark'>
       <IonTitle  size="large" className="flex items-center ">
 <div className="flex items-center justify-between ">
 <div className='flex space-x-4'>
