@@ -1,7 +1,8 @@
-import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonNote, IonPage, IonTitle, IonToolbar, ScrollDetail } from '@ionic/react';
-import { addOutline, ellipsisHorizontal } from 'ionicons/icons';
+import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonMenuButton, IonMenuToggle, IonNote, IonPage, IonTitle, IonToolbar, ScrollDetail } from '@ionic/react';
+import { addOutline, ellipsisHorizontal, menu } from 'ionicons/icons';
 import { useState } from 'react';
 import ExploreContainer from '../components/ExploreContainer';
+import Menu from './Menu';
 import './Signup.css';
 
 const Timeline: React.FC = () => {
@@ -33,6 +34,7 @@ const Timeline: React.FC = () => {
 
   return (
     <IonPage>
+                <Menu></Menu>
       <IonHeader >
         <IonToolbar id="toolbar" class='transition-all top-0 duration-1000'>        
                   <IonTitle>
@@ -43,7 +45,7 @@ const Timeline: React.FC = () => {
                   </IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen={true} color="dark" scrollEvents={true} onIonScroll={(e) => onScroll(e)} 
+      <IonContent id="main" fullscreen={true} color="dark" scrollEvents={true} onIonScroll={(e) => onScroll(e)} 
 >
       <IonHeader collapse="condense" id="header" class="ion-no-border ">
       <IonToolbar color='dark'>
@@ -58,8 +60,16 @@ const Timeline: React.FC = () => {
               </IonTitle>
             </IonToolbar>
           </IonHeader>
+
+    <IonMenuButton menu='first' type='button' color='primary'></IonMenuButton>
+    <IonMenuToggle menu='first'>
+          <IonButton>Toggle Menu</IonButton>
+        </IonMenuToggle>     
       <ExploreContainer></ExploreContainer>
+
+
       </IonContent>
+
     </IonPage>
   );
 };

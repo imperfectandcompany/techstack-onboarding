@@ -26,6 +26,7 @@ import Signup from './pages/Signup';
 import Signin from './pages/Signin';
 import Recovery from './pages/Recovery';
 import Timeline from './pages/Timeline';
+import Menu from './pages/Menu';
 
 setupIonicReact();
 
@@ -47,6 +48,7 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/timeline">
           <Timeline/>
+          <Menu></Menu>
         </Route>           
         <Route exact path="/">
           <Redirect to="/home" />
