@@ -3,6 +3,7 @@ import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 import 'tw-elements';
+import 'animate.css';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -27,13 +28,33 @@ import Signin from './pages/Signin';
 import Recovery from './pages/Recovery';
 import Timeline from './pages/Timeline';
 import Menu from './pages/Menu';
+import { createAnimation } from '@ionic/react';
 
+const animationBuilder = (baseEl: any, opts: any) => {
+  const enteringAnimation = createAnimation()
+    .addElement(opts.enteringEl)
+    .fromTo('opacity', 0, 1)
+    .duration(250);
+  
+  const leavingAnimation = createAnimation()
+    .addElement(opts.leavingEl)
+    .fromTo('opacity', 1, 0)
+    .duration(250);
+  
+  const animation = createAnimation()
+    .addAnimation(enteringAnimation)
+    .addAnimation(leavingAnimation);
+  
+  return animation;
+};
 setupIonicReact();
+
+
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonRouterOutlet>
+      <IonRouterOutlet animation={animationBuilder}>
         <Route exact path="/home">
           <Home />
         </Route>
