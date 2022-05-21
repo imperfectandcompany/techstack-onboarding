@@ -22,15 +22,13 @@ function togglePassword(){
   setShowPassword(!showPassword);
 }
 
-
-
-
-
   // handle button click of login form
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     event.stopPropagation();
     setLoading(true);
+    setLoading(false);
+    history.push("/timeline");
     if(attempts >= 6){
       setLoading(false);
       present({
@@ -85,13 +83,15 @@ function togglePassword(){
 : null}
           </IonItem>
           <input type="submit" hidden className={`${styles['submit-enter']}`} />
+
+
             <IonButton type="submit" size="large"
-            className="flex-none font-bold transition select-none ion-margin-top focus:select-none hover:text-gray-100 focus:text-gray-300 focus:text-opacity-50" color={loading ? "pprimary":"white"} fill="clear">     
-Continue
+            className="flex mt-24 font-bold transition cursor-pointer select-none focus:select-none hover:text-gray-100 focus:text-opacity-50" color="white" fill="clear">     
+            Continue
 </IonButton>
 </form>
 
-            <div className="mt-8 text-lg font-medium text-center text-white">Forgot password</div>
+            <IonButton fill="clear" className="mt-8 text-lg font-medium text-center text-white" routerLink="/recovery" routerDirection="forward" >Forgot password</IonButton>
           </div>
         </IonList>
       </IonContent>
