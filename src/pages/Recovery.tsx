@@ -114,7 +114,6 @@ const Recovery: React.FC = () => {
               You're Valid
           </p>
           <img src={process.env.PUBLIC_URL + '/assets/icon/UnLock.png'} className="w-64 sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto" alt="logo" />
-              
               <p className="ion-text-center text-stone-500 font-medium m-6 mt-5 text-xl">
               Your password must be different from previous used passwords.
               </p> 
@@ -165,7 +164,7 @@ const Recovery: React.FC = () => {
               You have successfully reset your password. Click the button to go home.
               </p> 
             <div className="ion-margin-horizontal">
-            <IonButton className="flex ion-margin-top ion-margin-horizontal t-8 font-bold" color="primary" fill="solid"  routerLink="/timeline" routerDirection="forward">
+            <IonButton className="flex ion-margin-top ion-margin-horizontal t-8 font-bold" color="primary" fill="solid"  routerLink="/timeline" routerDirection="root">
               <div className="text-white">Home</div>
             </IonButton>
             </div>

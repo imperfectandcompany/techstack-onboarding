@@ -29,8 +29,9 @@ import Recovery from './pages/Recovery';
 import Timeline from './pages/Timeline';
 import Menu from './pages/Menu';
 import { createAnimation } from '@ionic/react';
+import Profile from './pages/Profile';
 
-const animationBuilder = (baseEl: any, opts: any) => {
+export const animationBuilder = (baseEl: any, opts: any) => {
   const enteringAnimation = createAnimation()
     .addElement(opts.enteringEl)
     .fromTo('opacity', 0, 1)
@@ -54,7 +55,7 @@ setupIonicReact();
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonRouterOutlet animation={animationBuilder}>
+      <IonRouterOutlet>
         <Route exact path="/home">
           <Home />
         </Route>
@@ -66,6 +67,9 @@ const App: React.FC = () => (
         </Route>    
         <Route exact path="/recovery">
           <Recovery />
+        </Route>
+        <Route exact path="/profile">
+          <Profile />
         </Route>
         <Route exact path="/timeline">
           <Timeline/>

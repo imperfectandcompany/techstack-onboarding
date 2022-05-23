@@ -24,7 +24,7 @@ handle={false}
         initialBreakpoint={0.35}
         onIonModalWillDismiss={()=>setIsOpen(false)}
       >
-        <IonContent color="dark">
+        <IonContent color="light">
     <div className="flex items-center justify-center ">
       <div className="w-full p-4 mx-4 bg-gray-100 rounded-xl md:w-1/2 lg:w-1/3">
         <div

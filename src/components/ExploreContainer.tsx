@@ -11,11 +11,6 @@ interface ContainerProps { }
 const ExploreContainer: React.FC<ContainerProps> = () => {
 
 
-
-
-
-
-
   const [isCollapsed, setCollapsed] = useState(false);
 
   function readMorePostHandler(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {

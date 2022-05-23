@@ -1,20 +1,19 @@
-import { IonButton, IonContent, IonHeader, IonItem, IonList, IonMenu, IonPage, IonRouterOutlet, IonText, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonContent, IonHeader, IonItem, IonList, IonMenu, IonPage, IonRouterLink, IonRouterOutlet, IonText, IonTitle, IonToolbar } from '@ionic/react';
 import './Home.module.css';
+import { menuController } from "@ionic/core/components";
 
 const Menu: React.FC = () => {
   return (
-    <IonMenu side="start" menuId="first" contentId="main" type="push">
-
+    <IonMenu side="start"  contentId="main" type="push">
       <IonContent>
       <div className="flex flex-col justify-between h-screen bg-zinc-900 text-zinc-300">
-  
   <div className="p-4">
   <div className="mb-4">
       <div className="flex items-center justify-between w-full">
         <a className="flex items-center w-full px-4 py-2 transition duration-300 ease-in-out rounded-lg cursor-pointer hover:bg-zinc-800 hover:text-white">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-house-fill" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
-            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+            <path fillRule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+            <path fillRule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
           </svg>
           <span className="ml-3 font-bold">Home</span>
         </a>
@@ -62,7 +61,7 @@ const Menu: React.FC = () => {
   </div>
   <div className="flex items-center p-4 border-t-2 border-zinc-700">
     <img src="https://codingforum.site/img/default/avatar9.jpg" alt="" className="object-cover w-12 h-12 rounded-full" />
-    <a href="https://www.youtube.com/channel/UCZXcplsSliFfK3vGUjCKY2A" className="ml-2 text-sm" target="_blank">Kristin Watson</a>
+    <IonRouterLink color="white" onClick={async () => await menuController.toggle()} routerLink="/profile" routerDirection='forward' className="ml-2 text-sm font-semibold">Kristen Watson</IonRouterLink>
     <button className="ml-auto cursor-pointer">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-gear" viewBox="0 0 16 16">
         <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />

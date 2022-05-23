@@ -35,17 +35,7 @@ const Timeline: React.FC = () => {
   return (
     <IonPage>
                 <Menu></Menu>
-      <IonHeader >
-        <IonToolbar id="toolbar" class='transition-all top-0 duration-1000'>        
-                  <IonTitle>
-                  <img
-                  className="w-6 h-6 mx-auto"
-                  src={process.env.PUBLIC_URL + '/assets/icon/icon.svg'}
-                  alt="postogon logo" />
-                  </IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent id="main" fullscreen={true} color="dark" scrollEvents={true} onIonScroll={(e) => onScroll(e)} 
+      <IonContent id="main" fullscreen={true} color="white" scrollEvents={true} onIonScroll={(e) => onScroll(e)} 
 >
       <IonHeader collapse="condense" id="header" class="ion-no-border ">
       <IonToolbar color='dark'>
