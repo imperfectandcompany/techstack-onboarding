@@ -46,6 +46,72 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
     )
   }
 
+  const printEmptyStateLight = () =>{
+    return(
+      <div className="p-4">
+      <div className="relative p-6 bg-white text-center border border-gray-200 rounded-lg">
+      <img src={process.env.PUBLIC_URL + '/assets/icon/emptyfeedstate.svg'} className="w-64 sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto" alt="logo" />
+  <h2 className="text-2xl text-black font-medium">
+  Wherefore Art Thou Feed?
+  </h2>
+  <p className="mt-4 text-sm text-gray-500">
+  It is quiet here! Looks like you need to get this party jumping. Created posts will appear here, try creating one!
+  </p>
+  <a
+    href=""
+    className="inline-flex items-center px-5 py-3 mt-8 font-medium text-white bg-orange-600 rounded-lg hover:bg-blue-500"
+  >
+    Create a post
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      className="flex-shrink-0 w-4 h-4 ml-3"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+    </svg>
+  </a>
+<div className="flex flex-col"> 
+</div>
+</div>
+      </div>
+    )
+  }
+
+  const printEmptyStateDark = () =>{
+    return(
+      <div className="p-4 bg-zinc-900 ">
+      <div className="relative p-6 text-center border border-zinc-800 rounded-lg">
+      <img src={process.env.PUBLIC_URL + '/assets/icon/emptyfeedstate.svg'} className="w-64 sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto" alt="logo" />
+  <h2 className="text-2xl text-zinc-300 font-medium">
+  Wherefore Art Thou Feed?
+  </h2>
+  <p className="mt-4 text-sm text-zinc-300">
+  It is quiet here! Looks like you need to get this party jumping. Created posts will appear here, try creating one!
+  </p>
+  <a
+    href=""
+    className="inline-flex items-center px-5 py-3 mt-8 font-medium text-zinc-400 bg-zinc-800 rounded-lg hover:bg-blue-500"
+  >
+    Create a post
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      className="flex-shrink-0 w-4 h-4 ml-3"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+    </svg>
+  </a>
+<div className="flex flex-col"> 
+</div>
+</div>
+      </div>
+    )
+  }
+
   const printPost = () => {
 
 
@@ -122,19 +188,16 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
 
 
     return (
-      <div className="h-auto overflow-hidden ">
-        <div className="transition bg-black shadow-sm md:rounded md:px-6 md:py-2 lg:ml-44 lg:mr-44 xl:ml-96 xl:mr-96">
-          <div className="px-6 py-3 md:px-0">
+      <div className="h-auto overflow-hidden">
+        <div className="transition py-6 bg-zinc-900 shadow-sm md:rounded md:px-6 md:py-2 lg:ml-44 lg:mr-44 xl:ml-96 xl:mr-96">
+          <div className="px-6 pb-6 md:px-0">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                <img src="https://codingforum.site/img/default/avatar9.jpg" id="trigger-button" className="bg-gray-300 rounded-full h-14 w-14" alt="hyperandey" />
+                <img src="https://codingforum.site/img/default/avatar9.jpg" id="trigger-button" className="bg-gray-300 rounded-full h-12 w-12" alt="hyperandey" />
 
                 <IonPopover trigger="trigger-button" arrow={false} alignment="center" side="right">
                   <IonContent class="max-w-2xl mx-auto">
 <div className="max-w-2xl mx-auto">
-
-
-
                   <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
 		<div className="flex justify-end px-4 pt-4">
 			<button id="dropdownButton" data-dropdown-toggle="dropdown" className="hidden sm:inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
@@ -181,13 +244,13 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
                 <div className="flex flex-col">
                   <div>
                     <div className="flex items-baseline">
-                      <a className="inline-block mr-1 text-base text-stone-300" href="#">
+                      <a className="inline-block mr-1 text-base text-zinc-300" href="#">
                         Username
                       </a>
-                      <span className="text-xs text-stone-400">25 minutess ago</span>
+                      <span className="text-xs text-zinc-300">25 minutes ago</span>
                     </div>
                   </div>
-                  <p className="text-sm text-stone-400 ">Software Developer</p>
+                  <p className="text-sm text-zinc-300">Software Developer</p>
                 </div>
               </div>
               {MoreOptions()}
@@ -197,9 +260,9 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
             <p className="antialiased break-words text-stone-300 sm:subpixel-antialiased md:antialiased ">
               {trimTextDark("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud")}
             </p>
-            <IonNote className="flex justify-end mt-3 text-sm transition text-stone-600 text-md hover:text-gray-700">School '22, Studying Engineering 💻</IonNote>
+            <IonNote className="flex justify-end mt-3 text-sm transition text-zinc-3  00 text-md hover:text-gray-700">School '22, Studying Engineering 💻</IonNote>
           </div>
-          <div className="px-6 py-3 text-gray-600 md:px-0 ">
+          <div className="px-6 pt-3 text-gray-600 md:px-0 ">
             <div className="flex flex-row-reverse space-x-3">
               <div className="flex items-center space-x-2 text-xs text-stone-100">
                 <svg
@@ -209,11 +272,10 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
                 >
                   <path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
                 </svg>
-                <p className="text-lg font-bold ">1</p>
+                <p className="text-lg font-bold text-stone-300">1</p>
               </div>
             </div>
             <span className="text-xs text-stone-400">View all 32 comments</span>
-            
           </div>
         </div>
       </div>
@@ -357,18 +419,16 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
           </div>
           {/* End Comments content */}
         </article>
-
       </>
-
     );
   }
-
-  return (<div className="bg-gray-700">
+  return (<div className="bg-zinc-600">
     <div className="">
-      {printPost()}
-      {printPost()}
-      {printPost()}
-      {printPost()}
+      {printEmptyStateDark()}
+      {printDarkPost()}
+      {printDarkPost()}
+      {printDarkPost()}
+      {printDarkPost()}
     </div>
   </div>
   );

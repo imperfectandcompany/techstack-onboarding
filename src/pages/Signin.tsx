@@ -1,9 +1,10 @@
-import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonListHeader, IonNote, IonPage, IonProgressBar, IonTitle, IonToolbar, useIonToast } from '@ionic/react';
+import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonListHeader, IonNote, IonPage, IonProgressBar, IonRouterLink, IonTitle, IonToolbar, useIonToast } from '@ionic/react';
 import { useState } from 'react';
 import { useHistory } from 'react-router';
 import React from 'react';
 import styles from './SignIn.module.css'; // Import css modules stylesheet as styles
 import { eye, eyeOff, informationCircle } from 'ionicons/icons';
+import { animationBuilder } from '../App';
 
 
 
@@ -91,7 +92,7 @@ function togglePassword(){
 </IonButton>
 </form>
 
-            <IonButton fill="clear" className="mt-8 text-lg font-medium text-center text-white" routerLink="/recovery" routerDirection="forward" >Forgot password</IonButton>
+            <IonRouterLink routerAnimation={animationBuilder} className="mt-8 text-center text-lg font-medium lg:text-2xl" color="white" routerLink="/recovery" routerDirection="forward">Forgot Password</IonRouterLink>
           </div>
         </IonList>
       </IonContent>

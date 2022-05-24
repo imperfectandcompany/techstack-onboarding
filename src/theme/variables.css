@@ -95,7 +95,16 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-tint: var(--ion-color-black-tint);
 }
 
-@media (prefers-color-scheme: light) {
+.ion-color-zinc {
+  --ion-color-base: rgb(24 24 27);
+  --ion-color-base-rgb: rgb(24 24 27);
+  --ion-color-contrast: rgb(24 24 27);
+  --ion-color-contrast-rgb: rgb(24 24 27);
+  --ion-color-shade: rgb(24 24 27);
+  --ion-color-tint: rgb(24 24 27);
+}
+
+@media (prefers-color-scheme: dark) {
   /*
    * Dark Colors
    * -------------------------------------------

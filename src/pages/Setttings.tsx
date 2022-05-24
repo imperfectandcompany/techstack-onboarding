@@ -1,6 +1,6 @@
 import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonMenuButton, IonMenuToggle, IonNote, IonPage, IonTitle, IonToolbar, ScrollDetail } from '@ionic/react';
 
-const Profile: React.FC = () => {
+const Settings: React.FC = () => {
 
 
   var prevScrollpos = window.pageYOffset;
@@ -25,7 +25,7 @@ const Profile: React.FC = () => {
           <IonButtons slot="start">
             <IonBackButton text="" color="white"/>
           </IonButtons>
-          <IonTitle color="white">New Account</IonTitle>
+          <IonTitle color="white">SETTINGS</IonTitle>
         </IonToolbar>
       </IonHeader>                
       <IonContent fullscreen={true} color="dark" scrollEvents={true} onIonScroll={(e) => onScroll(e)} 
@@ -36,4 +36,4 @@ ddd
   );
 };
 
-export default Profile;
+export default Settings;

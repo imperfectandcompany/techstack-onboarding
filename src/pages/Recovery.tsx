@@ -1,5 +1,6 @@
-import { IonBackButton, IonButtons, IonContent, IonHeader, IonPage, IonLabel, IonText, IonTitle, IonInput, IonProgressBar, IonButton, IonToolbar, IonRow } from '@ionic/react';
+import { IonBackButton, IonButtons, IonContent, IonHeader, IonPage, IonLabel, IonText, IonTitle, IonInput, IonProgressBar, IonButton, IonToolbar, IonRow, IonRouterLink } from '@ionic/react';
 import React, { useState } from 'react';
+import { animationBuilder } from '../App';
 import styles from './SignIn.module.css'; // Import css modules stylesheet as styles
 
 
@@ -163,10 +164,12 @@ const Recovery: React.FC = () => {
               <p className="ion-text-center text-stone-500 font-medium m-6 mt-9 mb-12 text-xl">
               You have successfully reset your password. Click the button to go home.
               </p> 
+              
             <div className="ion-margin-horizontal">
-            <IonButton className="flex ion-margin-top ion-margin-horizontal t-8 font-bold" color="primary" fill="solid"  routerLink="/timeline" routerDirection="root">
-              <div className="text-white">Home</div>
-            </IonButton>
+            <IonRouterLink routerAnimation={animationBuilder} routerLink="/timeline" routerDirection="forward">
+            <IonButton className="flex ion-margin-top ion-margin-horizontal t-8 font-bold" color="primary" fill="solid" >
+            <div className="text-white">Home</div>
+            </IonButton></IonRouterLink>
             </div>
       </IonContent>
     )
