@@ -124,11 +124,11 @@ function onScroll(e: CustomEvent<ScrollDetail>) {
   var currentScrollPos = e.detail.scrollTop;
   const toolbar = document.getElementById("toolbar");
   const header = document.getElementById("header");
-  if (toolbar && currentScrollPos > 80) {
+  if (header && currentScrollPos > 80) {
     if (prevScrollpos > currentScrollPos) {
-      toolbar.style.top = "0px";
-    } else if (header?.classList.contains("header-collapse-condense-inactive")) {
-      toolbar.style.top = "-44px";
+    header.style.top = "0px";
+    } else {
+      header.style.top = "-70px";
     }
     prevScrollpos = currentScrollPos;
   }
@@ -136,12 +136,14 @@ function onScroll(e: CustomEvent<ScrollDetail>) {
 
 
 
+
+
 return (
   <IonPage id="main">
 
     <Menu></Menu>
-    <IonHeader class="ion-no-border">
-      <IonToolbar id="toolbar" color="zinc" class='transition-all duration-1000'>
+    <IonHeader class="ion-no-border"  id="header" className="transition-all duration-1000 z-10 top-0">
+      <IonToolbar id="toolbar" color="zinc" class=''>
         {printHeaderDark()}
       </IonToolbar>
     </IonHeader>
