@@ -280,7 +280,7 @@ handle={false}
     {printSheetDark()}
             </IonContent>
       </IonModal>
-      <div className={isOpen ? "text-gray-900 transition": "text-gray-700 transition"}>
+      <div className={isOpen ? "text-gray-800 opacity-60 transition": "text-gray-700 transition"}>
     <IonIcon slot="start" size='small' onClick={()=>handleClick()} icon={ellipsisHorizontal} />
     </div>
 </div>

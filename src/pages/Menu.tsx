@@ -4,7 +4,7 @@ import { menuController } from "@ionic/core/components";
 
 const Menu: React.FC = () => {
   return (
-    <IonMenu side="start"  contentId="main" type="push">
+    <IonMenu side="start" contentId="main" menuId='mainmenu' type="push">
       <IonContent>
       <div className="flex flex-col justify-between h-screen bg-zinc-900 text-zinc-300">
   <div className="p-4">

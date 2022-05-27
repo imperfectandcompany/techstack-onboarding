@@ -3,6 +3,8 @@ import './ExploreContainer.css';
 import { ellipsisHorizontal, ellipsisVertical, mail } from 'ionicons/icons';
 import { useState } from 'react';
 import MoreOptions from './MoreOptions';
+import { LikeButton } from './LikeButton';
+import Avatar from './Avatar';
 
 interface ContainerProps { }
 
@@ -25,7 +27,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
     const trimmedContent = originalContent.slice(maxLength, originalContent.length);
     return (
       <>
-<span className="block mr-1"><span className="whitespace-pre-line">{content}{isCollapsed ? "" : "..."}</span><span className="whitespace-pre-line collapse collapse-horizontal" id="collapseWidthExample">{trimmedContent}</span></span>
+        <span className="block mr-1"><span className="whitespace-pre-line">{content}{isCollapsed ? "" : "..."}</span><span className="whitespace-pre-line collapse collapse-horizontal" id="collapseWidthExample">{trimmedContent}</span></span>
         {originalContent.length > maxLength ?
           <button className="text-base font-bold transition text-stone-600 active:opacity-50 hover:text-stone-400 focus:text-stone-500 focus:outline-none" onClick={(e) => readMorePostHandler(e)} type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
             {isCollapsed ? 'show less' : 'show more'}
@@ -46,75 +48,73 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
     )
   }
 
-  const printEmptyStateLight = () =>{
-    return(
+  const printEmptyStateLight = () => {
+    return (
       <div className="p-4">
-      <div className="relative p-6 bg-white text-center border border-gray-200 rounded-lg">
-      <img src={process.env.PUBLIC_URL + '/assets/icon/emptyfeedstate.svg'} className="w-64 sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto" alt="logo" />
-  <h2 className="text-2xl text-black font-medium">
-  Wherefore Art Thou Feed?
-  </h2>
-  <p className="mt-4 text-sm text-gray-500">
-  It is quiet here! Looks like you need to get this party jumping. Created posts will appear here, try creating one!
-  </p>
-  <a
-    href=""
-    className="inline-flex items-center px-5 py-3 mt-8 font-medium text-white bg-orange-600 rounded-lg hover:bg-blue-500"
-  >
-    Create a post
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      className="flex-shrink-0 w-4 h-4 ml-3"
-    >
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-    </svg>
-  </a>
-<div className="flex flex-col"> 
-</div>
-</div>
+        <div className="relative p-6 bg-white text-center border border-gray-200 rounded-lg">
+          <img src={process.env.PUBLIC_URL + '/assets/icon/emptyfeedstate.svg'} className="w-64 sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto" alt="logo" />
+          <h2 className="text-2xl text-black font-medium">
+            Wherefore Art Thou Feed?
+          </h2>
+          <p className="mt-4 text-sm text-gray-500">
+            It is quiet here! Looks like you need to get this party jumping. Created posts will appear here, try creating one!
+          </p>
+          <a
+            href=""
+            className="inline-flex items-center px-5 py-3 mt-8 font-medium text-white bg-orange-600 rounded-lg hover:bg-blue-500"
+          >
+            Create a post
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="flex-shrink-0 w-4 h-4 ml-3"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+          <div className="flex flex-col">
+          </div>
+        </div>
       </div>
     )
   }
 
-  const printEmptyStateDark = () =>{
-    return(
+  const printEmptyStateDark = () => {
+    return (
       <div className="p-4 bg-zinc-900 ">
-      <div className="relative p-6 text-center border border-zinc-800 rounded-lg">
-      <img src={process.env.PUBLIC_URL + '/assets/icon/emptyfeedstate.svg'} className="w-64 sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto" alt="logo" />
-  <h2 className="text-2xl text-zinc-300 font-medium">
-  Wherefore Art Thou Feed?
-  </h2>
-  <p className="mt-4 text-sm text-zinc-300">
-  It is quiet here! Looks like you need to get this party jumping. Created posts will appear here, try creating one!
-  </p>
-  <a
-    href=""
-    className="inline-flex items-center px-5 py-3 mt-8 font-medium text-zinc-400 bg-zinc-800 rounded-lg hover:bg-blue-500"
-  >
-    Create a post
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      className="flex-shrink-0 w-4 h-4 ml-3"
-    >
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-    </svg>
-  </a>
-<div className="flex flex-col"> 
-</div>
-</div>
+        <div className="relative p-6 text-center border border-zinc-800 rounded-lg">
+          <img src={process.env.PUBLIC_URL + '/assets/icon/emptyfeedstate.svg'} className="w-64 sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto" alt="logo" />
+          <h2 className="text-2xl text-zinc-300 font-medium">
+            Wherefore Art Thou Feed?
+          </h2>
+          <p className="mt-4 text-sm text-zinc-300">
+            It is quiet here! Looks like you need to get this party jumping. Created posts will appear here, try creating one!
+          </p>
+          <a
+            href=""
+            className="inline-flex items-center px-5 py-3 mt-8 font-medium text-zinc-400 bg-zinc-800 rounded-lg hover:bg-blue-500"
+          >
+            Create a post
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="flex-shrink-0 w-4 h-4 ml-3"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+          <div className="flex flex-col">
+          </div>
+        </div>
       </div>
     )
   }
 
   const printPost = () => {
-
-
     return (
       <div className="h-auto overflow-hidden ">
         <div className="transition bg-white shadow-sm md:px-6 md:py-2 lg:ml-44 lg:mr-44 xl:ml-96 xl:mr-96">
@@ -122,7 +122,6 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <img src="https://codingforum.site/img/default/avatar9.jpg" className="bg-gray-300 rounded-full h-14 w-14" alt="hyperandey" />
-
                 <div className="flex flex-col">
                   <div>
                     <div className="flex items-center">
@@ -135,7 +134,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
                   <p className="text-slate-500 ">Software Developer</p>
                 </div>
               </div>
-{MoreOptions()}
+              {MoreOptions()}
             </div>
           </div>
           <div className="px-6 md:px-0">
@@ -158,24 +157,24 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
                 <p className="text-lg font-bold ">1</p>
               </div>
             </div>
-            <button className="text-xs text-stone-400"  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"> View all 32 comments</button>
+            <button className="text-xs text-stone-400" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"> View all 32 comments</button>
             <div className="fixed top-0 bottom-0 right-0 flex flex-col invisible max-w-full text-gray-700 transition duration-300 ease-in-out bg-white border-none shadow-sm outline-none offcanvas offcanvas-end bg-clip-padding w-96" tabIndex={-1} id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-  <div className="z-0 flex items-center justify-between p-4 bg-stone-100 offcanvas-header">
-    <h5 className="mb-0 font-semibold leading-normal offcanvas-title" id="offcanvasRightLabel">3 Comments</h5>
-    <button type="button" className="box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 btn-close focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    <button type="button" className="box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 btn-close focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="offcanvas" aria-label="Close" onClick={()=>(console.log("clicked"))}></button>
-  
-  </div>
+              <div className="z-0 flex items-center justify-between p-4 bg-stone-100 offcanvas-header">
+                <h5 className="mb-0 font-semibold leading-normal offcanvas-title" id="offcanvasRightLabel">3 Comments</h5>
+                <button type="button" className="box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 btn-close focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <button type="button" className="box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 btn-close focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="offcanvas" aria-label="Close" onClick={() => (console.log("clicked"))}></button>
 
-  <div className="flex-grow p-4 overflow-y-auto offcanvas-body">
+              </div>
 
-  {printOtherPost()}
+              <div className="flex-grow p-4 overflow-y-auto offcanvas-body">
+
+                {printOtherPost()}
 
 
-  </div>
-</div>
-                        {/* More comments */}
-                        <div className="w-full">
+              </div>
+            </div>
+            {/* More comments */}
+            <div className="w-full">
             </div>
             {/* End More comments */}
           </div>
@@ -185,62 +184,13 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
   }
 
   const printDarkPost = () => {
-
-
     return (
       <div className="h-auto overflow-hidden">
         <div className="transition py-6 bg-zinc-900 shadow-sm md:rounded md:px-6 md:py-2 lg:ml-44 lg:mr-44 xl:ml-96 xl:mr-96">
           <div className="px-6 pb-6 md:px-0">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                <img src="https://codingforum.site/img/default/avatar9.jpg" id="trigger-button" className="bg-gray-300 rounded-full h-12 w-12" alt="hyperandey" />
-
-                <IonPopover trigger="trigger-button" arrow={false} alignment="center" side="right">
-                  <IonContent class="max-w-2xl mx-auto">
-<div className="max-w-2xl mx-auto">
-                  <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-		<div className="flex justify-end px-4 pt-4">
-			<button id="dropdownButton" data-dropdown-toggle="dropdown" className="hidden sm:inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
-<svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path></svg>
-</button>
-
-			<div id="dropdown"
-				className="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700">
-				<ul className="py-1" aria-labelledby="dropdownButton">
-					<li>
-						<a href="#"
-							className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Edit</a>
-					</li>
-					<li>
-						<a href="#"
-							className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Export
-							Data</a>
-					</li>
-					<li>
-						<a href="#"
-							className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div className="flex flex-col items-center pb-10">
-			<img className="w-24 h-24 mb-3 rounded-full shadow-lg" src="https://flowbite.com/docs/images/people/profile-picture-3.jpg" alt="Bonnie image"/>
-			<h3 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie Green</h3>
-			<span className="text-sm text-gray-500 dark:text-gray-400">Visual Designer</span>
-			<div className="flex mt-4 space-x-3 lg:mt-6">
-				<a href="#"
-					className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
-					friend</a>
-				<a href="#"
-					className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-blue-300 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-800">Message</a>
-			</div>
-		</div>
-	</div></div>
-                  </IonContent>
-                  
-                </IonPopover>
-
-
+                {Avatar()}
                 <div className="flex flex-col">
                   <div>
                     <div className="flex items-baseline">
@@ -260,23 +210,14 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
             <p className="antialiased break-words text-stone-300 sm:subpixel-antialiased md:antialiased ">
               {trimTextDark("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud")}
             </p>
-            <IonNote className="flex justify-end mt-3 text-sm transition text-zinc-3  00 text-md hover:text-gray-700">School '22, Studying Engineering 💻</IonNote>
+            <IonNote className="flex justify-end mt-3 text-sm transition text-zinc-300 text-md hover:text-gray-700">School '22, Studying Engineering 💻</IonNote>
           </div>
-          <div className="px-6 pt-3 text-gray-600 md:px-0 ">
-            <div className="flex flex-row-reverse space-x-3">
-              <div className="flex items-center space-x-2 text-xs text-stone-100">
-                <svg
-                  className=" fill-rose-600"
-                  style={{ width: 24, height: 24 }}
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
-                </svg>
-                <p className="text-lg font-bold text-stone-300">1</p>
-              </div>
-            </div>
+          <div className="px-6 pt-6 text-gray-600 md:px-0 ">
+            {LikeButton(4)}
+
             <span className="text-xs text-stone-400">View all 32 comments</span>
           </div>
+
         </div>
       </div>
     )
@@ -289,7 +230,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
 
           {/* Comments content */}
           <div className="p-6">
-            
+
             {/* Comment row */}
             <div className="flex pb-4 media">
               <a className="mr-4" href="#">

@@ -1,0 +1,19 @@
+.modal { 
+    
+}
+
+  
+  .text { 
+    --background: transparent !important;
+    background:transparent !important;
+    color: none !important;
+    --border-color: transparent !important;
+  }
+  
+  
+  .modal .modal-content {
+    --background: transparent !important;
+    --border-color: transparent !important;
+    --border: transparent !important;
+  }
+  

@@ -41,11 +41,10 @@ function PolicyContainer({ setShowPolicy, showPolicy, Sections, Title, Subtitle 
                     <IonTitle color="white">{Title}</IonTitle>
                 </IonToolbar>
             </IonHeader>
-
             <IonContent forceOverscroll={true} class={`${styles['modal-content']}`} >
                 <div className="flex flex-col p-6 mb-24 space-y-6 leading-relaxed tracking-wide text-left text-white">
                     <div>
-                        <p className="mb-6 text-sm text-base text-center md:text-xl lg:text-2xl">
+                        <p className="mb-6 text-base text-center md:text-xl lg:text-2xl">
                         {Subtitle}
                         </p>
                     </div>
