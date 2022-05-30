@@ -1,12 +1,11 @@
-import { IonBackButton, IonButtons, IonContent, IonHeader, IonPage, IonLabel, IonText, IonTitle, IonInput, IonProgressBar, IonButton, IonToolbar, IonRow, IonRouterLink } from '@ionic/react';
-import React, { useState } from 'react';
-import { animationBuilder } from '../App';
+import { IonBackButton, IonButtons, IonContent, IonHeader, IonPage, IonLabel, IonText, IonTitle, IonInput, IonProgressBar, IonButton, IonToolbar, IonRow, IonRouterLink, createAnimation } from '@ionic/react';
+import React, { useRef, useState } from 'react';
+import { animationBuilder, pageTransition } from '../App';
 import styles from './SignIn.module.css'; // Import css modules stylesheet as styles
 
 
 const Recovery: React.FC = () => {
   const [email, setEmail] = useState<string>();
-  const [currentPageIndex, setCurrentPageIndex] = useState<number>(1);
   const [password, setPassword] = useState<string>('');
   const [newPassword, setNewPassword] = useState<string>('');
   const [passwordStrength, setPasswordStrength] = useState<any>({strength: 'Weak', value: 0, eightChars: false, match: false})
@@ -15,15 +14,21 @@ const Recovery: React.FC = () => {
     //Do stuff
   }
 
-  const nextPage = () => {
+  const nextPage = async (enteringElement: any, leavingElement: any) => {
 
-    setCurrentPageIndex(currentPageIndex + 1)
+    await pageTransition(emailRef.current, {enteringEl: enteringElement.current, leavingEl: leavingElement.current, direction: 'forward'}).play()
 
   }
+
+  const emailRef = useRef(null);
+  const codeRef = useRef(null);
+  const resetRef = useRef(null);
+  const resetCompleteRef = useRef(null);
+
   const EmailInput = () => {
 
     return (
-      <IonContent color="white">
+      <IonContent ref={emailRef} color="white">
           <img src={process.env.PUBLIC_URL + '/assets/icon/recovery.png'} className="w-64 sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto" alt="logo" />
               <p className="ion-text-center text-black font-bold mt-5 text-5xl">
               It happens to everyone.
@@ -41,7 +46,7 @@ const Recovery: React.FC = () => {
         className="px-4 py-2 w-full text-stone-400 bg-stone-50 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200"
       />           
             </div>
-            <IonButton className="flex ion-margin-top ion-margin-horizontal t-8 font-bold" color="primary" fill="solid" onClick={nextPage}>
+            <IonButton className="flex ion-margin-top ion-margin-horizontal t-8 font-bold" color="primary" fill="solid" onClick={() => nextPage(codeRef, emailRef)}>
             <div className="text-white">Reset password</div>
            </IonButton>      
         </IonContent>
@@ -55,7 +60,7 @@ const Recovery: React.FC = () => {
     }
   
     return (
-      <IonContent color="white">
+      <IonContent ref={codeRef} color="white" style={{display: 'none'}}>
           <img src={process.env.PUBLIC_URL + '/assets/icon/Lock.png'} className="w-64 sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto" alt="logo" />
               <p className="ion-text-center text-black font-bold mt-5 text-5xl">
               One more thing...
@@ -72,7 +77,7 @@ const Recovery: React.FC = () => {
               </div>
             <div className="ion-margin-horizontal">
             
-            <IonButton className="flex ion-margin-top ion-margin-horizontal t-8 font-bold" color="primary" fill="solid"  onClick={nextPage}>
+            <IonButton className="flex ion-margin-top ion-margin-horizontal t-8 font-bold" color="primary" fill="solid"  onClick={() => nextPage(resetRef, codeRef)}>
               <div className="text-white">Verify</div>
             </IonButton>
             
@@ -110,11 +115,12 @@ const Recovery: React.FC = () => {
     }
   
     return (
-      <IonContent color="white">
+      <IonContent color="white" ref={resetRef} style={{display: 'none'}}>
           <p className="ion-text-center text-black font-bold mt-5 text-5xl">
               You're Valid
           </p>
           <img src={process.env.PUBLIC_URL + '/assets/icon/UnLock.png'} className="w-64 sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto" alt="logo" />
+              
               <p className="ion-text-center text-stone-500 font-medium m-6 mt-5 text-xl">
               Your password must be different from previous used passwords.
               </p> 
@@ -147,7 +153,7 @@ const Recovery: React.FC = () => {
                 {passwordStrength.strength}
             </p>
             </div>
-            <IonButton className="flex ion-margin-top ion-margin-horizontal t-8 font-bold" color="primary" fill="solid" onClick={nextPage}>
+            <IonButton className="flex ion-margin-top ion-margin-horizontal t-8 font-bold" color="primary" fill="solid" onClick={() => nextPage(resetCompleteRef, resetRef)}>
             <div className="text-white">Change password</div>
            </IonButton>      
         </IonContent>
@@ -156,7 +162,7 @@ const Recovery: React.FC = () => {
 
   const ResetComplete = () => { 
     return (
-      <IonContent color="white">
+      <IonContent color="white" ref={resetCompleteRef} style={{display: 'none'}}>
           <img src={process.env.PUBLIC_URL + '/assets/icon/Check.png'} className="w-64 sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto" alt="logo" />
               <p className="ion-text-center text-black font-bold mt-5 text-5xl">
               You're done.
@@ -164,7 +170,6 @@ const Recovery: React.FC = () => {
               <p className="ion-text-center text-stone-500 font-medium m-6 mt-9 mb-12 text-xl">
               You have successfully reset your password. Click the button to go home.
               </p> 
-              
             <div className="ion-margin-horizontal">
             <IonRouterLink routerAnimation={animationBuilder} routerLink="/timeline" routerDirection="forward">
             <IonButton className="flex ion-margin-top ion-margin-horizontal t-8 font-bold" color="primary" fill="solid" >
@@ -185,10 +190,10 @@ const Recovery: React.FC = () => {
           <IonTitle>Recovery</IonTitle>
         </IonToolbar>
       </IonHeader>
-        {currentPageIndex == 1 && EmailInput()}
-        {currentPageIndex == 2 && CodeConfirm()}
-        {currentPageIndex == 3 && ResetPassword()}
-        {currentPageIndex == 4 && ResetComplete()}
+        {EmailInput()}
+        {CodeConfirm()}
+        {ResetPassword()}
+        {ResetComplete()}
       
     </IonPage>
   );

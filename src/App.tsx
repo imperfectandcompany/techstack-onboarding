@@ -31,6 +31,34 @@ import Menu from './pages/Menu';
 import { createAnimation } from '@ionic/react';
 import Profile from './pages/Profile';
 
+export function pageTransition(baseEl: any, opts: any) {
+  const DURATION = 300;
+
+  const rootTransition = createAnimation()
+    .duration(DURATION)
+    .easing('cubic-bezier(0.3,0,0.66,1)');
+
+  const enteringPage = createAnimation()
+    .addElement(opts.enteringEl)
+    .beforeClearStyles(['display']);
+
+  const leavingPage = createAnimation().
+  addElement(opts.leavingEl).
+  beforeStyles({display: 'none'});
+
+  if (opts.direction === 'forward') {
+    enteringPage.fromTo('transform', 'translateX(100%)', 'translateX(0)');
+    leavingPage.fromTo('opacity', '1', '0.25');
+  } else {
+    leavingPage.fromTo('transform', 'translateX(0)', 'translateX(100%)');
+    enteringPage.fromTo('opacity', '0.25', '1');
+  }
+
+  rootTransition.addAnimation(enteringPage);
+  rootTransition.addAnimation(leavingPage);
+  return rootTransition;
+}
+
 export const animationBuilder = (baseEl: any, opts: any) => {
   const enteringAnimation = createAnimation()
     .addElement(opts.enteringEl)
