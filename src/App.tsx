@@ -30,6 +30,7 @@ import Timeline from './pages/Timeline';
 import Menu from './pages/Menu';
 import { createAnimation } from '@ionic/react';
 import Profile from './pages/Profile';
+import Settings from './pages/Setttings';
 
 export function pageTransition(baseEl: any, opts: any) {
   const DURATION = 300;
@@ -99,6 +100,9 @@ const App: React.FC = () => (
         <Route exact path="/profile">
           <Profile />
         </Route>
+        <Route exact path="/settings">
+          <Settings />
+        </Route>        
         <Route exact path="/timeline">
           <Timeline/>
           <Menu></Menu>
