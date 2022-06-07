@@ -84,19 +84,19 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
 
   const printEmptyStateDark = () => {
     return (
-      <div className="p-4 bg-zinc-900 ">
-        <div className="relative p-6 text-center border border-zinc-800 rounded-lg">
+      <div className="p-4 bg-white dark:bg-zinc-900 ">
+        <div className="relative p-6 text-center border border-zinc-200 dark:border-zinc-800 rounded-lg">
           <img src={process.env.PUBLIC_URL + '/assets/icon/emptyfeedstate.svg'} className="w-64 sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto" alt="logo" />
-          <h2 className="text-2xl text-zinc-300 font-medium">
+          <h2 className="text-2xl text-zinc-700 dark:text-zinc-300 font-medium">
             It's pretty quiet here, ngl.
           </h2>
-          <p className="mt-4 text-sm text-zinc-300">
+          <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-300">
             Created posts will appear here, try creating one!
           </p>
           <div>
             <a
               href=""
-              className="inline-flex items-center px-7 py-3 mt-8 font-medium text-zinc-400 bg-zinc-800 rounded-lg hover:bg-blue-500"
+              className="inline-flex items-center px-7 py-3 mt-8 font-medium   dark:text-zinc-400 dark:bg-zinc-800 rounded-lg hover:bg-blue-500"
             >
               Find others
               <svg
@@ -113,7 +113,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
           <div>
             <a
               href=""
-              className="inline-flex items-center border-2 px-5 py-3 mt-4 mb-8 font-medium text-zinc-400 border-zinc-800 rounded-lg hover:bg-blue-500"
+              className="inline-flex items-center border-2 px-5 py-3 mt-4 mb-8 text-gray-400 font-medium dark:text-zinc-400 dark:border-zinc-800 rounded-lg hover:bg-blue-500"
             >
               Create a post
               <svg
@@ -387,8 +387,10 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
     );
   }
   return (<div>
-    <div className="space-y-4">
+    <div className="space-y-2x">
       {printEmptyStateDark()}
+      {printDarkPost()}
+      {printDarkPost()}
       {printDarkPost()}
       {printDarkPost()}
     </div>

@@ -69,11 +69,11 @@ const Timeline: React.FC = () => {
 const printHeaderDark = () => {
   return (
     <div
-      className="flex items-center shadow-sm bg-zinc-900 justify-between h-16 max-w-screen-xl px-4 mx-auto"
+      className="flex items-center  shadow-sm   justify-between h-16 max-w-screen-xl px-4 mx-auto"
     >
       <div className="flex flex-1 w-0 lg:hidden">
         <IonMenuToggle >
-          <button className="p-2 text-zinc-300 bg-zinc-800 hover:bg-zinc-900 transition cursor-pointer rounded-full" type="button">
+          <button className="p-2 text-zinc-300 bg-zinc-50/40 dark:bg-zinc-800/40 dark:hover:bg-zinc-900/40 transition cursor-pointer rounded-full" type="button">
             <svg
               className="w-5 h-5"
               fill="none"
@@ -100,7 +100,7 @@ const printHeaderDark = () => {
         </div></span>
       </div>
       <div className="flex justify-end flex-1 w-0 lg:hidden">
-        <button className="p-2 text-zinc-300 bg-zinc-800 rounded-full" type="button">
+        <button className="p-2 text-zinc-300 bg-zinc-50/40 dark:bg-zinc-800/40 dark:hover:bg-zinc-900/40 rounded-full" type="button">
           <svg
             className="w-5 h-5"
             fill="currentColor"
@@ -142,15 +142,14 @@ return (
   <IonPage id="main">
 
     <Menu></Menu>
-    <IonHeader class="ion-no-border"  id="header" className="transition-all duration-1000 z-10 top-0">
-      <IonToolbar id="toolbar" color="zinc" class=''>
-        {printHeaderDark()}
-      </IonToolbar>
+    <IonHeader class="ion-no-border"  id="header" className="transition-all 
+    duration-1000
+     top-0 z-40 backdrop-blur-sm bg-white/95 shadow-sm dark:bg-zinc-900/95
+    ">
+ {printHeaderDark()}
     </IonHeader>
     <IonContent id="main" fullscreen={true} color="light" scrollEvents={true} onIonScroll={(e) => onScroll(e)}
     >
-      <div className="bg-white">
-      </div>
       <ExploreContainer></ExploreContainer>
     </IonContent>
   </IonPage>
