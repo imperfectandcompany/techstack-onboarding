@@ -31,6 +31,7 @@ import Menu from './pages/Menu';
 import { createAnimation } from '@ionic/react';
 import Profile from './pages/Profile';
 import Settings from './pages/Setttings';
+import { useEffect } from 'react';
 
 export function pageTransition(baseEl: any, opts: any) {
   const DURATION = 300;
@@ -77,11 +78,17 @@ export const animationBuilder = (baseEl: any, opts: any) => {
   
   return animation;
 };
+
 setupIonicReact();
 
-
+if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+  document.body.classList.add('dark')
+} else {
+  document.body.classList.remove('dark')
+}
 
 const App: React.FC = () => (
+  
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>

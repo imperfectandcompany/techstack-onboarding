@@ -109,7 +109,7 @@ http://ionicframework.com/docs/theming/ */
   width: 2.3rem;
   height: 2.3rem; 
   border-radius: 50%;
-  background: rgb(24 24 27);
+  background: transparent;
   position: relative;
   cursor: pointer;
   transition: background-color 0.25s ease;
@@ -118,7 +118,7 @@ http://ionicframework.com/docs/theming/ */
 
 /* Global Button Hover Style for our like/unlike el */
 .like:hover {
-  background: rgb(24 24 27);
+  background: transparent;
   transition: background-color 0.25s ease;
 }
 
@@ -203,9 +203,10 @@ http://ionicframework.com/docs/theming/ */
 
 /* Pop a small animation of the background on like */
 .liked {
-  background: rgb(24 24 27);
+  background: transparent;
   animation: 1.2s liked-bg-animation both;
 }
+
 
 @keyframes liked-bg-animation {
   0% {
@@ -343,9 +344,9 @@ http://ionicframework.com/docs/theming/ */
 
     --ion-color-secondary: #18181b;
     --ion-color-secondary-rgb: 134, 50, 219;
-    --ion-color-secondary-contrast: #ffffff;
+    --ion-color-secondary-contrast: #d4d4d8;
     --ion-color-secondary-contrast-rgb: 255, 255, 255;
-    --ion-color-secondary-shade: #2f2f32;
+    --ion-color-secondary-shade: #26262c;
     --ion-color-secondary-tint: #18181b;
 
     --ion-color-tertiary: #3532db;
@@ -390,7 +391,7 @@ http://ionicframework.com/docs/theming/ */
     --ion-color-medium-shade: #86888f;
     --ion-color-medium-tint: #a2a4ab;
 
-    --ion-color-light: #222428;
+    --ion-color-light: #000000;
     --ion-color-light-rgb: 34, 36, 40;
     --ion-color-light-contrast: #ffffff;
     --ion-color-light-contrast-rgb: 255, 255, 255;

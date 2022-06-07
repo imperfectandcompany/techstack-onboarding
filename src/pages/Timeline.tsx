@@ -147,7 +147,7 @@ return (
         {printHeaderDark()}
       </IonToolbar>
     </IonHeader>
-    <IonContent id="main" fullscreen={true} color="zinc" scrollEvents={true} onIonScroll={(e) => onScroll(e)}
+    <IonContent id="main" fullscreen={true} color="light" scrollEvents={true} onIonScroll={(e) => onScroll(e)}
     >
       <div className="bg-white">
       </div>

@@ -2,12 +2,17 @@ import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonIcon, I
 import { openOutline } from 'ionicons/icons';
 
 const Settings: React.FC = () => {
-
-
-  document.body.classList.toggle("dark");
-
+  
   const toggleDarkModeHandler = (value:boolean) => {
-    document.body.classList.toggle("dark");
+    if(value){
+    // Whenever the user explicitly chooses light mode
+      localStorage.theme = 'dark'
+      document.body.classList.add('dark')      
+    }else {
+    // Whenever the user explicitly chooses dark mode
+      localStorage.theme = 'light'
+      document.body.classList.remove('dark')       
+    }
   };
 
   return (
@@ -22,9 +27,9 @@ const Settings: React.FC = () => {
         </IonTitle>
       </IonToolbar>
     </IonHeader>
-    <IonContent fullscreen={true} color="secondary" >
+    <IonContent fullscreen={true} color="light" >
         <IonList>
-        <IonListHeader color="secondary"></IonListHeader>
+        <IonListHeader lines='none' color="light"></IonListHeader>
           <IonItem detail color='secondary' >
             <IonLabel>
               Email
@@ -36,17 +41,17 @@ const Settings: React.FC = () => {
               Alerts
             </IonLabel>
           </IonItem>
-          <IonListHeader color="secondary" lines='none'></IonListHeader>
+          <IonListHeader lines='none' color="light"></IonListHeader>
           <IonItem color='secondary' lines="full">
             <IonLabel>
               <h2>Dark Mode</h2>
               <p>Currently only works on Settings</p>
             </IonLabel>
-            <IonToggle slot="end" color="primary"
+            <IonToggle slot="end" color="primary" checked={localStorage.theme === "dark" ? true : false}
               onIonChange={e => toggleDarkModeHandler(e.detail.checked)}            
             ></IonToggle>
           </IonItem>
-          <IonListHeader color="secondary" lines='none'></IonListHeader>
+          <IonListHeader lines='none' color="light"></IonListHeader>
           <IonItem detail  color='secondary'>
             <IonLabel>
               Feedback
@@ -72,12 +77,12 @@ const Settings: React.FC = () => {
               Terms of Service
             </IonLabel>
           </IonItem>
-          <IonItem lines="none" color="secondary">
+          <IonItem lines="none" color="light">
             <IonLabel color="medium">
               <p>Version 1.0 / Build 1</p>
             </IonLabel>
           </IonItem>
-          <IonListHeader color="secondary" lines='none'></IonListHeader>
+          <IonListHeader lines='none' color="light"></IonListHeader>
 
           <IonItem color='secondary' button lines="full" href="https://imperfectandcompany.com" target="_blank">
             <IonIcon color="primary" icon={openOutline} slot="start"></IonIcon>
@@ -85,7 +90,7 @@ const Settings: React.FC = () => {
               Visit <strong>Imperfect and Company</strong>
             </IonLabel>
           </IonItem>
-          <IonListHeader color="secondary" lines='none'></IonListHeader>
+          <IonListHeader lines='none' color="light"></IonListHeader>
         </IonList>
 
 

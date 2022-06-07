@@ -139,7 +139,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
 
   const printPost = () => {
     return (
-      <div className="h-auto overflow-hidden ">
+      <div className="h-auto overflow-hidden p-6">
         <div className="transition bg-white shadow-sm md:px-6 md:py-2 lg:ml-44 lg:mr-44 xl:ml-96 xl:mr-96">
           <div className="px-6 py-3 md:px-0">
             <div className="flex items-center justify-between">
@@ -209,7 +209,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
   const printDarkPost = () => {
     return (
       <div className="h-auto overflow-hidden">
-        <div className="transition py-6 bg-zinc-900 shadow-sm md:rounded md:px-6 md:py-2 lg:ml-44 lg:mr-44 xl:ml-96 xl:mr-96">
+        <div className="transition py-6 bg-white dark:bg-zinc-900 shadow-sm md:rounded md:px-6 md:py-2 lg:ml-44 lg:mr-44 xl:ml-96 xl:mr-96">
           <div className="px-6 pb-6 md:px-0">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
@@ -217,23 +217,23 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
                 <div className="flex flex-col">
                   <div>
                     <div className="flex items-baseline">
-                      <a className="inline-block mr-1 text-base text-zinc-300" href="#">
+                      <a className="inline-block mr-1 text-zinc-900 text-base dark:text-zinc-300" href="#">
                         Username
                       </a>
-                      <span className="text-xs text-zinc-300">25 minutes ago</span>
+                      <span className="text-xs text-zinc-500 dark:text-zinc-300">25 minutes ago</span>
                     </div>
                   </div>
-                  <p className="text-sm text-zinc-300">Software Developer</p>
+                  <p className="text-sm text-zinc-500 dark:text-zinc-300">Software Developer</p>
                 </div>
               </div>
               {MoreOptions()}
             </div>
           </div>
           <div className="px-6 md:px-0">
-            <p className="antialiased break-words text-stone-300 sm:subpixel-antialiased md:antialiased ">
+            <p className="antialiased break-words text-zinc-500 dark:text-zinc-300 sm:subpixel-antialiased md:antialiased ">
               {trimTextDark("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud")}
             </p>
-            <IonNote className="flex justify-end mt-3 text-sm transition text-zinc-300 text-md hover:text-gray-700">School '22, Studying Engineering 💻</IonNote>
+            <IonNote className="flex justify-end mt-3 text-sm transition dark:text-zinc-300 text-md dark:hover:text-gray-700">School '22, Studying Engineering 💻</IonNote>
           </div>
           <div className="px-6 pt-6 text-gray-600 md:px-0 ">
             {LikeButton(4)}
@@ -386,11 +386,9 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
       </>
     );
   }
-  return (<div className="bg-zinc-600">
-    <div className="">
+  return (<div>
+    <div className="space-y-4">
       {printEmptyStateDark()}
-      {printDarkPost()}
-      {printDarkPost()}
       {printDarkPost()}
       {printDarkPost()}
     </div>
