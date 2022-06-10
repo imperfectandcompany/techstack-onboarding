@@ -32,6 +32,8 @@ import { createAnimation } from '@ionic/react';
 import Profile from './pages/Profile';
 import Settings from './pages/Setttings';
 import { useEffect } from 'react';
+import AnimatedTabBar from './components/AnimatedTabBar';
+import Marketing from './pages/marketing';
 
 export function pageTransition(baseEl: any, opts: any) {
   const DURATION = 300;

@@ -6,13 +6,18 @@ http://ionicframework.com/docs/theming/ */
 
 /** Ionic CSS Variables **/
 :root {
+
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
+
   --ion-color-primary: #FF8744;
   --ion-color-primary-rgb: 255, 135, 68;
   --ion-color-primary-contrast: #000000;
   --ion-color-primary-contrast-rgb: 0, 0, 0;
   --ion-color-primary-shade: #e0773c;
   --ion-color-primary-tint: #ff9357;
-
+  --animate-duration: 800ms;
+  --animate-delay: 0.9s;
   --ion-color-secondary: #FFFFFF;
   --ion-color-secondary-rgb: 134, 50, 219;
   --ion-color-secondary-contrast: #18181b;

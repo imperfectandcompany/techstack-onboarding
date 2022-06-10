@@ -6,10 +6,6 @@ import { useRef } from 'react';
 
 const Menu: React.FC = () => {
 
-
-
-
-
   return (
     <IonMenu side="start" contentId="main" menuId='mainmenu' type="push">
 
@@ -25,6 +21,9 @@ const Menu: React.FC = () => {
             />
             <p className="pt-2 text-lg font-semibold">User Name</p>
             <p className="text-sm dark:text-zinc-600 text-zinc-400">@username</p>
+
+
+
             <div className="mt-5">
               <IonRouterLink
                 onClick={async () => await menuController.toggle()}
