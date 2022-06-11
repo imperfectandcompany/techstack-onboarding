@@ -171,7 +171,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
   }
 
   return (
-    <div>
+    <div className="space-y-2">
       {/* 
       Prints out each post available to the user
       Contains multiple components: Avatar, likeButton, moreOptions
@@ -193,6 +193,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
 
       */
       }
+      {EmptyState(EmptyStateProps)}
       <IonList class="h-auto overflow-auto space-y-2" lines='none'>
       {arrayOfPosts.map((post) => printPost(post))}
       </IonList> 
