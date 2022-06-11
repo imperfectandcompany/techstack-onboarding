@@ -1,5 +1,4 @@
 import { IonButton, IonContent, IonIcon, IonItem, IonLabel, IonList, IonNote, IonPopover } from '@ionic/react';
-import './ExploreContainer.css';
 import { ellipsisHorizontal, ellipsisVertical, mail } from 'ionicons/icons';
 import { useState } from 'react';
 import MoreOptions from './MoreOptions';
@@ -8,7 +7,7 @@ import Avatar from './Avatar';
 import { Interface } from 'readline';
 import EmptyState from './EmptyState';
 import { buttonStyle } from './common/ButtonCTA';
-import './MoreOptions.css';
+import styles from './ExploreContainer.module.css'; // Import css modules stylesheet as styles
 import SlideUpMenu from './SlideUpMenu';
 
 //all data here will be moved to a global centralized store in another 
@@ -104,7 +103,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
   const printPost = (props: postObject) => {
     return (
       //key is necessary for each item in the list
-      <IonItem key={props.postId}>
+      <IonItem key={props.postId} className={`${styles.post}`}>
         <div className="transition py-6 bg-white dark:bg-zinc-900 shadow-sm md:rounded md:px-6 md:py-2 lg:ml-44 lg:mr-44 xl:ml-96 xl:mr-96">
           <div className="px-6 pb-6 md:px-0">
             <div className="flex items-center justify-between">
