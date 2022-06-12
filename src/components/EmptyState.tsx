@@ -1,5 +1,5 @@
 import { IonButton, IonContent, IonIcon, IonLabel, IonNote, IonPopover } from '@ionic/react';
-import './ExploreContainer.css';
+
 import {Button, ButtonCTA } from './common/ButtonCTA';
 
 //Reusable empty state component, can be used throughout the project
@@ -40,7 +40,7 @@ export const EmptyState: React.FC<EmptyStateProps> = (props) => {
             We render out each button passed into the empty state.
             button style (buttonStyle.primary || buttonStyle.secondary enum)
             */}
-          {props.Button ? props.Button.map(button=> <ButtonCTA style={button.style} text={button.text}></ButtonCTA>) : null}
+          {props.Button ? props.Button.map((button, index)=> <ButtonCTA key={index+1} style={button.style} text={button.text}></ButtonCTA>) : null}
           </div>
 
       {props.helperFooter ? <div className="flex flex-col mt-8">

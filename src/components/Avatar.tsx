@@ -4,36 +4,13 @@ import { useState } from "react";
 import SwipeableViews from "react-swipeable-views";
 import styles from './Avatar.module.css'; // Import css modules stylesheet as styles
 
+interface AvatarProps{
+    username:string;
+}
 
-interface ContainerProps { }
-
-const tabStyles = {
-    tabs: {
-        background: '#fff',
-    },
-    slide: {
-        padding: 15,
-        minHeight: 100,
-        color: '#fff',
-    },
-    slide1: {
-        backgroundColor: '#FEA900',
-    },
-    slide2: {
-        backgroundColor: '#B3DC4A',
-    },
-    slide3: {
-        backgroundColor: '#6AC0FF',
-    },
-};
-
-const Avatar = () => {
-
-
-
+const Avatar = (props:AvatarProps) => {
 
     const [isOpen, setIsOpen] = useState(false);
-
 
     const handleAvatarClick = () => {
         setIsOpen(!isOpen);
@@ -92,7 +69,7 @@ const Avatar = () => {
                                         <div className="flex ml-3">
                                             <div className="flex flex-col">
                                                 <div className="flex flex-row items-baseline">
-                                                    <h1 className="text-xl font-bold flex">Daiyaan</h1>
+                                                    <h1 className="text-xl font-bold flex">{props.username}</h1>
                                                     <h2 className="ml-1 text-xs text-gray-400 transition hover:text-gray-500">@daiyaan</h2>
                                                 </div>
 
@@ -131,10 +108,6 @@ const Avatar = () => {
 
                                 </div>
                             </div>
-
-
-
-
 
                         </div>
                         <div className="flex text-zinc-300 bg-zinc-900">
@@ -185,9 +158,6 @@ const Avatar = () => {
 
                         </div>
 
-
-
-
                         <div className="flex text-zinc-300 items-center mx-4">
 
                             <div className="text-zinc-600 text-sm mx-8 antialiased break-words sm:subpixel-antialiased md:antialiased mt-3">
@@ -201,7 +171,6 @@ const Avatar = () => {
                         </div>
                     </SwipeableViews>
                 </div >
-
             </div >
         )
     }

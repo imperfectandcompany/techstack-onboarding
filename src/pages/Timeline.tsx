@@ -6,11 +6,22 @@ import ExploreContainer from '../components/ExploreContainer';
 import Menu from './Menu';
 import './Signup.css';
 
-import * as homeAnimation from '../Animations/home.json';
-
-
-
 const Timeline: React.FC = () => {
+
+  var prevScrollpos = window.pageYOffset;
+  function onScroll(e: CustomEvent<ScrollDetail>) {
+    var currentScrollPos = e.detail.scrollTop;
+    const toolbar = document.getElementById("toolbar");
+    const header = document.getElementById("header");
+    if (header && currentScrollPos > 80) {
+      if (prevScrollpos > currentScrollPos) {
+      header.style.top = "0px";
+      } else {
+        header.style.top = "-70px";
+      }
+      prevScrollpos = currentScrollPos;
+    }
+  }
 
 const printHeader = () => {
   return (
@@ -64,25 +75,6 @@ const printHeader = () => {
     </div>
   )
 }
-
-var prevScrollpos = window.pageYOffset;
-function onScroll(e: CustomEvent<ScrollDetail>) {
-  var currentScrollPos = e.detail.scrollTop;
-  const toolbar = document.getElementById("toolbar");
-  const header = document.getElementById("header");
-  if (header && currentScrollPos > 80) {
-    if (prevScrollpos > currentScrollPos) {
-    header.style.top = "0px";
-    } else {
-      header.style.top = "-70px";
-    }
-    prevScrollpos = currentScrollPos;
-  }
-}
-
-
-
-
 
 return (
   <IonPage id="main">
