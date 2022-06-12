@@ -9,7 +9,6 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.6.3",
-    "@types/jest": "^26.0.20",
     "@types/node": "^12.19.15",
     "@types/react": "^16.14.3",
     "@types/react-dom": "^16.9.10",
@@ -26,7 +25,6 @@
     "react-scripts": "^5.0.0",
     "react-swipeable-views": "^0.14.0",
     "tw-elements": "^1.0.0-alpha11",
-    "typescript": "^4.1.3",
     "web-vitals": "^0.2.4",
     "workbox-background-sync": "^5.1.4",
     "workbox-broadcast-update": "^5.1.4",
@@ -67,6 +65,22 @@
   },
   "description": "An Ionic project",
   "devDependencies": {
-    "@types/react-swipeable-views": "^0.13.1"
+    "@types/jest": "^28.1.1",
+    "@types/react-swipeable-views": "^0.13.1",
+    "jest": "^28.1.1",
+    "jest-transform-stub": "^2.0.0",
+    "ts-jest": "^28.0.4",
+    "typescript": "^4.7.3"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest"
+    },
+    "moduleNameMapper":{
+      "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js",
+      "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
+ }    
   }
 }
