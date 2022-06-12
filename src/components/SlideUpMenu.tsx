@@ -16,7 +16,7 @@ export const disableContentScrollY = (contentEl: HTMLElement): boolean => {
 
 interface MoreOptionsProps {
   isOwner?:boolean;
-  parentFunction:Function;
+  setMenuVisibility:Function;
   isMenuOpen:boolean;  
 }
 
@@ -24,7 +24,7 @@ const SlideUpMenu = (props:MoreOptionsProps) => {
   //added accessibility so menu is closed if it is active and the user hits the escape key.
   const escFunction = useCallback((event) => {
     if (event.keyCode === 27) {   
-      props.parentFunction(false); 
+      props.setMenuVisibility(false); 
     }
   }, []);
 
@@ -61,9 +61,9 @@ const SlideUpMenu = (props:MoreOptionsProps) => {
           <a>Delete</a>
         </li>
         <li>
-          <ShareModal optionalParentfunction={props.parentFunction}></ShareModal>
+          <ShareModal optionalParentfunction={props.setMenuVisibility}></ShareModal>
         </li>
-        <div className="menu-icon-container mx-auto " onClick={() => props.parentFunction(!props.isMenuOpen)} >
+        <div className="menu-icon-container mx-auto " onClick={() => props.setMenuVisibility(!props.isMenuOpen)} >
           <div className="menu-icon  mb-80 ">
             <span className="line-1"></span>
             <span className="line-2"></span>

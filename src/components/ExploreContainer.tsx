@@ -121,7 +121,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
                   <p className="text-sm text-zinc-500 dark:text-zinc-300">Software Developer</p>
                 </div>
               </div>
-              <MoreOptions parentFunctionOne={setPostId} parentFunctionTwo={setMenu} isMenuOpen={isMenuOpen} id={props.postId} ></MoreOptions>
+              <MoreOptions setPostID={setPostId} setMenuVisibility={setMenu} isMenuOpen={isMenuOpen} id={props.postId} ></MoreOptions>
             </div>
           </div>
           <div className="px-6 md:px-0">
@@ -162,11 +162,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
     //set before the menu through the individual post component
     var posterUid = getPostUid(postID);
     //getUid returns the uid of the current user and matches to see if it equals the Uid of the poster
-    if(currentUid === posterUid){
-      return true;
-    } else {
-      return false;
-    }
+    return currentUid === posterUid
   }
 
   return (
@@ -209,7 +205,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
        The same function that is activates this menu through moreOption within the printPost function.
        */
        }
-      <SlideUpMenu isOwner={isOwner(postId)} parentFunction={setMenu} isMenuOpen={isMenuOpen}></SlideUpMenu>
+      <SlideUpMenu isOwner={isOwner(postId)} setMenuVisibility={setMenu} isMenuOpen={isMenuOpen}></SlideUpMenu>
     </div>
   );
 };

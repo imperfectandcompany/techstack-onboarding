@@ -16,8 +16,8 @@ export const disableContentScrollY = (contentEl: HTMLElement): boolean => {
 
 interface MoreOptionsProps {
   isOwner?: boolean;
-  parentFunctionOne: Function;
-  parentFunctionTwo: Function;
+  setPostID: Function;
+  setMenuVisibility: Function;
   isMenuOpen: boolean;
   id:number;
 }
@@ -27,15 +27,15 @@ const MoreOptions = (props: MoreOptionsProps) => {
   //added accessibility so menu is closed if it is active and the user hits the escape key.
   const escFunction = useCallback((event) => {
     if (event.keyCode === 27) {
-      props.parentFunctionTwo(false);
+      props.setMenuVisibility(false);
     }
   }, []);
 
   const handleMenuClick = () => {
     //before opening the menu, set the id of the post we are opening it for
-    props.parentFunctionOne(props.id);
+    props.setPostID(props.id);
     //open menu from the parent function
-    props.parentFunctionTwo(!props.isMenuOpen)
+    props.setMenuVisibility(!props.isMenuOpen)
   }
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const MoreOptions = (props: MoreOptionsProps) => {
   }, [props.isMenuOpen]);
 
   return (
-    <div className="menu-icon-container justify-end" onClick={() => props.parentFunctionTwo(!props.isMenuOpen)} >
+    <div className="menu-icon-container justify-end" onClick={() => props.setMenuVisibility(!props.isMenuOpen)} >
       <div className={props.isMenuOpen ? "text-gray-800 opacity-60 transition" : "text-gray-700 transition"}>
         <IonIcon slot="start" size='small' icon={ellipsisHorizontal} />
       </div>
