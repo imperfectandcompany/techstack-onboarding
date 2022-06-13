@@ -44,12 +44,12 @@ export const CookieSections = [
   {
     heading: 'What is stored',
     description:
-      "A randomly generated token is generated upon every successful login, this token is then stored in two places: (1) SQL Database, (2) User's device. In place (1), the token is associated to the User that it was generated for when they successfully logged in. In the latter, place (2), the token is stored a cookie on their device, whether that be through the browser, iOS application, or a Android application. We also store the user's desired client-side preferences as a cookie on the user's device. In total, we store three things, all are stored upon interaction with Postogon from the user and explained in the sections below.",
+      'A randomly generated token is generated upon every successful login, this token is then stored in two places: (1) SQL Database, (2) User\'s device. In place (1), the token is associated to the User that it was generated for when they successfully logged in. In the latter, place (2), the token is stored a cookie on their device, whether that be through the browser, iOS application, or a Android application. We also store the user\'s desired client-side preferences as a cookie on the user\'s device. In total, we store three things, all are stored upon interaction with Postogon from the user and explained in the sections below.',
   },
   {
     heading: 'How it is used',
     description:
-      "We check to see if a token exists on the User's device ever time our 'service', Postogon, is accessed by the User. If a token exists, Postogon checks to see if it also exists within our SQL Database. If the token exists, we then fetch the associated user's ID and deem them as a logged-in user. If a token does not exist, then the user is deemed as not logged in.",
+      'We check to see if a token exists on the User\'s device ever time our \'service\', Postogon, is accessed by the User. If a token exists, Postogon checks to see if it also exists within our SQL Database. If the token exists, we then fetch the associated user\'s ID and deem them as a logged-in user. If a token does not exist, then the user is deemed as not logged in.',
   },
   {
     heading: 'How it affects you',
@@ -63,7 +63,7 @@ export const CookieSections = [
   {
     heading: 'Cookie (2) POSTOGONID_',
     description:
-      "This cookie is valid for 3 days and cannot be used to identify you as a user. This token is created to force the first cookie (POSTOGONID) to expire without logging the user out. This way, the user won't even know they've been given a new login token. Basically, if the user is active after 3-7 days, the first cookie will be reset so that the expire date is increased, this way the user willbe logged out when they are inactive.",
+      'This cookie is valid for 3 days and cannot be used to identify you as a user. This token is created to force the first cookie (POSTOGONID) to expire without logging the user out. This way, the user won\'t even know they\'ve been given a new login token. Basically, if the user is active after 3-7 days, the first cookie will be reset so that the expire date is increased, this way the user willbe logged out when they are inactive.',
   },
   {
     heading: 'Cookie (1) DARKMODE',
