@@ -215,7 +215,7 @@ const ExploreContainer: React.FC = () => {
 
       */}
       {EmptyState(EmptyStateProps)}
-      <IonList class='h-auto overflow-auto space-y-2' lines='none'>
+      <IonList class='h-auto overflow-auto space-y-2 bg-transparent' lines='none'>
         {arrayOfPosts.map((post) => printPost(post))}
       </IonList>
       {/* isOwner is necessary to identify whether the menu is from the perspective of someone viewing the post

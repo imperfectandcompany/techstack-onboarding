@@ -32,10 +32,20 @@ const MoreOptions = (props: MoreOptionsProps) => {
     props.setMenuVisibility(!props.isMenuOpen)
   }
 
+  const toolbar = document.querySelector('.nav-container nav');
+
+
   useEffect(() => {
+
     // if menu is not open, do not add accessibility event listener for escape key
     if (!props.isMenuOpen) {
+      if(toolbar){
+        toolbar.classList.remove('menu-move-up');
+      }      
       return
+    }
+    if(toolbar){
+      toolbar.classList.add('menu-move-up');
     }
     document.addEventListener('keydown', escFunction)
     return () => {

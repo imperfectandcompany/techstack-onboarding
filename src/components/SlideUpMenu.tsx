@@ -2,15 +2,9 @@ import { useCallback, useEffect } from 'react'
 import './SlideUpMenu.css'
 import ShareModal from './ShareModal'
 
-export const disableContentScrollY = (contentEl: HTMLElement): boolean => {
-  contentEl.style.setProperty('overflow', 'hidden')
-
-  return true
-}
-
 interface MoreOptionsProps {
   isOwner?: boolean
-  setMenuVisibility(value: boolean): boolean
+  setMenuVisibility(isMenuOpen: boolean): boolean
   isMenuOpen: boolean
 }
 
