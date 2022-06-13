@@ -22,14 +22,16 @@ import '@ionic/react/css/flex-utils.css'
 import '@ionic/react/css/display.css'
 
 /* Theme variables */
-import './theme/variables.css'
-import Signup from './pages/Signup'
-import Signin from './pages/Signin'
-import Recovery from './pages/Recovery'
-import Timeline from './pages/Timeline'
-import Menu from './pages/Menu'
-import Profile from './pages/Profile'
-import Settings from './pages/Setttings'
+import './theme/variables.css';
+import Signup from './pages/Signup';
+import Signin from './pages/Signin';
+import Recovery from './pages/Recovery';
+import Timeline from './pages/Timeline';
+import Menu from './pages/Menu';
+import Profile from './pages/Profile';
+import Settings from './pages/Setttings';
+import Feedback from './pages/Feedback';
+import Contact from './pages/Contact';
 
 export function pageTransition(
   baseEl: null,
@@ -115,8 +117,14 @@ const App: React.FC = () => (
         <Route exact path='/settings'>
           <Settings />
         </Route>
-        <Route exact path='/timeline'>
-          <Timeline />
+        <Route exact path="/feedback">
+          <Feedback />
+        </Route>
+        <Route exact path="/contact">
+          <Contact />
+        </Route>        
+        <Route exact path="/timeline">
+          <Timeline/>
           <Menu></Menu>
         </Route>
         <Route exact path='/'>
