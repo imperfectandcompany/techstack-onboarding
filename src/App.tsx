@@ -32,6 +32,8 @@ import { createAnimation } from '@ionic/react';
 import Profile from './pages/Profile';
 import Settings from './pages/Setttings';
 import { useEffect } from 'react';
+import Feedback from './pages/Feedback';
+import Contact from './pages/Contact';
 
 export function pageTransition(baseEl: any, opts: any) {
   const DURATION = 300;
@@ -109,6 +111,12 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/settings">
           <Settings />
+        </Route>
+        <Route exact path="/feedback">
+          <Feedback />
+        </Route>
+        <Route exact path="/contact">
+          <Contact />
         </Route>        
         <Route exact path="/timeline">
           <Timeline/>
