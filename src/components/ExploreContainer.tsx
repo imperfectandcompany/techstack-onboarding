@@ -110,7 +110,7 @@ const ExploreContainer: React.FC = () => {
     )
   }
 
-  const [isMenuOpen, setMenu] = useState(false)
+  const [isMenuOpen, setMenu] = useState(false);
 
   // this prints out the post with all the data.
   const printPost = (props: postObject) => {
@@ -215,7 +215,7 @@ const ExploreContainer: React.FC = () => {
 
       */}
       {EmptyState(EmptyStateProps)}
-      <IonList class='h-auto overflow-auto space-y-2' lines='none'>
+      <IonList class='h-auto overflow-auto space-y-2 	' lines='none' >
         {arrayOfPosts.map((post) => printPost(post))}
       </IonList>
       {/* isOwner is necessary to identify whether the menu is from the perspective of someone viewing the post
@@ -234,7 +234,8 @@ const ExploreContainer: React.FC = () => {
         isOwner={isOwner(postId)}
         setMenuVisibility={setMenu}
         isMenuOpen={isMenuOpen}
-      ></SlideUpMenu>
+      >
+      </SlideUpMenu>
     </div>
   )
 }

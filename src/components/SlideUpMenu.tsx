@@ -10,7 +10,7 @@ export const disableContentScrollY = (contentEl: HTMLElement): boolean => {
 
 interface MoreOptionsProps {
   isOwner?: boolean
-  setMenuVisibility(value: boolean): boolean
+  setMenuVisibility(isMenuOpen: boolean): boolean
   isMenuOpen: boolean
 }
 
@@ -35,7 +35,7 @@ const SlideUpMenu = (props: MoreOptionsProps) => {
   }, [props.isMenuOpen])
 
   return (
-    <div className={props.isMenuOpen === true ? 'nav-container active' : 'nav-container'}>
+    <div className={props.isMenuOpen === true ? 'nav-container active dark' : 'nav-container'}>
       <nav>
         <ul className='options-nav'>
           <li className='flex'></li>

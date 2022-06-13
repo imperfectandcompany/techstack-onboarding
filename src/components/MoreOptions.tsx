@@ -1,7 +1,6 @@
 import { IonIcon } from '@ionic/react'
 import { ellipsisHorizontal } from 'ionicons/icons'
 import { useCallback, useEffect } from 'react'
-import './MoreOptions.css'
 
 export const disableContentScrollY = (contentEl: HTMLElement): boolean => {
   contentEl.style.setProperty('overflow', 'hidden')
