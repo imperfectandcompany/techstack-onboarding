@@ -1,17 +1,22 @@
 .bg {
-    --ion-background-color: linear-gradient(180deg, #FF8744 0.25%, rgba(255, 137, 137, 0.59) 54.17%, #DE7A7A 100%);
-    opacity: 1;
-    position: relative; 
-    height: 100vh;
-    width: 100%;
-    top: 0px;
-    left: 0px;
-    overflow: hidden;
-  }
-  
-  @media only screen and (min-width: 768px) {
-    .bg::before {    
-    content: "";
+  --ion-background-color: linear-gradient(
+    180deg,
+    #ff8744 0.25%,
+    rgba(255, 137, 137, 0.59) 54.17%,
+    #de7a7a 100%
+  );
+  opacity: 1;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+
+@media only screen and (min-width: 768px) {
+  .bg::before {
+    content: '';
     width: 100%;
     top: 0px;
     right: 0px;
@@ -22,84 +27,81 @@
     background-position: center center;
     background-size: cover;
     position: absolute;
-    background-image: url("../../pages/images/wallpaper.png");	
-    }
+    background-image: url('../../pages/images/wallpaper.png');
   }
-  
-  :root {
-    --animate-duration: 1s;
-    --animate-delay: 1s;
-    --animate-repeat: 1;
+}
+
+:root {
+  --animate-duration: 1s;
+  --animate-delay: 1s;
+  --animate-repeat: 1;
+}
+
+/* Fading entrances  */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  
-  /* Fading entrances  */
-  @-webkit-keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-  
-    to {
-      opacity: 0.25;
-    }
+
+  to {
+    opacity: 0.25;
   }
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-  
-    to {
-      opacity: 0.25;
-    }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  @media only screen and (max-width: 768px) {
-    /* For mobile phones: */
-    .bg::before {    
-    
-      content: "";
-      opacity: 0.25;
-      width:1600px;
-      height:900px;
-      position:absolute;
-      left:-314px;
-      top:-83px;
-      background-image: url("../../pages/images/wallpaper.png");
-          background-repeat:no-repeat;
-      background-size:cover;
-      -webkit-animation-name: fadeIn;
-      animation-name: fadeIn;    
-    }
+
+  to {
+    opacity: 0.25;
   }
-  
-  
-  
-  
-  
-  .modal { 
-    --ion-background-color: linear-gradient(180deg, #FF8744 0.25%, rgba(255, 137, 137, 0.59) 54.17%, #DE7A7A 100%) !important;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .bg::before {
+    content: '';
+    opacity: 0.25;
+    width: 1600px;
+    height: 900px;
+    position: absolute;
+    left: -314px;
+    top: -83px;
+    background-image: url('../../pages/images/wallpaper.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
   }
-  
-  .modal .modal-toolbar {
-    --background: transparent !important;
-    --border-color: transparent !important;
-    --border: transparent !important;
-  }
-  
-  .text { 
-    --background: transparent !important;
-    background:transparent !important;
-    color: none !important;
-    --border-color: transparent !important;
-  }
-  
-  
-  .modal .modal-content {
-    --background: transparent !important;
-    --border-color: transparent !important;
-    --border: transparent !important;
-  }
-  
-  .modal .modal-content::part(scroll) {
-  
-  }
+}
+
+.modal {
+  --ion-background-color: linear-gradient(
+    180deg,
+    #ff8744 0.25%,
+    rgba(255, 137, 137, 0.59) 54.17%,
+    #de7a7a 100%
+  ) !important;
+}
+
+.modal .modal-toolbar {
+  --background: transparent !important;
+  --border-color: transparent !important;
+  --border: transparent !important;
+}
+
+.text {
+  --background: transparent !important;
+  background: transparent !important;
+  color: none !important;
+  --border-color: transparent !important;
+}
+
+.modal .modal-content {
+  --background: transparent !important;
+  --border-color: transparent !important;
+  --border: transparent !important;
+}
+
+.modal .modal-content::part(scroll) {
+}

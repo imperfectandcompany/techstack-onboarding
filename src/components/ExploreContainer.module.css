@@ -1,6 +1,5 @@
 .post {
-    --padding-start:0px;
-    --inner-padding-end: 0px;
-    position: relative;
-  }
-
+  --padding-start: 0px;
+  --inner-padding-end: 0px;
+  position: relative;
+}
