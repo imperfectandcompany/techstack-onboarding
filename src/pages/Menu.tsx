@@ -3,6 +3,7 @@ import './Home.module.css';
 import { menuController } from "@ionic/core/components";
 import { arrowDownCircle, chevronDown, chevronForward, chevronUpCircleOutline } from 'ionicons/icons';
 import { useRef } from 'react';
+import StatusChange from '../components/StatusChange';
 
 const Menu: React.FC = () => {
 
@@ -201,15 +202,17 @@ const Menu: React.FC = () => {
           <IonListHeader lines='none' color="light"></IonListHeader>
         </div>
         <div className="sticky bottom-0 z-40 mb-auto backdrop-blur-sm   bg-white/80 dark:bg-zinc-900/80 ">
-            <a href="#" className="px-4 py-2  w-full hover:bg-gray-100 flex">
+          <StatusChange>
+            <a className="px-4 py-2  w-full hover:bg-gray-100 flex">
               <p className="text-sm font-medium text-zinc-800 dark:text-gray-400 leading-none">Update Status</p>
             </a>
-            <a href="#" className="px-4 py-2  w-full hover:bg-gray-100 flex">
+            <a className="px-4 py-2  w-full hover:bg-gray-100 flex">
               <p className="text-sm font-medium text-zinc-800 dark:text-gray-400 leading-none">Update Activity</p>
             </a>
-            <a href="#" className="px-4 py-2  w-full hover:bg-gray-100 flex">
+            <a className="px-4 py-2  w-full hover:bg-gray-100 flex">
               <p className="text-sm font-medium text-zinc-800 dark:text-gray-400 leading-none">Update Views</p>
             </a>
+            </StatusChange>
           </div>
       </IonContent>
     </IonMenu>
