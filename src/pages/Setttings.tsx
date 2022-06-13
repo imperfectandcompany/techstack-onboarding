@@ -1,5 +1,9 @@
 import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonListHeader, IonMenuButton, IonMenuToggle, IonNote, IonPage, IonTitle, IonToggle, IonToolbar, ScrollDetail } from '@ionic/react';
 import { openOutline } from 'ionicons/icons';
+import { useState } from 'react';
+import PolicyContainer from '../components/PolicyContainer/PolicyContainer';
+import * as PolicyConstants from '../constants/PolicyContainer';
+
 
 const Settings: React.FC = () => {
   
@@ -15,6 +19,11 @@ const Settings: React.FC = () => {
     }
   };
 
+  const [showPolicy, setShowPolicy] = useState(false);
+  const [CurrentSection, setCurrentSection] = useState<PolicyConstants.Sections[]>([])
+  const [CurrentTitle, setCurrentTitle] = useState("");
+  const [CurrentSubTitle, setCurrentSubTitle] = useState("");
+
   return (
     <IonPage>
       <IonHeader class="ion-no-border">
@@ -27,6 +36,7 @@ const Settings: React.FC = () => {
         </IonTitle>
       </IonToolbar>
     </IonHeader>
+    <PolicyContainer showPolicy={showPolicy} setShowPolicy={setShowPolicy} Sections={CurrentSection} Title={CurrentTitle} Subtitle={CurrentSubTitle} loggedIn={true}/>
     <IonContent fullscreen={true} color="light" >
         <IonList>
         <IonListHeader lines='none' color="light"></IonListHeader>
@@ -52,28 +62,28 @@ const Settings: React.FC = () => {
             ></IonToggle>
           </IonItem>
           <IonListHeader lines='none' color="light"></IonListHeader>
-          <IonItem detail  color='secondary'>
+          <IonItem detail  color='secondary' routerLink="/feedback" routerDirection="forward">
             <IonLabel>
               Feedback
             </IonLabel>
           </IonItem>
-          <IonItem detail  color='secondary'>
+          <IonItem detail  color='secondary' routerLink="/contact" routerDirection="forward">
             <IonLabel>
               Contact Us
             </IonLabel>
           </IonItem>
           <IonItem detail  color='secondary'>
-            <IonLabel>
+            <IonLabel onClick={() => {setShowPolicy(true); setCurrentSection(PolicyConstants.policy.privacy.Sections); setCurrentSubTitle(PolicyConstants.policy.privacy.Subtitle); setCurrentTitle(PolicyConstants.policy.privacy.Title)}}>
               Privacy Policy
             </IonLabel>
           </IonItem>
           <IonItem detail  color='secondary'>
-            <IonLabel>
+            <IonLabel onClick={() => {setShowPolicy(true); setCurrentSection(PolicyConstants.policy.cookie.Sections); setCurrentSubTitle(PolicyConstants.policy.cookie.Subtitle); setCurrentTitle(PolicyConstants.policy.cookie.Title)}}>
               Cookie Policy
             </IonLabel>
           </IonItem>
           <IonItem detail lines="full"  color='secondary'>
-            <IonLabel>
+            <IonLabel onClick={() => {setShowPolicy(true); setCurrentSection(PolicyConstants.policy.tos.Sections); setCurrentTitle(PolicyConstants.policy.tos.Title); setCurrentSubTitle(PolicyConstants.policy.tos.Subtitle)}}>
               Terms of Service
             </IonLabel>
           </IonItem>
