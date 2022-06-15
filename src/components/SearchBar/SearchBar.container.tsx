@@ -28,7 +28,6 @@ const SearchBar: React.FC = () => {
 if(searchInput && searchBar && nav && desktopNav && navContainer){
   document.querySelector('.menu-search-button')?.addEventListener('click', () => {
       nav2?.classList.add('move-up');
-      nav?.classList.add('move-up');
       
       navContainer.classList.add('active');
   document.querySelector('.search-bar')?.classList.add('active');

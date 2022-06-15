@@ -9,16 +9,16 @@ interface MoreOptionsProps {
 
 const ToolbarComponent = (props: MoreOptionsProps) => {
     return (
-        <div className="">
+        <div className="move-this-up">
             <ul className="mobile-nav">
                 <li className="flex items-center justify-between w-full">
                     <IonHeader
                         class='ion-no-border'
                         id='header'
                         className='transition-all 
-    duration-1000
-     top-0 z-40 backdrop-blur-sm bg-white/80 shadow-sm dark:bg-zinc-900/80
-    '
+                    duration-1000
+                     top-0 z-40 backdrop-blur-sm bg-white/80 shadow-sm dark:bg-zinc-900/80
+                     '
                     >
                         <div className='flex items-center shadow-sm justify-between h-16 max-w-screen-xl px-4 mx-auto'>
                             <div className='flex flex-1 w-0 '>
@@ -83,10 +83,10 @@ const ToolbarComponent = (props: MoreOptionsProps) => {
             <div className='searchbar-stuff transition nav-container   '>
                 <ul className="desktop-nav">
 
-                <SearchBar></SearchBar>
+                    <SearchBar></SearchBar>
                 </ul>
-                </div>
-                
+            </div>
+
         </div>
     )
 }
