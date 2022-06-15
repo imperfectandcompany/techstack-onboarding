@@ -4,6 +4,8 @@ import Toolbar from '../components/Toolbar/Toolbar.container'
 import Menu from './Menu'
 import './Signup.css'
 
+
+
 const Timeline: React.FC = () => {
   let prevScrollpos = window.pageYOffset
   function onScroll(e: CustomEvent<ScrollDetail>) {
@@ -25,11 +27,12 @@ const Timeline: React.FC = () => {
   return (
     <IonPage id='main'>
       <Menu></Menu>
-        <Toolbar></Toolbar>
+      <Toolbar></Toolbar>
       <IonContent
         id='main'
         fullscreen={true}
         color='light'
+        class='bg-red-500'
         scrollEvents={true}
         onIonScroll={(e) => onScroll(e)}
       >

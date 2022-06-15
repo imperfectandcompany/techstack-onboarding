@@ -45,7 +45,7 @@ const SlideUpMenu = (props: MoreOptionsProps) => {
             <a>Delete</a>
           </li>
           <li>
-            <ShareModal optionalParentfunction={props.setMenuVisibility}></ShareModal>
+            <ShareModal menuToggleFunction={props.setMenuVisibility}></ShareModal>
           </li>
           <div
             className='menu-icon-container mx-auto '

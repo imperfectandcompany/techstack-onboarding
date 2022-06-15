@@ -6,8 +6,8 @@ import Avatar from './Avatar'
 import EmptyState from './EmptyState'
 import { buttonStyle } from './common/ButtonCTA'
 import styles from './ExploreContainer.module.css' // Import css modules stylesheet as styles
-import SlideUpMenu from './SlideUpMenu'
 import PropTypes from 'prop-types'
+
 
 // all data here will be moved to a global centralized store in another
 // branch / feature
@@ -110,7 +110,7 @@ const ExploreContainer: React.FC = () => {
     )
   }
 
-  const [isMenuOpen, setMenu] = useState(false)
+  const [isMenuOpen, setMenuVisibility] = useState(false)
 
   // this prints out the post with all the data.
   const printPost = (props: postObject) => {
@@ -141,7 +141,7 @@ const ExploreContainer: React.FC = () => {
               </div>
               <MoreOptions
                 setPostID={setPostId}
-                setMenuVisibility={setMenu}
+                setMenuVisibility={setMenuVisibility}
                 isMenuOpen={isMenuOpen}
                 id={props.postId}
               ></MoreOptions>
@@ -229,12 +229,15 @@ const ExploreContainer: React.FC = () => {
        This component is 'activated' through the moreOptions Component within the printPost function.
        The component is then deactivated when the user clicks the x button that calls the setMenu function.
        The same function that is activates this menu through moreOption within the printPost function.
-       */}
+
       <SlideUpMenu
         isOwner={isOwner(postId)}
-        setMenuVisibility={setMenu}
+        setMenuVisibility={setMenuVisibility}
         isMenuOpen={isMenuOpen}
       ></SlideUpMenu>
+
+
+       */}
     </div>
   )
 }

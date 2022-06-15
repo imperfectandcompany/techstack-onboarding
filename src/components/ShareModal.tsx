@@ -4,15 +4,15 @@ import { useState } from 'react'
 import './ShareModal.css'
 
 interface ContainerProps {
-  optionalParentfunction(value: boolean): boolean
+  menuToggleFunction(value: boolean): boolean
 }
 
 const ShareModal = (props: ContainerProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleClick = () => {
-    if (!isOpen && props.optionalParentfunction) {
-      props.optionalParentfunction(false)
+    if (!isOpen && props.menuToggleFunction) {
+      props.menuToggleFunction(false)
     }
     setIsOpen(!isOpen)
   }
