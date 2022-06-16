@@ -1,3 +1,4 @@
+import { SearchInput } from './SearchBar.container'
 import './SearchBar.css'
 
 const SearchBarComponent: React.FC = () => {
@@ -9,7 +10,7 @@ const SearchBarComponent: React.FC = () => {
             <div className="link-search"></div>
             <div className="search-bar">
                 <form action="">
-                    <input type="text" placeholder="Search users, posts, lists"/>
+                    <SearchInput></SearchInput>
                 </form>
             </div>
             <span className="cancel-btn">Cancel</span>

@@ -1,7 +1,29 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useParams } from 'react-router';
 import SearchBarComponent from './SearchBar.component';
 import './SearchBar.css'
+
+
+export const SearchInput = () => {
+
+  const [inputRef, setInputFocus] = useFocus()
+
+  return (
+      <> 
+          <input type="text" ref={inputRef} id="searchInput" placeholder="Search users, posts, lists"/>
+      </>
+  )
+  
+}
+
+
+const useFocus = () => {
+  const htmlElRef:any = useRef(null)
+  const setFocus = () => {htmlElRef.current &&  htmlElRef.current.focus()}
+
+  return [ htmlElRef, setFocus ] 
+}
+
 
 const SearchBar: React.FC = () => {
 
@@ -23,12 +45,12 @@ const SearchBar: React.FC = () => {
   const searchBar = document.querySelector('.mobile-search-container .search-bar');
   const nav = document.querySelector('.nav-container');
   const nav2 = document.querySelector('ion-header');
-  const searchInput = document.querySelector('.mobile-search-container input');
+  const searchInput:any = document.querySelector('searchInput');
   const cancelBtn = document.querySelector('.mobile-search-container .cancel-btn');
-if(searchInput && searchBar && nav && desktopNav && navContainer){
+if(searchBar && nav && desktopNav && navContainer){
   document.querySelector('.menu-search-button')?.addEventListener('click', () => {
+
       nav2?.classList.add('move-up');
-      
       navContainer.classList.add('active');
   document.querySelector('.search-bar')?.classList.add('active');
 
@@ -42,8 +64,15 @@ if(cancelBtn && searchBar && nav && desktopNav){
   })
 }
 
+
+
+
+
+
   return (
-    <SearchBarComponent></SearchBarComponent>
+  
+  <SearchBarComponent></SearchBarComponent>
+    
   )
 }
 
