@@ -1,13 +1,7 @@
 import { IonHeader, IonMenuToggle, IonNote } from '@ionic/react'
 import SearchBar from '../SearchBar/SearchBar.container';
-import './Toolbar.css'
 
-interface MoreOptionsProps {
-    setMobileMenu(isMobileMenuOpen: boolean): boolean
-    isMobileMenuOpen: boolean
-}
-
-const ToolbarComponent = (props: MoreOptionsProps) => {
+const ToolbarComponent = () => {
     return (
         <div className="move-this-up">
             <ul className="mobile-nav">
@@ -56,7 +50,7 @@ const ToolbarComponent = (props: MoreOptionsProps) => {
                             </div>
                             <div className='flex justify-end flex-1 w-0'>
                                 <button
-                                    className='p-2  menu-search-button text-zinc-300 bg-zinc-50/40 dark:bg-zinc-800/40 dark:hover:bg-zinc-900/40 rounded-full'
+                                    className='p-2 menu-search-button text-zinc-300 bg-zinc-50/40 dark:bg-zinc-800/40 dark:hover:bg-zinc-900/40 rounded-full'
                                     type='button'
 
                                 >
@@ -80,10 +74,9 @@ const ToolbarComponent = (props: MoreOptionsProps) => {
             </ul>
 
 
-            <div className='searchbar-stuff transition nav-container   '>
+            <div className='searchbar-stuff transition nav-container'>
                 <ul className="desktop-nav">
-
-                    <SearchBar></SearchBar>
+                <SearchBar></SearchBar>
                 </ul>
             </div>
 

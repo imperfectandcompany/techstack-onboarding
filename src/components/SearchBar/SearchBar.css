@@ -9,15 +9,7 @@
 
 }
 
-.link-search {
-    background: url('../images/search-icon.svg');
-    display: block;
-    background-position: center;
-    background-size: 18px;
-    height: 44px;
-    width: 20px;
-    background-repeat: no-repeat;
-}
+
 
 
 
@@ -39,12 +31,27 @@
         right:0;
         width: 100%;
         height: 0vh;
-        background: #000;
+        background: white;
         justify-content: start;
         overflow: hidden;
         z-index: -3;
         transition: all 1000ms ease;
     }
+
+    body.dark .nav-container .desktop-nav {
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right:0;
+        width: 100%;
+        height: 0vh;
+        background: #000;
+        justify-content: start;
+        overflow: hidden;
+        z-index: -3;
+        transition: all 1000ms ease;
+    }    
 
     .nav-container.active .desktop-nav {
         height: 100vh;
@@ -54,12 +61,23 @@
 
     /* Search Box */
 
-   .mobile-search-container input {
+   body.dark .mobile-search-container input {
         width: 100%;
         padding: 4px 36px;
         font-family: "Inter", sans-serif;
         font-size: 17px;
         background: #1b1b1b;
+        border: 0;
+        color: #fff;
+        border-radius: 8px;
+        outline: none;
+    }
+
+    .mobile-search-container input {
+        width: 100%;
+        padding: 4px 36px;
+        font-family: "Inter", sans-serif;
+        font-size: 17px;
         border: 0;
         color: #fff;
         border-radius: 8px;
@@ -81,6 +99,18 @@ display:flex;
         padding: 4px 36px;
         font-family: "Inter", sans-serif;
         font-size: 17px;
+        background:rgb(244 244 245);
+        border: 0;
+        color: #fff;
+        border-radius: 8px;
+        outline: none;
+    }
+
+    body.dark .nav-container.active .mobile-search-container input {
+        width: 100%;
+        padding: 4px 36px;
+        font-family: "Inter", sans-serif;
+        font-size: 17px;
         background: #1b1b1b;
         border: 0;
         color: #fff;
@@ -96,7 +126,7 @@ display:flex;
         list-style: none;
     }
 
-    .mobile-search-container {
+    body.dark .mobile-search-container {
         position: relative;
         padding: 16px 16px 16px 16px;
         border-bottom: 1px solid #616161;
@@ -107,10 +137,42 @@ display:flex;
         transition: all 600ms ease;
     }
 
+    .mobile-search-container {
+        position: relative;
+        padding: 16px 16px 16px 16px;
+        border-bottom: 1px solid rgb(244 244 245);
+        display: flex;
+        align-items: center;
+        opacity: 0;
+        z-index:100 !important;
+        transition: all 600ms ease;
+    }
+
     .nav-container.active .mobile-search-container {
         transform: rotateX(0deg);
-            margin-top: 6px;
+        margin-top: 6px;
         opacity: 1;
+    }
+
+    .link-search {
+        background: url('../images/search-icon.svg');
+        display: block;
+        background-position: center;
+        background-size: 18px;
+        height: 44px;
+        filter: brightness(0) saturate(100%);
+        width: 20px;
+        background-repeat: no-repeat;
+    }
+    
+    body.dark .link-search {
+        background: url('../images/search-icon.svg');
+        display: block;
+        background-position: center;
+        background-size: 18px;
+        height: 44px;
+        width: 20px;
+        background-repeat: no-repeat;
     }
 
     .mobile-search-container .link-search {
@@ -119,8 +181,6 @@ display:flex;
         opacity: .5;
         background-size: 15px;
     }
-
-
 
         /* Nav Move Up */
 
@@ -191,7 +251,29 @@ display:flex;
         font-weight: 400;
     }
 
+    body.dark .mobile-search-container .search-results ul li a {
+        padding: 16px 0;
+        display: inline-block;
+        text-decoration: none;
+        color: #000;
+        font-size: 14px;
+        font-weight: 400;
+        border-bottom: 1px solid #616161;
+        width: 100%;
+    }
+
     .mobile-search-container .search-results ul li a {
+        padding: 16px 0;
+        display: inline-block;
+        text-decoration: none;
+        color: #000;
+        font-size: 14px;
+        font-weight: 400;
+        border-bottom: 1px solid rgb(244 244 245);
+        width: 100%;
+    }    
+
+    body.dark .mobile-search-container .search-results ul li a {
         padding: 16px 0;
         display: inline-block;
         text-decoration: none;
