@@ -39,7 +39,7 @@ const StatusChange = (props: TabbedViewProps) => {
     setTabIndex(index)
   }
 
-  const printSheetDark = () => {
+  const printSheet = () => {
     return (
       <div>
         <div className='flex text-zinc-300 justify-center items-center'>
@@ -153,7 +153,7 @@ const StatusChange = (props: TabbedViewProps) => {
                           src='https://codingforum.site/img/default/avatar9.jpg'
                           alt=''
                           className='rounded-full h-6 shadow-md inline-block mr-2'
-                        ></img>{' '}
+                        ></img>
                         Changed their profile picture
                       </a>
                     </div>
@@ -168,7 +168,7 @@ const StatusChange = (props: TabbedViewProps) => {
                           src='https://codingforum.site/img/default/avatar9.jpg'
                           alt=''
                           className='rounded-full h-6 shadow-md inline-block mr-2'
-                        ></img>{' '}
+                        ></img>
                         Created a new post
                       </a>
                     </div>
@@ -183,7 +183,7 @@ const StatusChange = (props: TabbedViewProps) => {
                           src='https://codingforum.site/img/default/avatar9.jpg'
                           alt=''
                           className='rounded-full h-6 shadow-md inline-block mr-2'
-                        ></img>{' '}
+                        ></img>
                         Updated his status
                       </a>
                     </div>
@@ -198,7 +198,7 @@ const StatusChange = (props: TabbedViewProps) => {
                           src='https://codingforum.site/img/default/avatar9.jpg'
                           alt=''
                           className='rounded-full h-6 shadow-md inline-block mr-2'
-                        ></img>{' '}
+                        ></img>
                         Changed his signature
                       </a>
                     </div>
@@ -213,7 +213,7 @@ const StatusChange = (props: TabbedViewProps) => {
                           src='https://codingforum.site/img/default/avatar9.jpg'
                           alt=''
                           className='rounded-full h-6 shadow-md inline-block mr-2'
-                        ></img>{' '}
+                        ></img>
                         Followed @anotheruser
                       </a>
                     </div>
@@ -307,8 +307,8 @@ const StatusChange = (props: TabbedViewProps) => {
         className={`${styles.modal}`}
         onIonModalDidDismiss={() => handleDismiss()}
       >
-        <IonContent color='light  ' forceOverscroll={true} class={`${styles['modal-content']}`}>
-          {printSheetDark()}
+        <IonContent color='light' forceOverscroll={true} class={`${styles['modal-content']}`}>
+          {printSheet()}
         </IonContent>
       </IonModal>
       <div onClick={() => handleStatusClick()}>{props.children}</div>
