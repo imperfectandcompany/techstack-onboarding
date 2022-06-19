@@ -1,12 +1,20 @@
-import { IonButton, IonContent, IonIcon, IonModal, IonPopover } from '@ionic/react'
+import { IonContent, IonIcon, IonModal } from '@ionic/react'
 import { checkmarkOutline } from 'ionicons/icons'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import SwipeableViews from 'react-swipeable-views'
 import styles from './Avatar.module.css' // Import css modules stylesheet as styles
+import { status, getEveryStatusObject, getStatusObject } from '../constants/StatusContainer'
 
-interface ContainerProps {}
+interface TabbedViewProps {
+  children?: React.ReactElement[] | React.ReactElement
+}
 
-const StatusChange = (props: any) => {
+const objects = getEveryStatusObject()
+
+const yeet = getStatusObject(status.away)
+
+const StatusChange = (props: TabbedViewProps) => {
+  const [currentStatus, setCurrentStatus] = useState(status.online.id)
   const [isOpen, setIsOpen] = useState(false)
   const [viewIndex, setViewIndex] = useState(0)
 
@@ -14,7 +22,14 @@ const StatusChange = (props: any) => {
     setIsOpen(!isOpen)
   }
 
-  //swipable tab implementation
+  const handleDismiss = () => {
+    //  set is open to default
+    setIsOpen(false)
+    //  set index to 0 (default tab)
+    return handleTabChange(0)
+  }
+
+  // swipable tab implementation
   const [tabIndex, setTabIndex] = useState(0)
   const handleTabChange = (value: number) => {
     setTabIndex(value)
@@ -32,103 +47,92 @@ const StatusChange = (props: any) => {
             <div
               className={
                 tabIndex == 0
-                  ? 'border-zinc-500 border-b-2 text-zinc-500'
+                  ? 'border-zinc-300 dark:border-zinc-500 border-b-2 dark:text-white text-black'
                   : 'text-zinc-600 transition'
               }
             >
               <button
                 onClick={(e) => handleTabChange(0)}
-                className='uppercase border py-4 px-6  hover:text-blue-500 border-b-2 font-medium border-blue-500'
+                className='uppercase border py-4 px-6 transition active:text-orange-500 dark:active:text-zinc-600 dark:active:bg-zinc-800 border-b-2 font-medium'
               >
                 Status
               </button>
             </div>
+
             <div
               className={
                 tabIndex == 1
-                  ? 'border-zinc-500 border-b-2 text-zinc-500'
+                  ? 'border-zinc-300 dark:border-zinc-500 border-b-2 dark:text-white text-black'
                   : 'text-zinc-600 transition'
               }
             >
               <button
                 onClick={(e) => handleTabChange(1)}
-                className='uppercase border py-4 px-6  hover:text-blue-500 border-b-2 font-medium border-blue-500'
+                className='uppercase border py-4 px-6 transition active:text-orange-500 dark:active:text-zinc-600 dark:active:bg-zinc-800 border-b-2 font-medium'
               >
                 Activity
               </button>
             </div>
+
             <div
               className={
                 tabIndex == 2
-                  ? 'border-zinc-500 border-b-2 text-zinc-500'
+                  ? 'border-zinc-300 dark:border-zinc-500 border-b-2 dark:text-white text-black'
                   : 'text-zinc-600 transition'
               }
             >
               <button
                 onClick={(e) => handleTabChange(2)}
-                className='uppercase border py-4 px-6  hover:text-blue-500 border-b-2 font-medium border-blue-500'
+                className='uppercase border py-4 px-6 transition active:text-orange-500 dark:active:text-zinc-600 dark:active:bg-zinc-800 border-b-2 font-medium'
               >
                 Views
               </button>
             </div>
           </nav>
         </div>
-        <div className=' text-zinc-900'>
+        <div>
           <SwipeableViews
             className='text-zinc-300'
             index={tabIndex}
             onChangeIndex={handleChangeIndex}
           >
-            <div className='flex text-zinc-300 bg-zinc-900'>
-              <div className='w-full'>
-                <div className='mt-5  flex flex-col  text-sm'>
-                  <div className='flex justify-between border-t border-zinc-800 text-zinc-600 py-4 pl-6 pr-3 hover:bg-gray-500 transition duration-150'>
-                    <div>
-                      <a className='text-white'>
-                        <img
-                          src='https://miro.medium.com/max/512/1*nZ9VwHTLxAfNCuCjYAkajg.png'
-                          alt=''
-                          className='rounded-full h-6 shadow-md inline-block mr-2'
-                        ></img>{' '}
-                        Online
-                      </a>
+            <div className='flex  bg-zinc-200 dark:bg-zinc-900'>
+              <div className='w-full '>
+                <div className='mt-5  flex flex-col text-sm bg-white dark:bg-zinc-900'>
+                <div onClick={() => setCurrentStatus(status.online.id)} className={'flex active:text-white dark:active:text-white border-gray-200 dark:border-zinc-800 border-y text-zinc-900 dark:text-zinc-300 items-center justify-between py-4 p-6 dark:active:bg-' + status.online.color + '-600 active:bg-' + status.online.color + '-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition duration-150'}>
+                    <div className="flex items-center ">
+                      <div className={'mr-2 shadow-sm bg-'+status.online.color+'-500 h-6 w-6 flex flex-row rounded-full'}>
+                      </div>
+                      <div>{status.online.title}</div>
                     </div>
+                    {currentStatus === status.online.id ? <div className={'text-'+status.online.color+'-600 font-medium'}>Selected</div> : null}
                   </div>
-                  <div className='flex justify-between border-t border-zinc-800 text-zinc-600 py-4 pl-6 pr-3 hover:bg-gray-500 transition duration-150'>
-                    <div>
-                      <a className='text-white'>
-                        <img
-                          src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Location_dot_grey.svg/1200px-Location_dot_grey.svg.png'
-                          alt=''
-                          className='rounded-full h-6 shadow-md inline-block mr-2'
-                        ></img>{' '}
-                        Offline
-                      </a>
+
+                  <div onClick={() => setCurrentStatus(status.invisible.id)} className={'flex active:text-white dark:active:text-white border-gray-200 dark:border-zinc-800 border-y text-zinc-900 dark:text-zinc-300 items-center justify-between py-4 p-6 dark:active:bg-' + status.invisible.color + '-600 active:bg-' + status.invisible.color + '-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition duration-150'}>
+                    <div className="flex items-center ">
+                      <div className={'mr-2 shadow-sm bg-' + status.invisible.color + '-500 h-6 w-6 flex flex-row rounded-full'}>
+                      </div>
+                      <div>{status.invisible.title}</div>
                     </div>
+                    {currentStatus === status.invisible.id ? <div className={'text-'+status.invisible.color+'-600 font-medium'}>Selected</div> : null}
                   </div>
-                  <div className='flex justify-between border-t border-zinc-800 text-zinc-600 py-4 pl-6 pr-3 hover:bg-gray-500 transition duration-150'>
-                    <div>
-                      <a className='text-white'>
-                        <img
-                          src='https://www.seekpng.com/png/full/785-7852330_yellow-dot-png-transparent-circle-orange-png.png'
-                          alt=''
-                          className='rounded-full h-6 shadow-md inline-block mr-2'
-                        ></img>{' '}
-                        Away
-                      </a>
+
+                  <div onClick={() => setCurrentStatus(status.away.id)} className={'flex active:text-white dark:active:text-white border-gray-200 dark:border-zinc-800 border-y text-zinc-900 dark:text-zinc-300 items-center justify-between py-4 p-6 dark:active:bg-' + status.away.color + '-600 active:bg-' + status.away.color + '-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition duration-150'}>
+                    <div className="flex items-center ">
+                      <div className={'mr-2 shadow-sm bg-'+status.away.color+'-500 h-6 w-6 flex flex-row rounded-full'}>
+                      </div>
+                      <div>{status.away.title}</div>
                     </div>
+                    {currentStatus === status.away.id ? <div className={'text-'+status.away.color+'-600 font-medium'}>Selected</div> : null}
                   </div>
-                  <div className='flex justify-between border-t border-zinc-800 text-zinc-600 py-4 pl-6 pr-3 hover:bg-gray-500 transition duration-150'>
-                    <div>
-                      <a className='text-white'>
-                        <img
-                          src='https://www.mysafetysign.com/img/lg/I/do-not-enter-iso-sign-is-1067.png'
-                          alt=''
-                          className='rounded-full h-6 shadow-md inline-block mr-2'
-                        ></img>{' '}
-                        Do Not Disturb
-                      </a>
+
+                  <div onClick={() => setCurrentStatus(status.dnd.id)} className={'flex active:text-white dark:active:text-white border-gray-200 dark:border-zinc-800 border-y text-zinc-900 dark:text-zinc-300 items-center justify-between py-4 p-6 dark:active:bg-' + status.dnd.color + '-600 active:bg-' + status.dnd.color + '-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition duration-150'}>
+                    <div className="flex items-center ">
+                      <div className={'mr-2 shadow-sm bg-' + status.dnd.color + '-500 h-6 w-6 flex flex-row rounded-full'}>
+                      </div>
+                      <div>{status.dnd.title}</div>
                     </div>
+                    {currentStatus === status.dnd.id ? <div className={'text-'+status.dnd.color+'-600 font-medium'}>Selected</div> : null}
                   </div>
                 </div>
               </div>
@@ -279,7 +283,7 @@ const StatusChange = (props: any) => {
                     </div>
                     <div>
                       <span className='text-gray-100 text-xs'>
-                        Each post is shown in it's entirety
+                        Each post is shown in it&apos;s entirety
                       </span>
                     </div>
                   </div>
@@ -301,9 +305,9 @@ const StatusChange = (props: any) => {
         breakpoints={[0, 0.5]}
         initialBreakpoint={0.5}
         className={`${styles.modal}`}
-        onIonModalWillDismiss={() => setIsOpen(false)}
+        onIonModalDidDismiss={() => handleDismiss()}
       >
-        <IonContent color='zinc' forceOverscroll={true} class={`${styles['modal-content']}`}>
+        <IonContent color='light  ' forceOverscroll={true} class={`${styles['modal-content']}`}>
           {printSheetDark()}
         </IonContent>
       </IonModal>

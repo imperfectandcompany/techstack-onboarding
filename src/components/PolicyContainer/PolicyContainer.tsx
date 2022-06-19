@@ -11,11 +11,15 @@ import {
 } from '@ionic/react'
 import styles from './PolicyContainer.module.css' // Import css modules stylesheet as styles
 import { chevronDown } from 'ionicons/icons'
-import { ReactChild, ReactFragment, ReactPortal } from 'react'
+import { Sections } from '../../constants/PolicyContainer'
 
-interface Sections {
-  heading: String
-  description: String
+interface PolicyContainerInterface {
+  setShowPolicy(showPolicy: boolean): void
+  showPolicy: boolean
+  Sections: Sections[]
+  Title: string
+  Subtitle: string
+  loggedIn: boolean
 }
 
 function PolicyContainer({
@@ -25,7 +29,7 @@ function PolicyContainer({
   Title,
   Subtitle,
   loggedIn = false,
-}: any) {
+}: PolicyContainerInterface) {
   const listSections = Sections.map((section: Sections, index: number) => (
     <div key={'listItem' + index + 1} className='space-y-2 text-white'>
       <div className='text-xl font-semibold md:text-xlg lg:text-3xl'>

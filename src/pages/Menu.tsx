@@ -1,33 +1,19 @@
 import {
   IonAccordion,
   IonAccordionGroup,
-  IonButton,
   IonCheckbox,
   IonContent,
-  IonHeader,
   IonIcon,
   IonItem,
   IonLabel,
   IonList,
   IonListHeader,
   IonMenu,
-  IonPage,
   IonRouterLink,
-  IonRouterOutlet,
-  IonText,
-  IonThumbnail,
-  IonTitle,
-  IonToolbar,
 } from '@ionic/react'
 import './Home.module.css'
 import { menuController } from '@ionic/core/components'
-import {
-  arrowDownCircle,
-  chevronDown,
-  chevronForward,
-  chevronUpCircleOutline,
-} from 'ionicons/icons'
-import { useRef } from 'react'
+import { chevronForward } from 'ionicons/icons'
 import StatusChange from '../components/StatusChange'
 
 const Menu: React.FC = () => {

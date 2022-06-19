@@ -4,23 +4,14 @@ import {
   IonButtons,
   IonContent,
   IonHeader,
-  IonIcon,
-  IonInput,
   IonItem,
   IonLabel,
-  IonList,
-  IonListHeader,
-  IonMenuButton,
-  IonMenuToggle,
-  IonNote,
   IonPage,
   IonSelect,
   IonSelectOption,
   IonTextarea,
   IonTitle,
-  IonToggle,
   IonToolbar,
-  ScrollDetail,
 } from '@ionic/react'
 import { useState } from 'react'
 

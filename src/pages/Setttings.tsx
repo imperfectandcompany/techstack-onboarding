@@ -1,23 +1,18 @@
 import {
   IonBackButton,
-  IonButton,
   IonButtons,
   IonContent,
   IonHeader,
   IonIcon,
-  IonInput,
   IonItem,
   IonLabel,
   IonList,
   IonListHeader,
-  IonMenuButton,
-  IonMenuToggle,
   IonNote,
   IonPage,
   IonTitle,
   IonToggle,
   IonToolbar,
-  ScrollDetail,
 } from '@ionic/react'
 import { openOutline } from 'ionicons/icons'
 import { useState } from 'react'
