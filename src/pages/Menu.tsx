@@ -14,6 +14,7 @@ import {
 import './Home.module.css'
 import { menuController } from '@ionic/core/components'
 import { chevronForward } from 'ionicons/icons'
+import StatusChange from '../components/StatusChange'
 
 const Menu: React.FC = () => {
   return (
@@ -28,7 +29,6 @@ const Menu: React.FC = () => {
             />
             <p className='pt-2 text-lg font-semibold'>User Name</p>
             <p className='text-sm dark:text-zinc-600 text-zinc-400'>@username</p>
-
             <div className='mt-5'>
               <IonRouterLink
                 onClick={async () => await menuController.toggle()}
@@ -221,21 +221,23 @@ const Menu: React.FC = () => {
           <IonListHeader lines='none' color='light'></IonListHeader>
         </div>
         <div className='sticky bottom-0 z-40 mb-auto backdrop-blur-sm   bg-white/80 dark:bg-zinc-900/80 '>
-          <a href='#' className='px-4 py-2  w-full hover:bg-gray-100 flex'>
-            <p className='text-sm font-medium text-zinc-800 dark:text-gray-400 leading-none'>
-              Update Status
-            </p>
-          </a>
-          <a href='#' className='px-4 py-2  w-full hover:bg-gray-100 flex'>
-            <p className='text-sm font-medium text-zinc-800 dark:text-gray-400 leading-none'>
-              Update Activity
-            </p>
-          </a>
-          <a href='#' className='px-4 py-2  w-full hover:bg-gray-100 flex'>
-            <p className='text-sm font-medium text-zinc-800 dark:text-gray-400 leading-none'>
-              Update Views
-            </p>
-          </a>
+          <StatusChange>
+            <a className='px-4 py-2  w-full hover:bg-gray-100 flex'>
+              <p className='text-sm font-medium text-zinc-800 dark:text-gray-400 leading-none'>
+                Update Status
+              </p>
+            </a>
+            <a className='px-4 py-2  w-full hover:bg-gray-100 flex'>
+              <p className='text-sm font-medium text-zinc-800 dark:text-gray-400 leading-none'>
+                Update Activity
+              </p>
+            </a>
+            <a className='px-4 py-2  w-full hover:bg-gray-100 flex'>
+              <p className='text-sm font-medium text-zinc-800 dark:text-gray-400 leading-none'>
+                Update Views
+              </p>
+            </a>
+          </StatusChange>
         </div>
       </IonContent>
     </IonMenu>

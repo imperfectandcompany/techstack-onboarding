@@ -145,8 +145,6 @@ body.dark .active-nav {
   transition: all 1000ms ease;
 }
 
-
-
 .nav-container.active .active-nav {
   height: 100vh;
 }
@@ -221,7 +219,6 @@ body.dark nav .menu-icon .line-2 {
   transition-delay: 0ms, 160ms;
   transition-duration: 200ms;
 }
-
 
 nav .menu-icon .line-1 {
   top: -4px;
