@@ -108,6 +108,10 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-tint: #2f2f32;
 }
 
+::selection {
+  background: rgba(255, 166, 0, 0.13);
+}
+
 .like {
   display: inline-block;
   width: 2.3rem;

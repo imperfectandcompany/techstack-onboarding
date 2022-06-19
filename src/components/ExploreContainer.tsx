@@ -7,6 +7,7 @@ import EmptyState from './EmptyState'
 import { buttonStyle } from './common/ButtonCTA'
 import styles from './ExploreContainer.module.css' // Import css modules stylesheet as styles
 import PropTypes from 'prop-types'
+import SlideUpMenu from './SlideUpMenu'
 
 
 // all data here will be moved to a global centralized store in another
@@ -238,7 +239,11 @@ const ExploreContainer: React.FC = () => {
 
 
        */}
-
+      <SlideUpMenu
+        isOwner={isOwner(postId)}
+        setMenuVisibility={setMenuVisibility}
+        isMenuOpen={isMenuOpen}
+      ></SlideUpMenu>
     </div>
   )
 }
