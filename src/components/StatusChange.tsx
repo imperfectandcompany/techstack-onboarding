@@ -99,9 +99,9 @@ const StatusChange = (props: TabbedViewProps) => {
             <div className='flex  bg-zinc-200 dark:bg-zinc-900'>
               <div className='w-full '>
                 <div className='mt-5  flex flex-col text-sm bg-white dark:bg-zinc-900'>
-                <div onClick={() => setCurrentStatus(status.online.id)} className={'flex active:text-white dark:active:text-white border-gray-200 dark:border-zinc-800 border-y text-zinc-900 dark:text-zinc-300 items-center justify-between py-4 p-6 dark:active:bg-' + status.online.color + '-600 active:bg-' + status.online.color + '-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition duration-150'}>
+                <div onClick={() => setCurrentStatus(status.online.id)} className={'flex active:text-white dark:active:text-white border-gray-200 dark:border-zinc-800 border-y text-zinc-900 dark:text-zinc-300 items-center justify-between py-4 p-6  dark:active:'+status.online.bgColor + '   active:'+status.online.bgColor + '  hover:bg-zinc-100 dark:hover:bg-zinc-800 transition duration-150'}>
                     <div className="flex items-center ">
-                      <div className={'mr-2 shadow-sm bg-'+status.online.color+'-500 h-6 w-6 flex flex-row rounded-full'}>
+                    <div className={'mr-2 shadow-sm ' + status.online.bgColor + ' h-6 w-6 flex flex-row rounded-full'}>
                       </div>
                       <div>{status.online.title}</div>
                     </div>
@@ -110,16 +110,16 @@ const StatusChange = (props: TabbedViewProps) => {
 
                   <div onClick={() => setCurrentStatus(status.invisible.id)} className={'flex active:text-white dark:active:text-white border-gray-200 dark:border-zinc-800 border-y text-zinc-900 dark:text-zinc-300 items-center justify-between py-4 p-6 dark:active:bg-' + status.invisible.color + '-600 active:bg-' + status.invisible.color + '-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition duration-150'}>
                     <div className="flex items-center ">
-                      <div className={'mr-2 shadow-sm bg-' + status.invisible.color + '-500 h-6 w-6 flex flex-row rounded-full'}>
+                    <div className={'mr-2 shadow-sm ' + status.invisible.bgColor + ' h-6 w-6 flex flex-row rounded-full'}>
                       </div>
                       <div>{status.invisible.title}</div>
                     </div>
-                    {currentStatus === status.invisible.id ? <div className={'text-'+status.invisible.color+'-600 font-medium'}>Selected</div> : null}
+                    {currentStatus === status.invisible.id ? <div className={status.invisible.textColor +' font-medium'}>Selected</div> : null}
                   </div>
 
                   <div onClick={() => setCurrentStatus(status.away.id)} className={'flex active:text-white dark:active:text-white border-gray-200 dark:border-zinc-800 border-y text-zinc-900 dark:text-zinc-300 items-center justify-between py-4 p-6 dark:active:bg-' + status.away.color + '-600 active:bg-' + status.away.color + '-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition duration-150'}>
                     <div className="flex items-center ">
-                      <div className={'mr-2 shadow-sm bg-'+status.away.color+'-500 h-6 w-6 flex flex-row rounded-full'}>
+                    <div className={'mr-2 shadow-sm ' + status.away.bgColor + ' h-6 w-6 flex flex-row rounded-full'}>
                       </div>
                       <div>{status.away.title}</div>
                     </div>
@@ -128,7 +128,7 @@ const StatusChange = (props: TabbedViewProps) => {
 
                   <div onClick={() => setCurrentStatus(status.dnd.id)} className={'flex active:text-white dark:active:text-white border-gray-200 dark:border-zinc-800 border-y text-zinc-900 dark:text-zinc-300 items-center justify-between py-4 p-6 dark:active:bg-' + status.dnd.color + '-600 active:bg-' + status.dnd.color + '-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition duration-150'}>
                     <div className="flex items-center ">
-                      <div className={'mr-2 shadow-sm bg-' + status.dnd.color + '-500 h-6 w-6 flex flex-row rounded-full'}>
+                      <div className={'mr-2 shadow-sm ' + status.dnd.bgColor + ' h-6 w-6 flex flex-row rounded-full'}>
                       </div>
                       <div>{status.dnd.title}</div>
                     </div>
