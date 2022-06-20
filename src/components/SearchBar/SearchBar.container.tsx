@@ -1,28 +1,12 @@
-import { IonInput } from '@ionic/react';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router';
 import SearchBarComponent from './SearchBar.component';
 import './SearchBar.css'
 
-export const SearchInput = () => {
-  const [text, setText] = useState<string>();
-  return (
-      <> 
-      <IonInput onIonChange={e => setText(e.detail.value!)} value={text} className="bg-zinc-900 w-full rounded-xl" enterkeyhint="search" inputMode='search' type='search'   clearInput={true} id="searchInput" placeholder="Search users, posts, lists" autofocus={false}></IonInput>
-      </>
-  )
-}
-
-
-const useFocus = () => {
-  const htmlElRef:any = useRef(null)
-  const setFocus = () => {htmlElRef.current &&  htmlElRef.current.focus()}
-
-  return [ htmlElRef, setFocus ] 
-}
 
 
 const SearchBar: React.FC = () => {
+
 
   const [isMobileMenuOpen, setMobileMenu] = useState(false);
 
@@ -42,7 +26,6 @@ const SearchBar: React.FC = () => {
   const searchBar = document.querySelector('.mobile-search-container .search-bar');
   const nav = document.querySelector('.nav-container');
   const nav2 = document.querySelector('ion-header');
-  const searchInput:any = document.querySelector('searchInput');
   const cancelBtn = document.querySelector('.mobile-search-container .cancel-btn');
 
   
@@ -65,10 +48,11 @@ if(cancelBtn && searchBar && nav2 && desktopNav){
 
 
 
+const [text, setText] = useState<string>();
 
 
   return (
-  <SearchBarComponent></SearchBarComponent>
+  <SearchBarComponent setText={setText} text={text}></SearchBarComponent>
   )
 }
 

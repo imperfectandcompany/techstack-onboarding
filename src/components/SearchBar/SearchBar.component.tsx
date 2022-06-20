@@ -1,7 +1,18 @@
-import { SearchInput } from './SearchBar.container'
+import { IonInput } from '@ionic/react'
 import './SearchBar.css'
 
-const SearchBarComponent: React.FC = () => {
+
+
+interface SearchBarProps {
+    setText(text: string): void
+    text: string
+}
+
+
+
+
+const SearchBarComponent = (props: SearchBarProps) => {
+
 
     const printSearch = () => {
         return (
@@ -10,7 +21,7 @@ const SearchBarComponent: React.FC = () => {
             <div className="link-search bg-red-500 z-40"></div>
             <div className="search-bar">
                 <form action="">
-                    <SearchInput></SearchInput>
+                <IonInput onIonChange={e => props.setText(e.detail.value || '')} value={props.text} className=" w-full rounded-xl" enterkeyhint="search" inputMode='search' type='search'   clearInput={true} id="searchInput" placeholder="Search users, posts, lists" autofocus={false}></IonInput>
                 </form>
             </div>
 

@@ -60,11 +60,36 @@
         border: 0;
         color: #fff;
         text-decoration: wavy orange !important;
+        outline: none;
+    }
+
+    ion-input {
+        font-weight:400;
+    }
+    
+    body .nav-container.active button.input-clear-icon.sc-ion-input-ios {
+        filter: brightness(50%) saturate(100%);
+    }
+
+    body.dark .nav-container.active button.input-clear-icon.sc-ion-input-ios {
+        filter: brightness(100) saturate(100%);
+    }    
+
+    body.dark .mobile-search-container input {
+        width: 100%;
+        padding: 4px 36px;
+        font-family: "Inter", sans-serif;
+        font-size: 17px;
+        border: 0;
+        background-color: black;
+        color: #616161 !important;
         border-radius: 8px;
         outline: none;
     }
 
-    .mobile-search-container input {
+
+
+    body:not(.dark) .mobile-search-container input {
         width: 100%;
         padding: 4px 36px;
         font-family: "Inter", sans-serif;
