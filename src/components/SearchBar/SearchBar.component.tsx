@@ -7,12 +7,13 @@ const SearchBarComponent: React.FC = () => {
         return (
             <>
       <div className="mobile-search-container ">
-            <div className="link-search"></div>
+            <div className="link-search bg-red-500 z-40"></div>
             <div className="search-bar">
                 <form action="">
                     <SearchInput></SearchInput>
                 </form>
             </div>
+
             <span className="cancel-btn">Cancel</span>
 
             <div className="search-results">
