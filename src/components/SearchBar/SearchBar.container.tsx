@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React,{  useState } from 'react';
 import { useParams } from 'react-router';
 import SearchBarComponent from './SearchBar.component';
 import './SearchBar.css'
@@ -12,10 +12,7 @@ const SearchBar: React.FC = () => {
 
   const { name } = useParams<{ name: string; }>();
 
-  const searchButton = document.querySelector('nav .desktop-nav .link-search');
-  const closeButton = document.querySelector('.search-container .link-close');
   const desktopNav = document.querySelector('.desktop-nav');
-  const searchContainer = document.querySelector('.search-container');
   const overlay = document.querySelector('.overlay');
 
 
@@ -27,11 +24,15 @@ const SearchBar: React.FC = () => {
   const nav = document.querySelector('.nav-container');
   const nav2 = document.querySelector('ion-header');
   const cancelBtn = document.querySelector('.mobile-search-container .cancel-btn');
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   
 if(searchBar && nav2 && desktopNav && navContainer){
   document.querySelector('.menu-search-button')?.addEventListener('click', () => {
     nav2.classList.add('move-up')
+    if (inputRef.current) {
+      inputRef.current.setFocus(), 100;
+    }
       navContainer.classList.add('active');
   document.querySelector('.search-bar')?.classList.add('active');
   })
@@ -52,7 +53,7 @@ const [text, setText] = useState<string>();
 
 
   return (
-  <SearchBarComponent setText={setText} text={text}></SearchBarComponent>
+  <SearchBarComponent setText={setText} inputRef={inputRef} text={text}></SearchBarComponent>
   )
 }
 
