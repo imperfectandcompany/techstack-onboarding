@@ -1,4 +1,4 @@
-import { IonInput } from '@ionic/react'
+import {  IonSearchbar } from '@ionic/react'
 import { Ref } from 'react'
 import './SearchBar.css'
 
@@ -20,10 +20,9 @@ const SearchBarComponent = (props: SearchBarProps) => {
         return (
             <>
       <div className="mobile-search-container ">
-            <div className="link-search bg-red-500 z-40"></div>
             <div className="search-bar">
                 <form action="">
-                <IonInput ref={(ref) => props.inputRef.current = ref} onIonChange={e => props.setText(e.detail.value || '')} value={props.text} className=" w-full rounded-xl" enterkeyhint="search" inputMode='search' type='search'   clearInput={true} id="searchInput" placeholder="Search users, posts, lists" autofocus={false}></IonInput>
+                    <IonSearchbar searchIcon={''} ref={(ref) => props.inputRef.current = ref}  onIonChange={e => props.setText(e.detail.value || '')} showCancelButton='never' animated debounce={1000} placeholder="Search users, posts, or lists"  enterkeyhint='search' type='search' inputmode='search' value={props.text}></IonSearchbar>
                 </form>
             </div>
 

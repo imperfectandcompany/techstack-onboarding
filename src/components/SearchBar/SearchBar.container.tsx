@@ -49,11 +49,13 @@ if(cancelBtn && searchBar && nav2 && desktopNav){
 
 
 
-const [text, setText] = useState<string>();
+const [text, setText] = useState<string>('');
 
 
   return (
+  <>
   <SearchBarComponent setText={setText} inputRef={inputRef} text={text}></SearchBarComponent>
+  </>
   )
 }
 
