@@ -1,9 +1,8 @@
-import { IonItem, IonList, IonNote } from '@ionic/react'
+import { IonItem,  IonNote } from '@ionic/react'
 import { useState } from 'react'
 import MoreOptions from './MoreOptions'
 import { LikeButton } from './LikeButton'
 import Avatar from './Avatar'
-import EmptyState from './EmptyState'
 import { buttonStyle } from './common/ButtonCTA'
 import styles from './ExploreContainer.module.css' // Import css modules stylesheet as styles
 import PropTypes from 'prop-types'
@@ -61,8 +60,20 @@ const ExploreContainer: React.FC = () => {
       postId: 3,
       username: 'jannet',
       isOwner: true,
+      likes: 6,
+    },
+    {
+      postId: 4,
+      username: 'another',
+      isOwner: false,
       likes: 9,
     },
+    {
+      postId: 5,
+      username: 'another',
+      isOwner: false,
+      likes: 2,
+    },            
   ]
 
   // this data is passed to the emptyState Component.
@@ -117,7 +128,7 @@ const ExploreContainer: React.FC = () => {
   const printPost = (props: postObject) => {
     return (
       // key is necessary for each item in the list
-      <IonItem key={props.postId} className={`${styles.post}`}>
+      <IonItem key={props.postId} className={`${styles.post}`} lines="none">
         <div className='transition py-6 bg-white dark:bg-zinc-900 shadow-sm md:rounded md:px-6 md:py-2 lg:ml-44 lg:mr-44 xl:ml-96 xl:mr-96'>
           <div className='px-6 pb-6 md:px-0'>
             <div className='flex items-center justify-between'>
@@ -194,7 +205,7 @@ const ExploreContainer: React.FC = () => {
   }
 
   return (
-    <div className='space-y-2'>
+    <div className=''>
       {/* 
       Prints out each post available to the user
       Contains multiple components: Avatar, likeButton, moreOptions
@@ -215,10 +226,7 @@ const ExploreContainer: React.FC = () => {
       parameters and works in sync
 
       */}
-      {EmptyState(EmptyStateProps)}
-      <IonList class='h-auto overflow-auto space-y-2 bg-transparent' lines='none'>
-        {arrayOfPosts.map((post) => printPost(post))}
-      </IonList>
+
       {/* isOwner is necessary to identify whether the menu is from the perspective of someone viewing the post
       or from the perspective of the owner of the post (one who created the post)
       based on  this optional value within the slideup menu component, we can present the user
@@ -239,6 +247,8 @@ const ExploreContainer: React.FC = () => {
 
 
        */}
+
+
       <SlideUpMenu
         isOwner={isOwner(postId)}
         setMenuVisibility={setMenuVisibility}

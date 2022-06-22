@@ -11,8 +11,8 @@ export const disableContentScrollY = (contentEl: HTMLElement): boolean => {
 
 interface MoreOptionsProps {
   isOwner?: boolean
-  setPostID(postId: number): number
-  setMenuVisibility(value: boolean): boolean
+  setPostID(postId: number): void
+  setMenuVisibility(value: boolean): void
   isMenuOpen: boolean
   id: number
 }
