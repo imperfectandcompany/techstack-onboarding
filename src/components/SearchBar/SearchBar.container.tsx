@@ -27,6 +27,7 @@ const SearchBar: React.FC = () => {
       nav2?.classList.remove('move-up')
       navContainer?.classList.remove('active');
       document.querySelector('.search-bar')?.classList.remove('active');
+      document.removeEventListener('keydown', escFunction)
     }
   }, [])
   
@@ -39,9 +40,6 @@ if(searchBar && nav2 && desktopNav && navContainer){
       navContainer.classList.add('active');
   document.querySelector('.search-bar')?.classList.add('active');
   document.addEventListener('keydown', escFunction)
-  return () => {
-    document.removeEventListener('keydown', escFunction)
-  }
   })
 }
 
@@ -50,6 +48,7 @@ if(cancelBtn && searchBar && nav2 && navContainer && desktopNav){
     nav2.classList.remove('move-up')
       navContainer.classList.remove('active');
       document.querySelector('.search-bar')?.classList.remove('active');
+      document.removeEventListener('keydown', escFunction)
   })
 }
 
