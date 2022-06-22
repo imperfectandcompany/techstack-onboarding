@@ -1,5 +1,5 @@
 
-  interface postComments {
+  export interface postComments {
     id: number
     commenterUid: number
     comment: string
@@ -8,7 +8,7 @@
     hidden: boolean
   }
 
-  interface postObject {
+  export interface postObject {
     id: number
     posterUid: number
     post: string
@@ -18,7 +18,7 @@
     comments: postComments[]
   }
   
-	const Posts:postObject[] = [
+	export const Posts:postObject[] = [
 		{
 			id: 1,
             posterUid: 1,
