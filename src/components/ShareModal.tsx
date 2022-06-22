@@ -4,7 +4,7 @@ import { useState } from 'react'
 import './ShareModal.css'
 
 interface ContainerProps {
-  menuToggleFunction(value: boolean): boolean
+  menuToggleFunction(value: boolean): void
 }
 
 const ShareModal = (props: ContainerProps) => {

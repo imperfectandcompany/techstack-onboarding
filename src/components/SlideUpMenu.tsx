@@ -17,10 +17,14 @@ const SlideUpMenu = (props: MoreOptionsProps) => {
   }, [])
 
   useEffect(() => {
+
     // if menu is not open, do not add accessibility event listener for escape key
     if (!props.isMenuOpen) {
+      document.querySelector('ion-header')?.classList.remove('move-up')
       return
     }
+    document.querySelector('ion-header')?.classList.add('move-up')
+
 
     document.addEventListener('keydown', escFunction)
     return () => {
@@ -51,7 +55,7 @@ const SlideUpMenu = (props: MoreOptionsProps) => {
             className='menu-icon-container mx-auto '
             onClick={() => props.setMenuVisibility(!props.isMenuOpen)}
           >
-            <div className='menu-icon  mb-80 '>
+            <div className='menu-icon'>
               <span className='line-1'></span>
               <span className='line-2'></span>
             </div>

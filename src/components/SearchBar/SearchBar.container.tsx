@@ -13,15 +13,9 @@ const SearchBar: React.FC = () => {
   const { name } = useParams<{ name: string; }>();
 
   const desktopNav = document.querySelector('.desktop-nav');
-  const overlay = document.querySelector('.overlay');
-
-
-  // Mobile Version
-    overlay?.classList.add('show');
 
   const navContainer = document.querySelector('.nav-container');
   const searchBar = document.querySelector('.mobile-search-container .search-bar');
-  const nav = document.querySelector('.nav-container');
   const nav2 = document.querySelector('ion-header');
   const cancelBtn = document.querySelector('.mobile-search-container .cancel-btn');
   const inputRef = React.useRef<HTMLInputElement>(null);

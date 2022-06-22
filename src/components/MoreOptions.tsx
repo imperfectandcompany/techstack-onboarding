@@ -3,16 +3,10 @@ import { ellipsisHorizontal } from 'ionicons/icons'
 import { useCallback, useEffect } from 'react'
 import './MoreOptions.css'
 
-export const disableContentScrollY = (contentEl: HTMLElement): boolean => {
-  contentEl.style.setProperty('overflow', 'hidden')
-
-  return true
-}
-
 interface MoreOptionsProps {
   isOwner?: boolean
   setPostID(postId: number): number
-  setMenuVisibility(value: boolean): boolean
+  setMenuVisibility(value: boolean): void
   isMenuOpen: boolean
   id: number
 }

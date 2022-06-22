@@ -100,13 +100,10 @@
         outline: none;
     }
     
-    div.mobile-search-container {
-        transition: all 400ms ease;
-    }
+ 
 
     .nav-container.active div.mobile-search-container {
 display:flex;
-        transition: all 400ms ease;
         z-index: 9 !important;
     }
 
