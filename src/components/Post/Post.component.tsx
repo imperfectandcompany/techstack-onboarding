@@ -11,32 +11,10 @@ type PostComponentProps = {
     setMenuVisibility: (isMenuOpen: boolean) => void;
     isMenuOpen: boolean
     trimText(text: string): JSX.Element
+    isOwner(postID: number): boolean
 }
 
-const PostComponent = ({ post, setPostId, setMenuVisibility, isMenuOpen, trimText }: PostComponentProps) => {
-
-
-      // dummy functions, move to utilities for production when tied to backend
-  // returns the user's iD
-  const getUid = () => {
-    return 1
-  }
-  // get userId of the post
-  const getPostUid = (postID: number) => {
-    // async function to backend api that returns the uid belonging to post id
-    return 1
-  }
-  // checks to see if user is owner of the post
-  const isOwner = (postID: number) => {
-    // declare variables
-    const currentUid = getUid()
-    // get the userID of the post the user is accessing,
-    // set before the menu through the individual post component
-    const posterUid = getPostUid(postID)
-    // getUid returns the uid of the current user and matches to see if it equals the Uid of the poster
-    return currentUid === posterUid
-  }
-
+const PostComponent = ({ post, setPostId, setMenuVisibility, isMenuOpen, trimText, isOwner }: PostComponentProps) => {
 
     return (<>
 

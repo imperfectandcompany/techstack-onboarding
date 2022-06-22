@@ -1,6 +1,18 @@
 import React, { useState } from 'react';
 import PostComponent from './Post.component';
 
+// all data here will be moved to a global centralized store in another
+// branch / feature
+
+/*
+DATA FLOW <-- READ FOR UBIQUTIOUS LANGUAGE THROUGHOUGHT THIS COMPONENT
+_________
+Parent component (this compenent!) defines a function with a settable value [isMenuOpen, setMenu()]
+The function and value is passed as a prop [isMenuOpen, setMenu()] to the child components (MoreOptions, SlideUpMenu!)
+The child components then invokes the prop [setMenu()]
+The parent function is then called and changes the value [isMenuOpen]
+Then the parent component is re-rendered along with its children (prop isMenuOpen is re-rendered in the child components as well)
+*/
 
 // start of enforcing data types for posts, update in the future
 export interface postObject {
@@ -45,6 +57,30 @@ const Post = (props: postObject) => {
     )
   }
 
+
+
+  // dummy functions, move to utilities for production when tied to backend
+  // returns the user's iD
+  const getUid = () => {
+    return 1
+  }
+  // get userId of the post
+  const getPostUid = (postID: number) => {
+    // async function to backend api that returns the uid belonging to post id
+    return 1
+  }
+  // checks to see if user is owner of the post
+  const isOwner = (postID: number) => {
+    // declare variables
+    const currentUid = getUid()
+    // get the userID of the post the user is accessing,
+    // set before the menu through the individual post component
+    const posterUid = getPostUid(postID)
+    // getUid returns the uid of the current user and matches to see if it equals the Uid of the poster
+    return currentUid === posterUid
+  }
+
+
   // this is set by the child const (printPost when the more options button is clicked)
   // this is necessary to be set on click prior to the SlideUpMenu popping up.
   // lets us know which post a user is opening the menu up for
@@ -56,7 +92,7 @@ const Post = (props: postObject) => {
   return (
     <div>
       <PostComponent post={props} setPostId={setPostId} setMenuVisibility={setMenuVisibility} isMenuOpen={isMenuOpen}
-        trimText={trimText} />
+        trimText={trimText} isOwner={isOwner}/>
     </div>
   )
 }

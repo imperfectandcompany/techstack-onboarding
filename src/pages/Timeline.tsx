@@ -2,8 +2,7 @@ import { IonContent, IonItem, IonList, IonPage, ScrollDetail } from '@ionic/reac
 import Post from '../components/Post/Post.container'
 import Toolbar from '../components/Toolbar/Toolbar.container'
 import Menu from './Menu'
-import './Signup.css'
-import styles from '../components/ExploreContainer.module.css' // Import css modules stylesheet as styles
+import './Timeline.css'
 import React from 'react'
 import PostEmptyState from '../components/Post/Post.emptyState'
 
@@ -112,12 +111,10 @@ const Timeline: React.FC = () => {
 
       */}
               {arrayOfPosts.map((item) => (
-                <IonItem key={item.postId} className=" snap-start flex items-center justify-center" class={`${styles.post}`} lines="none">
+                <IonItem key={item.postId} className=" snap-start flex items-center justify-center post"  lines="none">
                   <Post postId={item.postId} username={item.username} isOwner={item.isOwner} likes={0}></Post>
                 </IonItem>))}
-
             </IonList>
-
           </div>
         </div>
 

@@ -2,9 +2,12 @@ import { useCallback, useEffect } from 'react'
 import './SlideUpMenu.css'
 import ShareModal from './ShareModal'
 
+//  currently not functional UNTIL search button is merged to seperate area of concerns
+//  for this to work, css needs to be included.
+
 interface MoreOptionsProps {
   isOwner?: boolean
-  setMenuVisibility(isMenuOpen: boolean): boolean
+  setMenuVisibility(isMenuOpen: boolean): void
   isMenuOpen: boolean
 }
 
