@@ -19,7 +19,7 @@ const SearchBarComponent = (props: SearchBarProps) => {
     const printSearch = () => {
         return (
             <>
-      <div className="mobile-search-container ">
+      <div className="mobile-search-container">
             <div className="search-bar">
                 <form action="">
                     <IonSearchbar searchIcon={''} ref={(ref) => props.inputRef.current = ref}  onIonChange={e => props.setText(e.detail.value || '')} showCancelButton='never' animated debounce={1000} placeholder="Search users, posts, or lists"  enterkeyhint='search' type='search' inputmode='search' value={props.text}></IonSearchbar>
