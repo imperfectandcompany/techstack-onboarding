@@ -36,7 +36,7 @@
         position: relative;
         box-sizing: border-box;
         color: rgba(0,0,0,0.8);
-        backdrop-filter: blur(33px);
+        backdrop-filter: blur(30px);
         background-blend-mode: overlay;
         justify-content: start;
         overflow: hidden;
@@ -46,7 +46,10 @@
 
 
     body.dark .nav-container .desktop-nav {
-        background: black ;
+        background-color: #0000007d;   
+        backdrop-filter: blur(20px);
+        color: rgba(0,0,0,0.8);
+
     }
 
     .nav-container.active .desktop-nav {
