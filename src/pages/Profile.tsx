@@ -5,50 +5,11 @@ import {
   IonHeader,
   IonPage,
   IonToolbar,
-  ScrollDetail,
 } from '@ionic/react'
-
-
-interface profileProps {
-  username:string
-  followsMe:boolean
-  following:boolean
-  followerCount:number
-  followingCount:number
-  firstName:string
-  lastName:string
-}
-
-const profileData:profileProps = ()=> [
-{
-  username:'',
-  followsMe:true,
-  following:false,
-  followerCount:4,
-  followingCount:6,
-  firstName:'joe',
-  lastName:'mama'
-}
-]
+import { LikeButton } from '../components/LikeButton';
+import ProfileData from '../store/Profile';
 
 const Profile: React.FC = () => {
-  let prevScrollpos = window.pageYOffset
-  function onScroll(e: CustomEvent<ScrollDetail>) {
-    const currentScrollPos = e.detail.scrollTop
-    const toolbar = document.getElementById('toolbar')
-    const header = document.getElementById('header')
-    if (toolbar && currentScrollPos > 80) {
-      if (prevScrollpos > currentScrollPos) {
-        toolbar.style.top = '0px'
-      } else if (header?.classList.contains('header-collapse-condense-inactive')) {
-        toolbar.style.top = '-44px'
-      }
-      prevScrollpos = currentScrollPos
-    }
-  }
-
-const uatww = profileData.firstName;
-  
 
   return (
     <IonPage>
@@ -65,8 +26,6 @@ const uatww = profileData.firstName;
       <IonContent
         fullscreen={true}
         color='light'
-        scrollEvents={true}
-        onIonScroll={(e) => onScroll(e)}
       >
         <div className="flex items-center justify-evenly">
           {/* profile pic */}
@@ -76,20 +35,20 @@ const uatww = profileData.firstName;
             {/* username */}
             <div className="flex gap-2">
               <div>
-                Username
+                {ProfileData.username}
               </div>
               {/* relationship status chip */}
               <div>
-                Follows You
+                {ProfileData.following && ProfileData.followsMe ? 'Mutual Followers' : ProfileData.followsMe ? 'Follows You': null}
               </div>
             </div>
             {/* clout check */}
             <div className="flex gap-2">
               <div>
-                12 Followers
+                {ProfileData.followerCount} Followers
               </div>
               <div>
-                12 Following
+              {ProfileData.followingCount} Following
               </div>
             </div>
           </div>
@@ -101,10 +60,10 @@ const uatww = profileData.firstName;
     {/* Name and Bio */}
         <div>
           <div>
-            Joe Mama
+            {ProfileData.firstName + ' ' + ProfileData.lastName}
           </div>
           <div>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+         {ProfileData.biography}
           </div>
           <div>
           </div>
@@ -113,9 +72,9 @@ const uatww = profileData.firstName;
 
           {/* row for interactions */}
           <div className="flex justify-between">
-            <div className="flex gap-2">
+            <div className="flex gap-2 items-center">
               <div >
-                heart
+                {LikeButton(5)}
               </div>
               <div>
                 more options
@@ -126,7 +85,7 @@ const uatww = profileData.firstName;
                 message
               </div>
               <div>
-                follow
+                {ProfileData.following ? 'Unfollow': 'Follow'}
               </div>
             </div>
           </div>
@@ -169,14 +128,7 @@ const uatww = profileData.firstName;
   Recent Activity
 </div>
 </div>
-
-
-
-
-
-
-        </div>
-
+      </div>
       </IonContent>
     </IonPage>
   )
