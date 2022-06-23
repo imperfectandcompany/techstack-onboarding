@@ -10,8 +10,8 @@ type PostComponentProps = {
     setPostId: (postId: number) => void;
     setMenuVisibility: (isMenuOpen: boolean) => void;
     isMenuOpen: boolean
-    trimText(text: string): JSX.Element
-    isOwner(postID: number): boolean
+    trimText: (text: string) => JSX.Element
+    isOwner: (postID: number) => boolean
 }
 
 const PostComponent = ({ post, setPostId, setMenuVisibility, isMenuOpen, trimText, isOwner }: PostComponentProps) => {
