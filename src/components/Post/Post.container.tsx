@@ -45,19 +45,15 @@ const Post = (props: postObject) => {
         <span className='mr-1 whitespace-pre-line'>
           {isPostCollapsed ? originalContent : content + '...'}
         </span>
-        {originalContent.length > maxLength ? (
-          <button
+        { originalContent.length > maxLength && ( <button
             className='text-base font-medium text-blue-400 capitalize transition active:opacity-50 hover:text-blue-400 focus:text-blue-500 focus:outline-none'
             onClick={(e) => readMorePostHandler(e)}
           >
             {isPostCollapsed ? 'show less' : 'show more'}
-          </button>
-        ) : null}
+          </button> ) }        
       </>
     )
   }
-
-
 
   // dummy functions, move to utilities for production when tied to backend
   // returns the user's iD
@@ -80,12 +76,10 @@ const Post = (props: postObject) => {
     return currentUid === posterUid
   }
 
-
   // this is set by the child const (printPost when the more options button is clicked)
   // this is necessary to be set on click prior to the SlideUpMenu popping up.
   // lets us know which post a user is opening the menu up for
   const [postId, setPostId] = useState<number>()
-
 
   const [isMenuOpen, setMenuVisibility] = useState(false)
 
