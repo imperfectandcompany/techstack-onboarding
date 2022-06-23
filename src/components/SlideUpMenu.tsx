@@ -7,7 +7,7 @@ import ShareModal from './ShareModal'
 
 interface MoreOptionsProps {
   isOwner?: boolean
-  setMenuVisibility(isMenuOpen: boolean): void
+  setMenuVisibility: (isMenuOpen: boolean) => void
   isMenuOpen: boolean
 }
 
