@@ -5,7 +5,7 @@ import './SearchBar.css'
 
 
 interface SearchBarProps {
-    setText(text: string): void
+    setText: (text: string) => void
     text: string
     inputRef: Ref<HTMLInputElement>
 }
