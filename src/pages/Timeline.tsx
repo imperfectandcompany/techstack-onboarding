@@ -75,7 +75,6 @@ const Timeline: React.FC = () => {
         id='main'
         fullscreen={true}
         color='light'
-        class=''
         scrollEvents={true}
         onIonScroll={(e) => onScroll(e)}
       >
