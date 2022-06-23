@@ -230,14 +230,6 @@ const ExploreContainer: React.FC = () => {
        This component is 'activated' through the moreOptions Component within the printPost function.
        The component is then deactivated when the user clicks the x button that calls the setMenu function.
        The same function that is activates this menu through moreOption within the printPost function.
-
-      <SlideUpMenu
-        isOwner={isOwner(postId)}
-        setMenuVisibility={setMenuVisibility}
-        isMenuOpen={isMenuOpen}
-      ></SlideUpMenu>
-
-
        */}
       <SlideUpMenu
         isOwner={isOwner(postId)}
