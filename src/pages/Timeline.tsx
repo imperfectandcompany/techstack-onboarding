@@ -1,13 +1,18 @@
-import { IonContent, IonHeader, IonMenuToggle, IonNote, IonPage, ScrollDetail } from '@ionic/react'
-import ExploreContainer from '../components/ExploreContainer'
+import { IonContent, IonItem, IonList, IonPage, ScrollDetail } from '@ionic/react'
+import Post from '../components/Post/Post.container'
+import Toolbar from '../components/Toolbar/Toolbar.container'
 import Menu from './Menu'
-import './Signup.css'
+import './Timeline.css'
+import React from 'react'
+import PostEmptyState from '../components/Post/Post.emptyState'
+
+
 
 const Timeline: React.FC = () => {
+
   let prevScrollpos = window.pageYOffset
   function onScroll(e: CustomEvent<ScrollDetail>) {
     const currentScrollPos = e.detail.scrollTop
-    const toolbar = document.getElementById('toolbar')
     const header = document.getElementById('header')
     if (header && currentScrollPos > 80) {
       if (prevScrollpos > currentScrollPos) {
@@ -19,78 +24,53 @@ const Timeline: React.FC = () => {
     }
   }
 
-  const printHeader = () => {
-    return (
-      <div className='flex items-center  shadow-sm   justify-between h-16 max-w-screen-xl px-4 mx-auto'>
-        <div className='flex flex-1 w-0 lg:hidden'>
-          <IonMenuToggle>
-            <button
-              className='p-2 text-zinc-300 bg-zinc-50/40 dark:bg-zinc-800/40 dark:hover:bg-zinc-900/40 transition cursor-pointer rounded-full'
-              type='button'
-            >
-              <svg
-                className='w-5 h-5'
-                fill='none'
-                stroke='currentColor'
-                viewBox='0 0 24 24'
-                xmlns='http://www.w3.org/2000/svg'
-              >
-                <path
-                  d='M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z'
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth='2'
-                ></path>
-              </svg>
-            </button>
-          </IonMenuToggle>
-        </div>
-        <div className='flex items-center space-x-4'>
-          <span className='rounded-lg text-zinc-300'>
-            <div className='flex items-center justify-between '>
-              <div className='flex space-x-4'>
-                <IonNote color=''>Public</IonNote>
-                <IonNote color='medium'>Private</IonNote>
-              </div>
-            </div>
-          </span>
-        </div>
-        <div className='flex justify-end flex-1 w-0 lg:hidden'>
-          <button
-            className='p-2 text-zinc-300 bg-zinc-50/40 dark:bg-zinc-800/40 dark:hover:bg-zinc-900/40 rounded-full'
-            type='button'
-          >
-            <svg
-              className='w-5 h-5'
-              fill='currentColor'
-              viewBox='0 0 20 20'
-              xmlns='http://www.w3.org/2000/svg'
-            >
-              <path
-                clipRule='evenodd'
-                d='M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z'
-                fillRule='evenodd'
-              ></path>
-            </svg>
-          </button>
-        </div>
-      </div>
-    )
+  // start of enforcing data types for posts, update in the future
+  interface postObject {
+    postId: number
+    username: string
+    isOwner: boolean
+    post?: string
+    likes: number
   }
+
+  // this data is passed to the post component
+  const arrayOfPosts: postObject[] = [
+    {
+      postId: 1,
+      username: 'john',
+      isOwner: true,
+      likes: 7,
+    },
+    {
+      postId: 2,
+      username: 'joe',
+      isOwner: true,
+      likes: 5,
+    },
+    {
+      postId: 3,
+      username: 'jannet',
+      isOwner: true,
+      likes: 6,
+    },
+    {
+      postId: 4,
+      username: 'another',
+      isOwner: false,
+      likes: 9,
+    },
+    {
+      postId: 5,
+      username: 'another',
+      isOwner: false,
+      likes: 2,
+    },
+  ]
 
   return (
     <IonPage id='main'>
       <Menu></Menu>
-      <IonHeader
-        class='ion-no-border'
-        id='header'
-        className='transition-all 
-    duration-1000
-     top-0 z-40 backdrop-blur-sm bg-white/95 shadow-sm dark:bg-zinc-900/95
-    '
-      >
-        {printHeader()}
-      </IonHeader>
+      <Toolbar></Toolbar>
       <IonContent
         id='main'
         fullscreen={true}
@@ -98,7 +78,45 @@ const Timeline: React.FC = () => {
         scrollEvents={true}
         onIonScroll={(e) => onScroll(e)}
       >
-        <ExploreContainer></ExploreContainer>
+        <div className="flex flex-col gap-2">
+          {/* Renders EmptyPostState Container if posts aren't available */}
+          {arrayOfPosts.length > 0 ?
+            null
+            :
+            <div className="flex flex-col">
+              <PostEmptyState></PostEmptyState>
+            </div>
+          }
+          <div>
+            <IonList class='gap-2 flex flex-col' lines='none'>
+              {/* 
+      Prints out each post available to the user
+      Contains multiple components: Avatar, likeButton, moreOptions
+
+      //Avatar Component, currently only passed name of the poster -> data structure is a seperate feature
+
+      likeButton passes the current like count of the post at the time of viewing
+      increments by one onClick within likeButton Component.
+
+      moreOptions passes a setMenu function and isMenuOpen function from the parent
+      component (this), moreOptions is the child component. 
+      
+      To phrase it another way,
+      there is no data stored inside moreOptions to identify if it is open or not
+      the function that sets this data that is called from within the child component
+      (moreOptions) is set from within THIS component, which is the parent component.
+      This is done because it is also used for the SlideUpMenu which holds those same
+      parameters and works in sync
+
+      */}
+              {arrayOfPosts.map((item) => (
+                <IonItem key={item.postId} className=" snap-start flex items-center justify-center post"  lines="none">
+                  <Post postId={item.postId} username={item.username} isOwner={item.isOwner} likes={0}></Post>
+                </IonItem>))}
+            </IonList>
+          </div>
+        </div>
+
       </IonContent>
     </IonPage>
   )

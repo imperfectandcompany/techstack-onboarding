@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@headlessui/react": "^1.6.4",
     "@ionic/react": "^6.0.0",
     "@ionic/react-router": "^6.0.0",
     "@lottiefiles/react-lottie-player": "^3.4.7",

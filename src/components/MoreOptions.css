@@ -131,6 +131,14 @@ nav .options-nav {
   transition: all 1000ms ease;
 }
 
+.nav-container nav.menu-move-up {
+  margin-top: -70px;
+  transition: all 1000ms ease;
+  transition-delay: 510ms;
+
+
+}
+
 .nav-container.active .active-nav {
   height: 100vh;
 }

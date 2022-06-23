@@ -13,6 +13,10 @@ import {
 import React, { useRef, useState } from 'react'
 import { animationBuilder, pageTransition } from '../App'
 import styles from './SignIn.module.css' // Import css modules stylesheet as styles
+import { createBrowserHistory } from 'history';
+export const history = createBrowserHistory({forceRefresh:true})
+
+
 
 /*
     useState<string | undefined | null>("");
@@ -275,6 +279,7 @@ const Recovery: React.FC = () => {
             routerAnimation={animationBuilder}
             routerLink='/timeline'
             routerDirection='forward'
+            onClick={()=>history.push('timeline')}
           >
             <IonButton
               className='flex ion-margin-top ion-margin-horizontal t-8 font-bold'

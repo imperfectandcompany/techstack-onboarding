@@ -2,15 +2,12 @@ import { useCallback, useEffect } from 'react'
 import './SlideUpMenu.css'
 import ShareModal from './ShareModal'
 
-export const disableContentScrollY = (contentEl: HTMLElement): boolean => {
-  contentEl.style.setProperty('overflow', 'hidden')
-
-  return true
-}
+//  currently not functional UNTIL search button is merged to seperate area of concerns
+//  for this to work, css needs to be included.
 
 interface MoreOptionsProps {
   isOwner?: boolean
-  setMenuVisibility(value: boolean): boolean
+  setMenuVisibility: (isMenuOpen: boolean) => void
   isMenuOpen: boolean
 }
 
@@ -51,7 +48,7 @@ const SlideUpMenu = (props: MoreOptionsProps) => {
             <a>Delete</a>
           </li>
           <li>
-            <ShareModal optionalParentfunction={props.setMenuVisibility}></ShareModal>
+            <ShareModal menuToggleFunction={props.setMenuVisibility}></ShareModal>
           </li>
           <div
             className='menu-icon-container mx-auto '
