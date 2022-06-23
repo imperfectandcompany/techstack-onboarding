@@ -68,7 +68,7 @@ const Timeline: React.FC = () => {
   ]
 
   return (
-    <IonPage id='main' className="">
+    <IonPage id='main'>
       <Menu></Menu>
       <Toolbar></Toolbar>
       <IonContent
