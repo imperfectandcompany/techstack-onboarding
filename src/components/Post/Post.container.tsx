@@ -23,7 +23,24 @@ export interface postObject {
   likes: number
 }
 
-const Post = (props: postObject) => {
+export interface postFunctions {
+  postId: number
+  username: string
+  isOwner: boolean
+  post?: string
+  likes: number
+}
+
+
+interface IPost extends postObject, postFunctions {
+  setPostId: (postId: number) => void
+  setMenuVisibility: (isMenuOpen: boolean) => void
+  isMenuOpen: boolean
+}
+
+
+
+const Post = (props: IPost) => {
   /* allows us to trim content of the post if it exceeds 140 characters. 
   The remaining content is stored in a temporary variable that is revealed if the user clicks 'show more'. */
   const trimText = (text: string) => {
@@ -55,38 +72,17 @@ const Post = (props: postObject) => {
     )
   }
 
-  // dummy functions, move to utilities for production when tied to backend
-  // returns the user's iD
-  const getUid = () => {
-    return 1
-  }
-  // get userId of the post
-  const getPostUid = (postID: number) => {
-    // async function to backend api that returns the uid belonging to post id
-    return 1
-  }
-  // checks to see if user is owner of the post
-  const isOwner = (postID: number) => {
-    // declare variables
-    const currentUid = getUid()
-    // get the userID of the post the user is accessing,
-    // set before the menu through the individual post component
-    const posterUid = getPostUid(postID)
-    // getUid returns the uid of the current user and matches to see if it equals the Uid of the poster
-    return currentUid === posterUid
-  }
+
 
   // this is set by the child const (printPost when the more options button is clicked)
   // this is necessary to be set on click prior to the SlideUpMenu popping up.
   // lets us know which post a user is opening the menu up for
-  const [postId, setPostId] = useState<number>()
 
-  const [isMenuOpen, setMenuVisibility] = useState(false)
 
   return (
     <div>
-      <PostComponent post={props} setPostId={setPostId} setMenuVisibility={setMenuVisibility} isMenuOpen={isMenuOpen}
-        trimText={trimText} isOwner={isOwner}/>
+      <PostComponent post={props} setPostId={props.setPostId} setMenuVisibility={props.setMenuVisibility} isMenuOpen={props.isMenuOpen}
+        trimText={trimText} isOwner={props.isOwner}/>
     </div>
   )
 }

@@ -2,7 +2,6 @@ import { IonNote } from '@ionic/react'
 import Avatar from '../Avatar'
 import { LikeButton } from '../LikeButton'
 import MoreOptions from '../MoreOptions'
-import SlideUpMenu from '../SlideUpMenu'
 import { postObject } from './Post.container'
 
 type PostComponentProps = {
@@ -11,10 +10,10 @@ type PostComponentProps = {
     setMenuVisibility: (isMenuOpen: boolean) => void;
     isMenuOpen: boolean
     trimText: (text: string) => JSX.Element
-    isOwner: (postID: number) => boolean
+    isOwner: boolean
 }
 
-const PostComponent = ({ post, setPostId, setMenuVisibility, isMenuOpen, trimText, isOwner }: PostComponentProps) => {
+const PostComponent = ({ post, setPostId, setMenuVisibility, isMenuOpen, trimText }: PostComponentProps) => {
 
     return (<>
 
@@ -83,11 +82,6 @@ const PostComponent = ({ post, setPostId, setMenuVisibility, isMenuOpen, trimTex
         isMenuOpen={isMenuOpen}
       ></SlideUpMenu>
        */}
-            <SlideUpMenu
-                isOwner={isOwner(post.postId)}
-                setMenuVisibility={setMenuVisibility}
-                isMenuOpen={isMenuOpen}
-            ></SlideUpMenu>
         </div>
     </>
 
