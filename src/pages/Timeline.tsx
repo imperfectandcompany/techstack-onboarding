@@ -1,10 +1,13 @@
 import { IonContent, IonItem, IonList, IonPage, ScrollDetail } from '@ionic/react'
-import Post from '../components/Post/Post.container'
+import Post, { postObject } from '../components/Post/Post.container'
 import Toolbar from '../components/Toolbar/Toolbar.container'
 import Menu from './Menu'
 import './Timeline.css'
-import React from 'react'
+import React, { useState } from 'react'
 import PostEmptyState from '../components/Post/Post.emptyState'
+import SlideUpMenu from '../components/SlideUpMenu'
+
+
 
 
 
@@ -24,14 +27,7 @@ const Timeline: React.FC = () => {
     }
   }
 
-  // start of enforcing data types for posts, update in the future
-  interface postObject {
-    postId: number
-    username: string
-    isOwner: boolean
-    post?: string
-    likes: number
-  }
+
 
   // this data is passed to the post component
   const arrayOfPosts: postObject[] = [
@@ -67,6 +63,35 @@ const Timeline: React.FC = () => {
     },
   ]
 
+
+  // dummy functions, move to utilities for production when tied to backend
+  // returns the user's iD
+  const getUid = () => {
+    return 1
+  }
+  // get userId of the post
+  const getPostUid = (postID: number) => {
+    // async function to backend api that returns the uid belonging to post id
+    return 1
+  }
+  // checks to see if user is owner of the post
+  const isOwner = (postID: number | undefined) => {
+    // declare variables
+    const currentUid = getUid()
+    if(postID){
+          // get the userID of the post the user is accessing,
+    // set before the menu through the individual post component
+    const posterUid = getPostUid(postID)
+    // getUid returns the uid of the current user and matches to see if it equals the Uid of the poster
+    return currentUid === posterUid
+    } else {
+      return undefined;
+    }
+  }
+  const [isMenuOpen, setMenuVisibility] = useState(false)
+
+  const [postId, setPostId] = useState<number | undefined>()
+
   return (
     <IonPage id='main'>
       <Menu></Menu>
@@ -75,6 +100,7 @@ const Timeline: React.FC = () => {
         id='main'
         fullscreen={true}
         color='light'
+        class='bg-red-500'
         scrollEvents={true}
         onIonScroll={(e) => onScroll(e)}
       >
@@ -109,11 +135,18 @@ const Timeline: React.FC = () => {
       parameters and works in sync
 
       */}
+
+      
               {arrayOfPosts.map((item) => (
                 <IonItem key={item.postId} className=" snap-start flex items-center justify-center post"  lines="none">
-                  <Post postId={item.postId} username={item.username} isOwner={item.isOwner} likes={0}></Post>
+                  <Post postId={item.postId} username={item.username} isOwner={item.isOwner} likes={0} setPostId={setPostId} setMenuVisibility={setMenuVisibility} isMenuOpen={isMenuOpen}></Post>
                 </IonItem>))}
             </IonList>
+            <SlideUpMenu
+                isOwner={isOwner(postId)}
+                setMenuVisibility={setMenuVisibility}
+                isMenuOpen={isMenuOpen}
+            ></SlideUpMenu>
           </div>
         </div>
 
