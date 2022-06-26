@@ -1,8 +1,6 @@
 .post {
     --padding-start: 0px;
     --inner-padding-end: 0px;
-    scroll-snap-align: start !important;
-    scroll-snap-type: y var(--tw-scroll-snap-strictness) !important;
-    flex-shrink: 0 !important;
+    pointer-events:initial; 
   }
   

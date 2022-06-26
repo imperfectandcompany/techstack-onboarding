@@ -62,27 +62,6 @@ const PostComponent = ({ post, setPostId, setMenuVisibility, isMenuOpen, trimTex
                 <span className='text-xs text-stone-400'>View all 32 comments</span>
             </div>
         </div>
-
-        <div className="relative w-full flex flex-col h-full gap-6 snap-y snap-mandatory overflow-y-auto ">
-            {/* isOwner is necessary to identify whether the menu is from the perspective of someone viewing the post
-      or from the perspective of the owner of the post (one who created the post)
-      based on  this optional value within the slideup menu component, we can present the user
-      two different views. one for editing viewing insides etc and another to report, share etc.
-      
-      for the menu as true if the post that is called upon
-      belongs to the current user accessing the menu
-
-       This component is 'activated' through the moreOptions Component within the printPost function.
-       The component is then deactivated when the user clicks the x button that calls the setMenu function.
-       The same function that is activates this menu through moreOption within the printPost function.
-
-      <SlideUpMenu
-        isOwner={isOwner(postId)}
-        setMenuVisibility={setMenuVisibility}
-        isMenuOpen={isMenuOpen}
-      ></SlideUpMenu>
-       */}
-        </div>
     </>
 
     )

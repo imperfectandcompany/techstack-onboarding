@@ -100,11 +100,10 @@ const Timeline: React.FC = () => {
         id='main'
         fullscreen={true}
         color='light'
-        class='bg-red-500'
         scrollEvents={true}
         onIonScroll={(e) => onScroll(e)}
       >
-        <div className="flex flex-col gap-2">
+        <div className="">
           {/* Renders EmptyPostState Container if posts aren't available */}
           {arrayOfPosts.length > 0 ?
             null
@@ -114,7 +113,7 @@ const Timeline: React.FC = () => {
             </div>
           }
           <div>
-            <IonList class='gap-2 flex flex-col' lines='none'>
+            <IonList class='gap-2 flex flex-col bg-stone-50/50' lines='none'>
               {/* 
       Prints out each post available to the user
       Contains multiple components: Avatar, likeButton, moreOptions
@@ -138,7 +137,7 @@ const Timeline: React.FC = () => {
 
       
               {arrayOfPosts.map((item) => (
-                <IonItem key={item.postId} className=" snap-start flex items-center justify-center post"  lines="none">
+                <IonItem key={item.postId} className="post"  lines="none">
                   <Post postId={item.postId} username={item.username} isOwner={item.isOwner} likes={0} setPostId={setPostId} setMenuVisibility={setMenuVisibility} isMenuOpen={isMenuOpen}></Post>
                 </IonItem>))}
             </IonList>
