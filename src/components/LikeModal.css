@@ -1,53 +1,52 @@
 .listItem {
-    animation: popIn 0.2s calc(var(--animation-order) * 100ms) both ease-in;
+  animation: popIn 0.2s calc(var(--animation-order) * 100ms) both ease-in;
+}
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.6) translateY(-8px);
   }
-  @keyframes popIn {
-    0% {
-      opacity: 0;
-      transform: scale(0.6) translateY(-8px);
-    }
-    100% {
-      opacity: 1;
-      transform: none;
-    }
+  100% {
+    opacity: 1;
+    transform: none;
   }
-
-.newItem{
-    animation: animationname .5s linear;
-    transition: .5s ease-in-out;
-  }
-  @keyframes animationname{
-    0%{
-        opacity: 0;
-      transform: translateY(-10px);
-    }
-    100%{
-        opacity: 1;
-
-      transform: translateY(0px);
-    }
 }
 
+.newItem {
+  animation: animationname 0.5s linear;
+  transition: 0.5s ease-in-out;
+}
+@keyframes animationname {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+
+    transform: translateY(0px);
+  }
+}
 
 .newLike {
+  opacity: 0;
+  animation: heartAnimationIn 1s linear, heartAnimationOut 1s linear;
+  transition: ease-in-out;
+  animation-delay: 0.5s;
+}
+@keyframes heartAnimationIn {
+  0% {
     opacity: 0;
-    animation: heartAnimationIn 1s linear, heartAnimationOut 1s linear;
-    transition: ease-in-out;
-    animation-delay: .5s;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-@keyframes heartAnimationIn{
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
-}
-@keyframes heartAnimationOut{
-    100%{
-        opacity: 1;
-    }
-    0%{
-        opacity: 0;
-    }
+@keyframes heartAnimationOut {
+  100% {
+    opacity: 1;
+  }
+  0% {
+    opacity: 0;
+  }
 }
