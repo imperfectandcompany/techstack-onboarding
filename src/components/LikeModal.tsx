@@ -1,10 +1,16 @@
-import { IonContent, IonModal } from '@ionic/react'
+import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonList, IonModal, IonTitle, IonToolbar } from '@ionic/react'
 import React, { CSSProperties, useState } from 'react'
 import styles from './Avatar.module.css' // Import css modules stylesheet as styles
 import { likes } from '../constants/LikeContainer'
 import './LikeModal.css'
+import { chevronDown } from 'ionicons/icons'
+
+
 
 const LikeModal = () => {
+
+
+  
   const [isOpen, setIsOpen] = useState(false)
   const [newLike, setNewLike] = useState(false)
 
@@ -26,7 +32,7 @@ const LikeModal = () => {
     return (
       <div
         key='new'
-        className='newItem flex justify-between border-t border-zinc-800 text-zinc-600 py-4 pl-6 pr-3 hover:bg-gray-100 transition duration-150'
+        className='newItem flex justify-between border-t dark:border-zinc-800 text-zinc-600 py-4 pl-6 pr-3 hover:bg-gray-100 transition duration-150'
       >
         <div className=''>
           <a href='#'>
@@ -64,16 +70,16 @@ const LikeModal = () => {
 
   const printSheet = () => {
     return (
-      <div className='flex text-zinc-300'>
+      <IonList>
+         <div className=' text-zinc-300'>
         <div className='w-full'>
-          <div className='flex justify-center text-lg mt-2 dark:text-white text-black'>Likes</div>
           <div className='mt-5  flex flex-col  text-sm'>
-            {newLike ? newPost() : <></>}
+          {newLike ? newPost() : <></>}
             {likes.map((like, index) => (
               <div
                 key={like.user}
                 style={{ '--animation-order': index } as CSSProperties}
-                className='listItem flex justify-between border-t border-zinc-800 text-zinc-600 py-4 pl-6 pr-3 hover:bg-gray-100 transition duration-150'
+                className='listItem flex justify-between border-t  dark:border-zinc-800 text-zinc-600 py-4 pl-6 pr-3 hover:dark:bg-gray-100 hover:bg-gray-200 transition duration-150'
               >
                 <div>
                   <a href='#'>
@@ -93,22 +99,42 @@ const LikeModal = () => {
           </div>
         </div>
       </div>
+      </IonList>
     )
   }
 
   return (
     <div>
       <IonModal
-        handle={false}
         isOpen={isOpen}
+        swipeToClose={true}
         canDismiss={true}
-        breakpoints={[0, 0.9]}
-        initialBreakpoint={0.5}
         className={`${styles.modal}`}
         onIonModalDidDismiss={() => handleDismiss()}
       >
+           <IonHeader collapse='condense'>
+        <IonToolbar className={`${styles['modal-toolbar']}`}>
+          <IonButtons
+            slot='start'
+            className='cursor-pointer focus:cursor-default'
+            onClick={() => handleDismiss()}
+          >
+            <IonButton
+              expand='block'
+              size='large'
+              onClick={() => handleDismiss()}
+              className='transition cursor-pointer select-none focus:select-none hover:text-gray-100 focus:text-opacity-50'
+              color='primary'
+              fill='clear'
+            >
+              <IonIcon slot='icon-only' color='dark' icon={chevronDown} />
+            </IonButton>
+          </IonButtons>
+          <IonTitle color='dark'>Likes</IonTitle>
+        </IonToolbar>
+      </IonHeader>        
         <IonContent color='light' forceOverscroll={true} class={`${styles['modal-content']}`}>
-          {printSheet()}
+      {printSheet()}
         </IonContent>
       </IonModal>
       <div onClick={() => handleLikeButtonClick()}>
