@@ -1,6 +1,7 @@
 import { IonNote } from '@ionic/react'
 import Avatar from '../Avatar'
 import { LikeButton } from '../LikeButton'
+import LikeModal from '../LikeModal'
 import MoreOptions from '../MoreOptions'
 import { postObject } from './Post.container'
 
@@ -59,6 +60,7 @@ const PostComponent = ({ post, setPostId, setMenuVisibility, isMenuOpen, trimTex
             </div>
             <div className='px-6 pt-6 text-gray-600 md:px-0 '>
                 {LikeButton(post.likes)}
+                {LikeModal()}
                 <span className='text-xs text-stone-400'>View all 32 comments</span>
             </div>
         </div>
