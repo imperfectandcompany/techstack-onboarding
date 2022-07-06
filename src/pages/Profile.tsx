@@ -30,17 +30,21 @@ const Profile = () => {
   }
   
   function trimText(text: string) {
-    const maxLength = 105
+    const maxLength = 90
     const originalContent = text.trim()
     const content = originalContent.slice(0, maxLength)
     return (
       <>
-        <span className='mr-1 whitespace-pre-line'>
+      <div className={!isPostCollapsed ? 'text-transparent': ''}>
+      <button className="transition text-left whitespace-pre-line bg-clip-text bg-gradient-to-t from-gray-100 to-black dark:from-black dark:to-white">
+        <span onClick={(e) => readMorePostHandler(e)} className=''>
           {isPostCollapsed ? originalContent : content}
         </span>
+        </button>
+        </div>
         {originalContent.length > maxLength ? (
           <button
-            className='text-base font-medium text-blue-400 capitalize transition active:opacity-50 hover:text-blue-400 focus:text-blue-500 focus:outline-none'
+            className='text-base transition font-medium text-black dark:text-white  capitalize transition active:opacity-50 hover:text-blue-400 focus:text-blue-500 focus:outline-none'
             onClick={(e) => readMorePostHandler(e)}
           >
             {isPostCollapsed ? <IonIcon icon={chevronUp}></IonIcon> : <IonIcon icon={chevronDown}></IonIcon>}
@@ -65,32 +69,32 @@ const Profile = () => {
       </IonToolbar>
     </IonHeader>
     <IonContent
-    
       fullscreen={true}
       color='light'
     >
-      <div className="flex items-center justify-evenly">
+      <div className='ion-padding'>
+      <div className="flex items-center justify-between">
         {/* profile pic */}
         <div className="bg-gray-200 rounded-full w-16 h-16 ">
         </div>
         <div>
           {/* username */}
           <div className="flex gap-2">
-            <div>
+            <div className='font-bold'>
               {ProfileData.username}
             </div>
             {/* relationship status chip */}
-            <div>
+            <div className="rounded-md bg-black/10 px-2 dark:bg-white/10">
               {ProfileData.following && ProfileData.followsMe ? 'Mutual Followers' : ProfileData.followsMe ? 'Follows You' : null}
             </div>
           </div>
           {/* clout check */}
           <div className="flex gap-2">
             <div>
-              {ProfileData.followerCount} Followers
+              <span className='font-medium'>{ProfileData.followerCount}</span> Followers
             </div>
             <div>
-              {ProfileData.followingCount} Following
+              <span className='font-medium'>{ProfileData.followingCount}</span> Following
             </div>
           </div>
         </div>
@@ -100,8 +104,8 @@ const Profile = () => {
 
 
       {/* Name and Bio */}
-      <div>
-        <div>
+      <div className='ion-padding-vertical'>
+        <div className='font-semibold'>
           {ProfileData.firstName + ' ' + ProfileData.lastName}
         </div>
         <div className="flex flex-col">
@@ -199,9 +203,7 @@ const Profile = () => {
         </IonItem>
 
       </IonList>
-
-
-
+      </div>
     </IonContent>
   </IonPage>)
 }
