@@ -46,6 +46,7 @@ const Recovery: React.FC = () => {
     resetRef,
     resetCompleteRef
   ]
+  
   const resetPassword = () => {
     // Do stuff
   }
@@ -62,20 +63,19 @@ const Recovery: React.FC = () => {
     setCurrentPage(currentPage + 1)
   }
 
-  const getPreviousPage = () : string => {
-    if (currentPage === 0) {
-      return '/'
-    } else {
+  const getPreviousPage = async (e: React.MouseEvent) => {
 
-      pageTransition({
-        enteringEl: pageMap[currentPage - 1],
-        leavingEl: pageMap[currentPage],
+    if (currentPage > 0) {
+
+      e.preventDefault()
+      
+      await pageTransition({
+        enteringEl: pageMap[currentPage - 1].current,
+        leavingEl: pageMap[currentPage].current,
         direction: 'backward',
       }).play()
 
       setCurrentPage(currentPage - 1)
-
-      return '/recovery'
     }
   }
 
@@ -323,20 +323,31 @@ const Recovery: React.FC = () => {
     )
   }
 
+  const customBackButton = () => {
+
+    return (
+      <div onClick={(e) => getPreviousPage(e)}>
+        {currentPage === 0 ? <IonBackButton defaultHref='/' /> : <IonBackButton disabled={true} />}
+      </div>
+    )
+  }
+
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar color='secondary' className={`${styles.toolbar}`}>
           <IonButtons slot='start'>
-            <IonBackButton defaultHref='/' />
+            {customBackButton()}
           </IonButtons>
           <IonTitle>Recovery</IonTitle>
         </IonToolbar>
       </IonHeader>
-      {EmailInput()}
-      {CodeConfirm()}
-      {ResetPassword()}
-      {ResetComplete()}
+      <IonContent color='secondary'>
+        {EmailInput()}
+        {CodeConfirm()}
+        {ResetPassword()}
+        {ResetComplete()}
+      </IonContent>
     </IonPage>
   )
 }
