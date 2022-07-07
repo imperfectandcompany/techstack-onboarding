@@ -34,7 +34,6 @@ import Feedback from './pages/Feedback'
 import Contact from './pages/Contact'
 
 export function pageTransition(
-  baseEl: null,
   opts: {
     enteringEl: Element | Node | Element[] | Node[] | NodeList
     leavingEl: Element | Node | Element[] | Node[] | NodeList

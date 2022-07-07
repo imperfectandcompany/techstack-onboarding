@@ -16,13 +16,6 @@ import styles from './SignIn.module.css' // Import css modules stylesheet as sty
 import { createBrowserHistory } from 'history';
 export const history = createBrowserHistory({forceRefresh:true})
 
-
-
-/*
-    useState<string | undefined | null>("");
-    because event.detail.value might be a string or it can be null or undefined
-  */
-
 interface passwordStrength {
   strength: string
   value: number
@@ -31,6 +24,7 @@ interface passwordStrength {
 }
 
 const Recovery: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState<number>(0)
   const [email, setEmail] = useState<string>()
   const [password, setPassword] = useState<string>('')
   const [newPassword, setNewPassword] = useState<string>('')
@@ -41,6 +35,17 @@ const Recovery: React.FC = () => {
     match: false,
   })
 
+  const emailRef = useRef(null)
+  const codeRef = useRef(null)
+  const resetRef = useRef(null)
+  const resetCompleteRef = useRef(null)
+
+  const pageMap = [
+    emailRef,
+    codeRef,
+    resetRef,
+    resetCompleteRef
+  ]
   const resetPassword = () => {
     // Do stuff
   }
@@ -49,27 +54,42 @@ const Recovery: React.FC = () => {
     enteringElement: { current: Element | Node | Element[] | Node[] | NodeList },
     leavingElement: { current: Element | Node | Element[] | Node[] | NodeList },
   ) => {
-    await pageTransition(emailRef.current, {
+    await pageTransition({
       enteringEl: enteringElement.current,
       leavingEl: leavingElement.current,
       direction: 'forward',
     }).play()
+    setCurrentPage(currentPage + 1)
   }
 
-  const emailRef = useRef(null)
-  const codeRef = useRef(null)
-  const resetRef = useRef(null)
-  const resetCompleteRef = useRef(null)
+  const getPreviousPage = () : string => {
+    if (currentPage === 0) {
+      return '/'
+    } else {
+
+      pageTransition({
+        enteringEl: pageMap[currentPage - 1],
+        leavingEl: pageMap[currentPage],
+        direction: 'backward',
+      }).play()
+
+      setCurrentPage(currentPage - 1)
+
+      return '/recovery'
+    }
+  }
+
+
 
   const EmailInput = () => {
     return (
-      <IonContent ref={emailRef} color='white'>
+      <IonContent ref={emailRef} color='secondary'>
         <img
           src={process.env.PUBLIC_URL + '/assets/icon/recovery.png'}
-          className='w-64 sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto'
+          className='w-64 sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto rounded-lg'
           alt='logo'
         />
-        <p className='ion-text-center text-black font-bold mt-5 text-5xl'>
+        <p className='ion-text-center text-black dark:text-white font-bold mt-5 text-5xl'>
           It happens to everyone.
         </p>
         <p className='ion-text-center text-stone-500 font-medium m-6 mt-5 text-xl'>
@@ -84,7 +104,7 @@ const Recovery: React.FC = () => {
             onChange={(e) => setEmail(e.target.value)}
             name='default'
             placeholder='Email or username'
-            className='px-4 py-2 w-full text-stone-400 bg-stone-50 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200'
+            className='px-4 py-2 w-full text-stone-400 bg-stone-50 dark:bg-zinc-900 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-600'
           />
         </div>
         <IonButton
@@ -105,13 +125,13 @@ const Recovery: React.FC = () => {
     }
 
     return (
-      <IonContent ref={codeRef} color='white' style={{ display: 'none' }}>
+      <IonContent ref={codeRef} color='secondary' style={{ display: 'none' }}>
         <img
           src={process.env.PUBLIC_URL + '/assets/icon/Lock.png'}
-          className='w-64 sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto'
+          className='w-64 sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto rounded-lg'
           alt='logo'
         />
-        <p className='ion-text-center text-black font-bold mt-5 text-5xl'>One more thing...</p>
+        <p className='ion-text-center text-black dark:text-white font-bold mt-5 text-5xl'>One more thing...</p>
         <p className='ion-text-center text-stone-500 font-medium m-6 mt-9 mb-12 text-xl'>
           Protecting your account is our top priority. Please confirm your account by entering the
           authorization code sent to{' '}
@@ -124,24 +144,24 @@ const Recovery: React.FC = () => {
             id='num1'
             type='number'
             onChange={(e) => handleChange('num2')}
-            className='ion-text-center w-10 h-12 mr-8 text-stone-400 bg-stone-50 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200'
+            className='ion-text-center w-10 h-12 mr-8 text-stone-400 bg-stone-50 dark:bg-zinc-900 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-600'
           ></input>
           <input
             id='num2'
             type='number'
             onChange={(e) => handleChange('num3')}
-            className='ion-text-center w-10 h-12 mr-8 text-stone-400 bg-stone-50 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200'
+            className='ion-text-center w-10 h-12 mr-8 text-stone-400 bg-stone-50 rounded-lg dark:bg-zinc-900 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-600'
           ></input>
           <input
             id='num3'
             type='number'
             onChange={(e) => handleChange('num4')}
-            className='ion-text-center w-10 h-12 mr-8 text-stone-400 bg-stone-50 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200'
+            className='ion-text-center w-10 h-12 mr-8 text-stone-400 bg-stone-50 rounded-lg border dark:bg-zinc-900 border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-600'
           ></input>
           <input
             id='num4'
             type='number'
-            className='ion-text-center w-10 h-12 mr-8 text-stone-400 bg-stone-50 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200'
+            className='ion-text-center w-10 h-12 mr-8 text-stone-400 bg-stone-50 rounded-lg border dark:bg-zinc-900 border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-600'
           ></input>
         </div>
         <div className='ion-margin-horizontal'>
@@ -173,6 +193,9 @@ const Recovery: React.FC = () => {
     )
 
     const checkStrength = (password: string) => {
+
+      setPassword(password)
+
       if (strongPassword.test(password)) {
         setPasswordStrength({
           ...passwordStrength,
@@ -196,7 +219,13 @@ const Recovery: React.FC = () => {
         })
       }
 
-      setPassword(password)
+      if (password.length < 1) {
+        setPasswordStrength({
+          ...passwordStrength,
+          value: 0
+        })
+      }
+
     }
 
     const verifyMatch = (newPassword: string) => {
@@ -206,11 +235,11 @@ const Recovery: React.FC = () => {
     }
 
     return (
-      <IonContent color='white' ref={resetRef} style={{ display: 'none' }}>
-        <p className='ion-text-center text-black font-bold mt-5 text-5xl'>You&apos;re Valid</p>
+      <IonContent color='secondary' ref={resetRef} style={{ display: 'none' }}>
+        <p className='ion-text-center text-black dark:text-white font-bold mt-5 text-5xl'>You&apos;re Valid</p>
         <img
           src={process.env.PUBLIC_URL + '/assets/icon/UnLock.png'}
-          className='w-64 sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto'
+          className='w-64 sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto rounded-lg'
           alt='logo'
         />
 
@@ -225,7 +254,7 @@ const Recovery: React.FC = () => {
             onChange={(e) => checkStrength(e.target.value)}
             name='default'
             placeholder='Password'
-            className='px-4 py-2 w-full text-stone-400 bg-stone-50 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200'
+            className='px-4 py-2 w-full text-stone-400 bg-stone-50 rounded-lg border dark:bg-zinc-900 border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-600'
           />
           <p className='ion-text-start text-stone-500 font-small m-2 mt-1 mb-6 text-s'>
             {passwordStrength.eightChars
@@ -239,7 +268,7 @@ const Recovery: React.FC = () => {
             onChange={(e) => verifyMatch(e.target.value)}
             name='default'
             placeholder='Password'
-            className='px-4 py-2 w-full text-stone-400 bg-stone-50 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200'
+            className='px-4 py-2 w-full text-stone-400 bg-stone-50 rounded-lg border dark:bg-zinc-900 border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-600'
           />
           <p className='ion-text-start text-stone-500 font-small m-2 mt-1 mb-6 text-s'>
             {passwordStrength.match ? 'Both passwords match!' : 'Both passwords must match'}
@@ -264,13 +293,13 @@ const Recovery: React.FC = () => {
 
   const ResetComplete = () => {
     return (
-      <IonContent color='white' ref={resetCompleteRef} style={{ display: 'none' }}>
+      <IonContent color='secondary' ref={resetCompleteRef} style={{ display: 'none' }}>
         <img
           src={process.env.PUBLIC_URL + '/assets/icon/Check.png'}
-          className='w-64 sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto'
+          className='w-64 sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto rounded-lg'
           alt='logo'
         />
-        <p className='ion-text-center text-black font-bold mt-5 text-5xl'>You&apos;re done.</p>
+        <p className='ion-text-center text-black dark:text-white font-bold mt-5 text-5xl'>You&apos;re done.</p>
         <p className='ion-text-center text-stone-500 font-medium m-6 mt-9 mb-12 text-xl'>
           You have successfully reset your password. Click the button to go home.
         </p>
@@ -297,7 +326,7 @@ const Recovery: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar color='white' className={`${styles.toolbar}`}>
+        <IonToolbar color='secondary' className={`${styles.toolbar}`}>
           <IonButtons slot='start'>
             <IonBackButton defaultHref='/' />
           </IonButtons>
