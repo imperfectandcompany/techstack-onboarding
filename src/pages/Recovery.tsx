@@ -91,10 +91,8 @@ const Recovery: React.FC = () => {
         if (submitBtn != null) {
           //  check if the submit btn is disabled
           if (submitBtn.disabled) {
-            console.log('disabled')
             return;
           } else {
-            console.log('not disabled yay')
             submitBtn.click();
           }
         }
@@ -104,10 +102,11 @@ const Recovery: React.FC = () => {
 
     return (
       <IonContent ref={emailRef} color='secondary'>
+        <div className={!email ? 'opacity-80 transition' : 'transition'}>
         <object
           data={process.env.PUBLIC_URL + '/assets/icon/recovery.svg'}
-          className='w-64 sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto rounded-lg'
-        />
+          className='w-64 sm:w-24  md:w-32 lg:w-36 my-8 flex mx-auto rounded-lg'
+        /></div>
         <p className='ion-text-center text-black dark:text-white font-bold mt-5 text-5xl'>
           It happens to everyone.
         </p>
@@ -160,12 +159,15 @@ const Recovery: React.FC = () => {
       }
     }
 
+    const [counter, setCounter] = React.useState(60);
+
+
 
     return (
       <IonContent ref={codeRef} color='secondary' style={{ display: 'none' }}>
         <object
           data={process.env.PUBLIC_URL + '/assets/icon/lock.svg'}
-          className='w-48 h-36 sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto rounded-lg'
+          className='w-48 h-36  sm:w-24 md:w-32 lg:w-36 my-8 flex mx-auto rounded-lg'
         />
         <p className='ion-text-center text-black dark:text-white font-bold mt-5 text-4xl'>
           One more thing...
