@@ -6,6 +6,7 @@ import './Timeline.css'
 import React, { useState } from 'react'
 import PostEmptyState from '../components/Post/Post.emptyState'
 import SlideUpMenu from '../components/SlideUpMenu'
+import CommentsPage from '../components/CommentsPage/CommentsPage.container'
 
 
 
@@ -95,6 +96,7 @@ const Timeline: React.FC = () => {
   return (
     <IonPage id='main'>
       <Menu></Menu>
+      <CommentsPage postId={postId}></CommentsPage>
       <Toolbar></Toolbar>
       <IonContent
         id='main'
@@ -137,7 +139,7 @@ const Timeline: React.FC = () => {
 
       
               {arrayOfPosts.map((item) => (
-                <IonItem key={item.postId} className="post"  lines="none">
+                <IonItem key={item.postId} className="post" id='comments'  lines="none">
                   <Post postId={item.postId} username={item.username} isOwner={item.isOwner} likes={0} setPostId={setPostId} setMenuVisibility={setMenuVisibility} isMenuOpen={isMenuOpen}></Post>
                 </IonItem>))}
             </IonList>

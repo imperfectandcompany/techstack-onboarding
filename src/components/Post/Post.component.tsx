@@ -1,4 +1,4 @@
-import { IonNote } from '@ionic/react'
+import { IonMenuToggle, IonNote } from '@ionic/react'
 import Avatar from '../Avatar'
 import { LikeButton } from '../LikeButton'
 import LikeModal from '../LikeModal'
@@ -19,6 +19,7 @@ const PostComponent = ({ post, setPostId, setMenuVisibility, isMenuOpen, trimTex
     return (<>
 
         <div className='transition py-6 bg-white dark:bg-zinc-900 shadow-sm md:rounded md:px-6 md:py-2 lg:ml-44 lg:mr-44 xl:ml-96 xl:mr-96'>
+      
             <div className='px-6 pb-6 md:px-0'>
                 <div className='flex items-center justify-between'>
                     <div className='flex items-center space-x-4'>
@@ -61,7 +62,11 @@ const PostComponent = ({ post, setPostId, setMenuVisibility, isMenuOpen, trimTex
             <div className='px-6 pt-6 text-gray-600 md:px-0 '>
                 {LikeButton(post.likes)}
                 {LikeModal()}
+                <IonMenuToggle autoHide={true}  menu='comments' onClick={()=>(setPostId(post.postId))}>
                 <span className='text-xs text-stone-400'>View all 32 comments</span>
+
+                                </IonMenuToggle>
+                
             </div>
         </div>
     </>
