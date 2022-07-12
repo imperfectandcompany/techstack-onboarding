@@ -99,7 +99,7 @@ const Timeline: React.FC = () => {
       <CommentsPage postId={postId}></CommentsPage>
       <Toolbar></Toolbar>
       <IonContent
-        id='main'
+        id='mainmenu'
         fullscreen={true}
         color='light'
         scrollEvents={true}
@@ -139,7 +139,7 @@ const Timeline: React.FC = () => {
 
       
               {arrayOfPosts.map((item) => (
-                <IonItem key={item.postId} className="post" id='comments'  lines="none">
+                <IonItem key={item.postId} className="post"  id='comments' lines="none">
                   <Post postId={item.postId} username={item.username} isOwner={item.isOwner} likes={0} setPostId={setPostId} setMenuVisibility={setMenuVisibility} isMenuOpen={isMenuOpen}></Post>
                 </IonItem>))}
             </IonList>

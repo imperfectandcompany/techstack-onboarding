@@ -18,7 +18,7 @@ const ToolbarComponent = () => {
                     >
                         <div className='flex items-center shadow-sm justify-between h-16 max-w-screen-xl px-4 mx-auto'>
                             <div className='flex flex-1 w-0 '>
-                                <IonMenuToggle autoHide={true}>
+                                <IonMenuToggle autoHide={true} menu='start'>
                                     <button
                                         className='p-2 text-zinc-300 bg-zinc-50/40 dark:bg-zinc-800/40 dark:hover:bg-zinc-900/40 transition cursor-pointer rounded-full'
                                         type='button'
