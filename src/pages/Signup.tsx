@@ -53,7 +53,7 @@ const Signup: React.FC = () => {
     enteringElement: MutableRefObject<null>,
     leavingElement: MutableRefObject<null>,
   ) => {
-    await pageTransition(signUpRef.current, {
+    await pageTransition({
       enteringEl: enteringElement.current,
       leavingEl: leavingElement.current,
       direction: 'forward',
