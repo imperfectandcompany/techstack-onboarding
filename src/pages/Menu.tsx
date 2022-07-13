@@ -86,10 +86,11 @@ const Menu: React.FC = () => {
             <IonListHeader lines='none' color='secondary'>
             <IonLabel>Daily Ephemeral</IonLabel>
             </IonListHeader>
-            <IonItem onClick={async () => await menuController.toggle()} detail color='secondary' routerLink='/mood' routerDirection='forward'>
+            <IonItem onClick={async () => await menuController.toggle()} detail color='secondary' routerLink='/mood'  routerDirection='forward'>
               <IonLabel>Moods</IonLabel>
             </IonItem>
-
+            <IonItem lines='full'>
+            </IonItem>
           </IonList>
 
           <IonListHeader lines='none' color='light'></IonListHeader>

@@ -1,7 +1,8 @@
-import { IonAlert, IonToast } from '@ionic/react';
+import { IonAlert, IonAvatar, IonIcon, IonImg, IonItem, IonItemOption, IonItemOptions, IonItemSliding, IonLabel, IonList, IonToast } from '@ionic/react';
 import React, {  useState } from 'react';
 import Picker from 'emoji-picker-react';
 import './Mood.css'
+import { trashBin } from 'ionicons/icons';
 
 
 
@@ -12,15 +13,44 @@ import './Mood.css'
 const MoodComponent: React.FC = () => {    
     
     const [showMoodLoggedToast, setShowMoodLoggedToast] = useState<boolean>(false);
+    const [showMoodErrorToast, setShowMoodErrorToast] = useState<boolean>(false);
     const [showInputs, setShowInputs] = useState(false);
-
-
-
     const [chosenEmoji, setChosenEmoji] = useState(null);
+    const [mood, setMood] = useState('');
 
     const EmojiData = () => (
         <div>
-          <strong>Selected:</strong> {chosenEmoji.emoji}
+            {!mood ? <IonImg src="/assets/empty-state.svg" /> : <div>
+          <IonList>
+                            <IonItemSliding>
+                                <IonItem color='light'>
+                                    <IonAvatar className='text-4xl mr-4'>
+                                        {chosenEmoji.emoji}
+                                    </IonAvatar>
+                                    <IonLabel>
+                                        <h3>Username</h3>
+                                        <p>{mood}</p>
+                                    </IonLabel>
+                                </IonItem>
+                                <IonItemOptions side="end">
+                                    <IonItemOption
+                                        color="danger"
+                                        onClick={() => setChosenEmoji(null)}
+                                    >
+                                        <IonIcon icon={trashBin} />
+                                    </IonItemOption>
+                                </IonItemOptions>
+                            </IonItemSliding>
+                    </IonList>
+
+
+                </div>
+                
+                
+                
+                
+                }
+
         </div>
       );    
 
@@ -61,6 +91,13 @@ const MoodComponent: React.FC = () => {
                     message='Your mood has been logged.'
                     onDidDismiss={() => setShowMoodLoggedToast(false)}
                 />
+                
+                <IonToast
+                    duration={2000}
+                    isOpen={showMoodErrorToast}
+                    message='Something went wrong, please try again.'
+                    onDidDismiss={() => setShowMoodErrorToast(false)}
+                />                
 
                 <IonAlert
                     isOpen={showInputs}
@@ -87,7 +124,13 @@ const MoodComponent: React.FC = () => {
                         {
                             text: 'Ok',
                             handler: data => {
-                                setShowMoodLoggedToast(true);
+                                if(data.details && chosenEmoji !== null){
+                                    setMood(data.details);
+                                    setShowMoodLoggedToast(true);
+                                } else {
+                                    setChosenEmoji(null);
+                                    setShowMoodErrorToast(true); 
+                                }
                             }
                         }
                     ]}
