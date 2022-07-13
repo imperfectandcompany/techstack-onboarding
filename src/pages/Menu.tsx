@@ -82,6 +82,16 @@ const Menu: React.FC = () => {
             </IonAccordion>
           </IonAccordionGroup>
 
+          <IonList>
+            <IonListHeader lines='none' color='secondary'>
+            <IonLabel>Daily Ephemeral</IonLabel>
+            </IonListHeader>
+            <IonItem onClick={async () => await menuController.toggle()} detail color='secondary' routerLink='/mood' routerDirection='forward'>
+              <IonLabel>Moods</IonLabel>
+            </IonItem>
+
+          </IonList>
+
           <IonListHeader lines='none' color='light'></IonListHeader>
 
           <div className='border-b border-t dark:border-zinc-800 divide-y divide-zinc-100 dark:divide-zinc-800 '>

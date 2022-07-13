@@ -1,0 +1,11 @@
+.active-category-indicator-wrapper {
+    display:none;
+}
+
+aside.emoji-picker-react {
+    box-shadow: 0px 20px 20px 0px #efefef;
+}
+
+.emoji-picker-react .emoji-categories button{
+    display:none;
+}

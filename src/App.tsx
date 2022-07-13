@@ -32,6 +32,7 @@ import Profile from './pages/Profile'
 import Settings from './pages/Setttings'
 import Feedback from './pages/Feedback'
 import Contact from './pages/Contact'
+import Mood from './pages/Mood/MoodContainer'
 
 export function pageTransition(
   opts: {
@@ -107,6 +108,9 @@ const App: React.FC = () => (
         <Route exact path='/signin'>
           <Signin />
         </Route>
+        <Route exact path='/mood'>
+          <Mood />
+        </Route>        
         <Route exact path='/recovery'>
           <Recovery />
         </Route>
