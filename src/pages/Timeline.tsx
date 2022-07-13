@@ -92,11 +92,12 @@ const Timeline: React.FC = () => {
   const [isMenuOpen, setMenuVisibility] = useState(false)
 
   const [postId, setPostId] = useState<number | undefined>()
+  const [isCommentsMenuClosed, setIsCommentsMenuClosed] = useState<boolean | undefined>()
 
   return (
     <IonPage id='main'>
       <Menu></Menu>
-      <CommentsPage postId={postId}></CommentsPage>
+      <CommentsPage postId={postId} isCommentsMenuClosed={isCommentsMenuClosed}  setisCommentsMenuClosed={setIsCommentsMenuClosed}></CommentsPage>
       <Toolbar></Toolbar>
       <IonContent
         id='mainmenu'

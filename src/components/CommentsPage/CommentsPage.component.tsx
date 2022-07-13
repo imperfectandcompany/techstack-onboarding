@@ -1,25 +1,30 @@
 import { IonMenu, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/react'
 import { LikeButton } from '../LikeButton';
-import './CommentsPage.css'
+import './CommentsPage.css';
+import PropTypes from 'prop-types';
+
 
 
 
 type CommentsComponentProps = {
     postId: number;
+    isCommentsMenuClosed: boolean;
+    setIsCommentsMenuClosed(isCommentsMenuClosed: boolean): void    
 }
 
 
-const CommentsPageComponent = ({ postId }: CommentsComponentProps) => {
 
+const CommentsPageComponent = (props: CommentsComponentProps) => {
 
+    const printComments = () => {
 
-    const printComments = (props: CommentsComponentProps) => {
         return (
             <>
-                <IonMenu side="end" swipeGesture={false} menuId="comments" contentId="comments" className="my-custom-menu">
+                <IonMenu side="end" swipeGesture={true} onIonDidClose={props.setIsCommentsMenuClosed(true)} contentId='comments'  menuId='comments'
+                >
                     <IonHeader>
                         <IonToolbar color="light">
-                            <IonTitle>Comments: PosID ({postId}))</IonTitle>
+                            <IonTitle>Comments: PosID ({props.postId}))</IonTitle>
                         </IonToolbar>
                     </IonHeader>
                     <IonContent>
@@ -95,9 +100,29 @@ const CommentsPageComponent = ({ postId }: CommentsComponentProps) => {
                             </>
                             )
     }
+
+
+
+
                             return (<>
                                 {printComments()}
                             </>)
 }
+
+CommentsPageComponent.defaultProps = {
+    postId: 0,
+    isCommentsMenuClosed: true,
+    setIsCommentsMenuClosed: () => { 
+        // your logic here...
+    
+        return;
+      }
+  };
+
+CommentsPageComponent.propTypes = {
+    postId: PropTypes.number.isRequired,
+    isCommentsMenuClosed: PropTypes.bool.isRequired,
+    setIsCommentsMenuClosed: PropTypes.func.isRequired
+  };
 
                             export default CommentsPageComponent

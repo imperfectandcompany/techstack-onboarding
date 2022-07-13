@@ -1,25 +1,27 @@
-import React,{   useState } from 'react';
+import React from 'react';
 import CommentsPageComponent from './CommentsPage.component';
 import './CommentsPage.css'
 
 // start of enforcing data types for comments, update in the future
 export interface commentsObject {
-  postId: number
+  postId: number;
+  isCommentsMenuClosed: boolean;
+  setIsCommentsMenuClosed: (isCommentsMenuClosed: boolean) => void
+}
+
+interface IComments extends commentsObject {
+  postId: number;
+  isCommentsMenuClosed: boolean
+  setIsCommentsMenuClosed: (isCommentsMenuClosed: boolean) => void
 }
 
 
-const CommentsPage: React.FC = (props: commentsObject) => {
-
-
-  const [isCommentsPageOpen, setCommentsPageOpen] = useState(false);
-
-
-const [text, setText] = useState<string>('');
+const CommentsPage: React.FC = ({postId, isCommentsMenuClosed, setIsCommentsMenuClosed}:IComments) => {
 
 
   return (
   <>
-  <CommentsPageComponent postId={props.postId} ></CommentsPageComponent>
+  <CommentsPageComponent postId={postId} isCommentsMenuClosed={isCommentsMenuClosed} setIsCommentsMenuClosed={setIsCommentsMenuClosed}></CommentsPageComponent>
   </>
   )
 }
